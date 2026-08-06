@@ -1,3 +1,3 @@
 :HL["/festroute-site/_next/static/chunks/2u0yhvh9ccy_r.css","style"]
 :HC["/",""]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"xtreme-fest","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"6AktlT_C8C3k5Z8D2FMLw"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"xtreme-fest","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"mVbPLslDnY5LHDZgRgNsR"}
