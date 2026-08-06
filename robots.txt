@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://pablofmm.github.io/festroute-site/sitemap.xml

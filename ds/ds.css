@@ -1,0 +1,118 @@
+/* GENERADO desde el Design System «Yunque» v5.0.0-rc.1 — no editar a mano.
+ * Fuente canónica: docs/design-system/2026_08_06-FestRoute_Design_System-v5_0_0-rc1.md (Anexo A · CSS base)
+ * Regenerar: npm run tokens
+ *
+ * Nocturno es el modo por defecto; Fragua cambia el valor de los mismos tokens
+ * y ni uno cambia de papel. `sobre-oscuro` y `sobre-accion` NO siguen al tema:
+ * son texto sobre relleno de color y cambiarlos rompería el contraste (§5.1).
+ */
+:root{
+  /* superficie */
+  --fondo:#0B0C0D; --sup:#141618; --sup-alta:#1E2124;
+  --linea:#2B2F33; --linea-fuerte:#65696F;
+  --terciario:#8A9199; --secundario:#C3C9CE; --primario:#D2D7DB; --hueso:#E8E2D6;
+  /* código · qué tiene que hacer el usuario */
+  --accion:#FE8449;
+  --bloqueado:#861118; --bloqueado-borde:#B14E49;
+  --certeza-alta:#ABC1B4; --certeza-media:#9F916F; --certeza-baja:#646A70;
+  --aviso:#4AADF5;
+  /* roles de interfaz */
+  --exito:#52B766; --error:#E0554A;
+  --foco-1:#E8E2D6; --foco-2:#0B0C0D;
+  /* texto sobre rellenos de color · §5.4 · NO cambian de tema como hueso */
+  --sobre-oscuro:#E8E2D6; --sobre-accion:#0B0C0D;
+  /* materia · solo degradados y aros de emblema */
+  --plata-viva:#D2D7DB; --acero:#628F94; --estano:#94A0AA;
+  /* espacio, forma, tiempo */
+  --s100:4px; --s200:8px; --s300:12px; --s400:16px; --s500:24px;
+  --s600:32px; --s700:48px; --s800:64px; --s900:96px; --s1000:128px;
+  --r:8px; --r0:0px; --r-completo:9999px;
+  /* página · §8.3 */
+  --ancho-max:1200px; --ancho-lectura:66ch; --margen-pagina:var(--s400);
+  --ruta:cubic-bezier(.2,0,0,1);
+  --sombra:none; --grano:.08;
+  /* tipografía */
+  --titulo:'Shouldve Known','Grenze Gotisch Variable',Impact,serif;
+  --gotica:'Grenze Gotisch Variable',serif;
+  --texto:'Geist','Inter','Segoe UI',Arial,sans-serif;
+  --dato:'Geist Mono','Consolas',monospace;
+}
+
+:root[data-tema="claro"]{
+  --fondo:#EFECE6; --sup:#F8F6F2; --sup-alta:#FFFFFF;
+  --linea:#D2CCC1; --linea-fuerte:#8A857E;
+  --terciario:#5A6169; --secundario:#3A3E43; --primario:#14161A; --hueso:#14161A;
+  --accion:#B84800;
+  --bloqueado:#861118; --bloqueado-borde:#861118;
+  --certeza-alta:#394D42; --certeza-media:#786A4A; --certeza-baja:#81878D;
+  --aviso:#0068A4;
+  --exito:#017F31; --error:#B02218;
+  --foco-1:#14161A; --foco-2:#FFFFFF;
+  --sobre-oscuro:#FFFFFF; --sobre-accion:#FFFFFF;
+  --plata-viva:#5A6169; --acero:#366368; --estano:#6A767F;
+  --sombra:0 1px 2px rgba(20,22,26,.10), 0 8px 24px rgba(20,22,26,.06);
+  --grano:.04;
+}
+
+/* base */
+body{
+  margin:0; background:var(--fondo); color:var(--secundario);
+  font-family:var(--texto); font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* grano generado · anclado al viewport, nunca sobre superficies */
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:var(--grano);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>");
+}
+
+/* foco · anillo doble neutro, sin color y sin animación */
+:focus-visible{
+  outline:2px solid var(--foco-1);
+  outline-offset:2px;
+  box-shadow:0 0 0 4px var(--foco-2);
+}
+
+/* contenedores · las rupturas se miden aquí, no en la ventana */
+.app{container-type:inline-size; container-name:app;}
+.pagina{max-width:var(--ancho-max); margin-inline:auto; padding-inline:var(--margen-pagina)}
+@container app (min-width:700px){ .pagina{--margen-pagina:var(--s600)} }
+.prosa{max-width:var(--ancho-lectura)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}
+
+/* Escala tipográfica · 1.250 sobre base 16 (Anexo A) */
+:root{
+--display-xl:3.815rem; --display-l:3.052rem; --display-m:2.441rem;
+--titulo-l:1.953rem;   --titulo-m:1.563rem;  --titulo-s:1.250rem;
+--cuerpo-l:1.125rem;   --cuerpo-m:1rem;      --cuerpo-s:0.875rem;
+--etiqueta:0.750rem;   /* Mono 700, versales, letter-spacing .14em */
+}
+
+
+.ds { margin: 0; padding: var(--s700) var(--s400) var(--s900); background: var(--fondo); color: var(--secundario); font-family: var(--texto); line-height: 1.55; }
+.ds-cabecera, .ds-cuerpo { max-width: var(--ancho-lectura); margin-inline: auto; }
+.ds-migas { font-family: var(--dato); font-size: var(--etiqueta); text-transform: uppercase; letter-spacing: .14em; color: var(--terciario); }
+.ds-migas a { color: var(--accion); }
+.ds-ficha { display: grid; grid-template-columns: max-content 1fr; gap: var(--s200) var(--s400); font-size: var(--cuerpo-s); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); padding: var(--s400) 0; }
+.ds-ficha dt { font-family: var(--dato); text-transform: uppercase; letter-spacing: .12em; font-size: var(--etiqueta); color: var(--terciario); }
+.ds-ficha dd { margin: 0; color: var(--primario); }
+.ds-nota { font-size: var(--cuerpo-s); color: var(--terciario); }
+.ds h1 { font-family: var(--titulo); font-size: var(--display-m); line-height: 1; color: var(--hueso); margin: var(--s400) 0 var(--s500); }
+.ds-cuerpo h2 { font-family: var(--titulo); font-size: var(--titulo-l); line-height: 1; color: var(--hueso); margin: var(--s900) 0 var(--s400); }
+.ds-cuerpo h3 { font-family: var(--gotica); font-weight: 400; font-size: var(--titulo-l); color: var(--hueso); margin: var(--s800) 0 var(--s400); border-top: 1px solid var(--linea); padding-top: var(--s500); }
+.ds-cuerpo h4 { font-size: var(--titulo-s); color: var(--primario); margin: var(--s600) 0 var(--s300); }
+.ds-cuerpo h5, .ds-cuerpo h6 { font-size: var(--cuerpo-m); color: var(--primario); margin: var(--s500) 0 var(--s200); }
+.ds-cuerpo a { color: var(--accion); }
+.ds-cuerpo code { font-family: var(--dato); font-size: var(--cuerpo-s); background: var(--sup); border: 1px solid var(--linea); border-radius: var(--r0); padding: 1px 4px; }
+.ds-cuerpo pre { background: var(--sup); border: 1px solid var(--linea); border-radius: var(--r); padding: var(--s400); overflow-x: auto; }
+.ds-cuerpo pre code { background: none; border: 0; padding: 0; }
+.ds-cuerpo blockquote { border-left: 3px solid var(--linea-fuerte); margin: var(--s500) 0; padding-left: var(--s400); color: var(--primario); }
+.ds-cuerpo table { border-collapse: collapse; width: 100%; font-size: var(--cuerpo-s); margin: var(--s400) 0; display: block; overflow-x: auto; }
+.ds-cuerpo th, .ds-cuerpo td { border: 1px solid var(--linea); padding: var(--s200) var(--s300); text-align: left; vertical-align: top; }
+.ds-cuerpo th { font-family: var(--dato); font-size: var(--etiqueta); text-transform: uppercase; letter-spacing: .1em; color: var(--terciario); background: var(--sup); }
+.ds-cuerpo hr { border: 0; border-top: 1px solid var(--linea); margin: var(--s700) 0; }
+.ds-cuerpo img { max-width: 100%; }

@@ -1,0 +1,3589 @@
+<!doctype html>
+<html lang="es">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src ; style-src 'self' 'unsafe-inline'; img-src data:; font-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design System «Yunque» v5.0.0-rc.1 · FestRoute</title>
+<!-- Rutas relativas: esta página es un archivo estático de public/, y un
+     enlace absoluto se rompería bajo SITE_BASE_PATH. -->
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="ds.css">
+</head>
+<body class="ds">
+<header class="ds-cabecera">
+  <p class="ds-migas"><a href="../">FestRoute</a> · Sistema de diseño</p>
+  <h1>FestRoute · Design System «Yunque» v5.0.0-rc.1</h1>
+  <dl class="ds-ficha">
+    <dt>Versión</dt><dd>5.0.0-rc.1</dd>
+    <dt>Fecha</dt><dd>2026-08-06</dd>
+    <dt>Estado</dt><dd>canon · construible · sustituye a todas las versiones anteriores</dd>
+    <dt>Estabilidad</dt><dd>candidata · faltan dos firmas del equipo (§18) para la 5.0.0 final</dd>
+    <dt>Modos</dt><dd>Nocturno (por defecto) · Fragua (claro)</dd>
+    <dt>Accesibilidad</dt><dd>WCAG 2.2 AA · AAA en texto de lectura</dd>
+  </dl>
+  <p class="ds-nota">Esta es la copia publicada del sistema de diseño canónico de FestRoute,
+  renderizada desde el mismo archivo que ejecuta la plataforma. Los festivales que aparezcan
+  como ejemplo no son el catálogo real.</p>
+</header>
+<main class="ds-cuerpo prosa">
+<h2>FestRoute · Design System «Yunque» v5.0.0-rc.1</h2>
+<p>Documento único y completo: <strong>por qué</strong> (Partes I–V) y <strong>cuánto y cómo</strong> (Anexos A–K).</p>
+<p>Esta versión no añade reglas: quita contradicciones. Los valores viven en un solo sitio, el <a href="#anexo-a">Anexo A</a>. Se añade una pantalla resuelta entera, el <a href="#anexo-j">Anexo J</a>, porque un ejemplo completo enseña el sistema mejor que veinte tablas. Y se añade un guardián que comprueba la coherencia del documento antes de publicarlo, para que la regla de mantenimiento de §18 no dependa de que alguien relea dos mil líneas.</p>
+<hr>
+<hr>
+<p><a id="indice"></a></p>
+<h3>Índice</h3>
+<p><strong>Parte I · Fundamento</strong></p>
+<ol>
+<li><a href="#uso">Cómo usar este documento</a></li>
+<li><a href="#fundamento">Fundamento</a></li>
+<li><a href="#publico">El público</a></li>
+<li><a href="#direccion">Dirección creativa</a></li>
+</ol>
+<p><strong>Parte II · Lenguaje visual</strong></p>
+<ol start="5">
+<li><a href="#color">Color</a></li>
+<li><a href="#lexico">Léxico icónico de estados</a></li>
+<li><a href="#tipografia">Tipografía</a></li>
+<li><a href="#espacio">Espacio, forma y materia</a></li>
+<li><a href="#iconografia">Iconografía</a></li>
+<li><a href="#movimiento">Movimiento</a></li>
+<li><a href="#voz">Identidad verbal y marca</a></li>
+</ol>
+<p><strong>Parte III · Patrones</strong></p>
+<ol start="12">
+<li><a href="#patron-indice">El patrón índice</a></li>
+<li><a href="#componentes">Componentes</a></li>
+</ol>
+<p><strong>Parte IV · Producto</strong></p>
+<ol start="14">
+<li><a href="#usuario">La capa de usuario</a></li>
+<li><a href="#recinto">Sin conexión y modo recinto</a></li>
+</ol>
+<p><strong>Parte V · Operación</strong></p>
+<ol start="16">
+<li><a href="#accesibilidad">Accesibilidad</a></li>
+<li><a href="#licencias">Licencias</a></li>
+<li><a href="#gobernanza">Gobernanza, medios y versiones</a></li>
+<li><a href="#contrato">Contrato de agente</a></li>
+</ol>
+<p><strong>Parte VI · Implementación</strong></p>
+<ul>
+<li><p><a href="#anexo-a">Anexo A · CSS base</a></p>
+</li>
+<li><p><a href="#anexo-b">Anexo B · Anatomía de componentes</a></p>
+</li>
+<li><p><a href="#anexo-c">Anexo C · Especificación de pantallas</a></p>
+</li>
+<li><p><a href="#anexo-d">Anexo D · Modelo de datos</a></p>
+</li>
+<li><p><a href="#anexo-e">Anexo E · Rutas y navegación</a></p>
+</li>
+<li><p><a href="#anexo-f">Anexo F · Textos</a></p>
+</li>
+<li><p><a href="#anexo-g">Anexo G · Movimiento en código</a></p>
+</li>
+<li><p><a href="#anexo-h">Anexo H · Construcción de los parches</a></p>
+</li>
+<li><p><a href="#anexo-i">Anexo I · Orden de construcción</a></p>
+</li>
+<li><p><a href="#anexo-j"><strong>Anexo J · Una pantalla resuelta entera</strong></a></p>
+</li>
+<li><p><a href="#anexo-k">Anexo K · El guardián</a></p>
+</li>
+<li><p><a href="#glosario">Glosario</a> · <a href="#tokens">Índice de tokens</a></p>
+</li>
+</ul>
+<hr>
+<p><a id="arranque"></a></p>
+<h3>Empezar en cinco minutos</h3>
+<ol>
+<li><strong>Copia el CSS del <a href="#anexo-a">Anexo A</a>.</strong> Es la única definición de tokens que existe.</li>
+<li><strong>Lee las tres reglas que lo gobiernan todo:</strong><ul>
+<li>El color dice <strong>qué tiene que hacer el usuario</strong>, no de qué categoría es algo. Solo dos estados llevan color de verdad.</li>
+<li>El <strong>icono</strong> dice qué; el color, cuánto corre; el texto está a un gesto.</li>
+<li><strong>La ruta primero</strong>: nombre, fechas, ciudad y estado antes que cualquier efecto.</li>
+</ul>
+</li>
+<li><strong>Lee el <a href="#anexo-j">Anexo J</a> entero.</strong> Es una pantalla resuelta con todas las reglas aplicadas y anotadas: se aprende más rápido ahí que en las tablas. Luego, las medidas en el <a href="#anexo-b">Anexo B</a> y tu pantalla en el <a href="#anexo-c">Anexo C</a>.</li>
+<li><strong>Antes de entregar</strong>, pasa la checklist de <a href="#contrato">§19.4</a> y las tres pruebas de <a href="#color">§5.10</a>: escala de grises, prueba de un segundo y recuento de colores.</li>
+</ol>
+<p>Si solo vas a leer una cosa, que sea el fragmento de instrucción de §19.5: con eso se diseña dentro del sistema sin haberlo leído entero.</p>
+<hr>
+<p><a id="agente"></a></p>
+<h3>Si eres un agente</h3>
+<p>Este documento viaja solo: no hay una persona al lado para preguntarle. Estas seis reglas resuelven todo lo que te vas a encontrar.</p>
+<ol>
+<li><strong>Orden de lectura.</strong> §19 entero (precedencia, algoritmo, contrato, checklist) → <a href="#anexo-a">Anexo A</a> (los valores) → <a href="#anexo-j">Anexo J</a> (el patrón resuelto) → el <a href="#anexo-c">Anexo C</a> de la pantalla que te toque → las secciones §2–§18 cuando necesites el porqué de una regla.</li>
+<li><strong>Los valores salen del Anexo A y de ningún otro sitio.</strong> Un color, un tamaño o una duración que no esté allí <strong>no existe</strong> y NO DEBE inventarse. La única otra zona con valores es §19.5, que los repite a propósito para poder pegarse suelto.</li>
+<li><strong>Nombre de marca ≠ token.</strong> La prosa dice a veces «noche», «peltre» o «grafito»: son nombres de marca. La tabla de §5.1 los empareja con su token. <strong>En código se escribe siempre el token</strong> (<code>fondo</code>, <code>terciario</code>, <code>sup-alta</code>). En prosa, <code>cuerpo.s</code> equivale a <code>--cuerpo-s</code>.</li>
+<li><strong>Si dos afirmaciones chocan</strong>, gana la de la sección de reglas (§2–§18) sobre un anexo, y el Anexo A sobre cualquier cifra suelta. Si el choque sobrevive, aplica la precedencia de §19.1 y <strong>deja constancia escrita</strong> del conflicto en tu entrega en vez de resolverlo en silencio.</li>
+<li><strong>Lo que el documento no especifica, se deriva, no se inventa:</strong> el algoritmo de §19.2 dice de dónde. Si de verdad no hay de dónde derivarlo, la pieza sale con la marca [EXTENSIÓN — validar], igual que hace este documento.</li>
+<li><strong>Antes de entregar</strong>, pasa la checklist de §19.4, la prueba en escala de grises, y —si puedes ejecutar código— el guardián del <a href="#anexo-k">Anexo K</a> sobre cualquier modificación que hagas de este documento.</li>
+</ol>
+<hr>
+<h2>Parte I · Fundamento</h2>
+<p><a id="uso"></a></p>
+<h3>1. Cómo usar este documento</h3>
+<p><strong>Documento construible.</strong> §2–§19 dicen <strong>qué</strong> y <strong>por qué</strong>. Los <strong>Anexos A–K</strong>, al final, dicen <strong>cuánto</strong> y <strong>cómo</strong>: CSS de tokens, medidas exactas de cada componente, especificación de las catorce pantallas, modelo de datos, rutas, textos definitivos, animaciones en código, construcción de los parches y orden de construcción. Con este archivo solo se puede empezar a construir.</p>
+<p><strong>Persona:</strong> §2–§3 para el porqué. §6 y §13 para construir catálogo. §14 para construir la parte de usuario. §5–§11.3 para valores concretos.
+<strong>Agente digital:</strong> empieza por §19. Precedencia, algoritmo, tokens y checklist. No inventes valores fuera de §19.3.</p>
+<p><strong>Palabras normativas.</strong> <strong>DEBE / NO DEBE</strong> requisito absoluto; incumplirlo invalida la pieza. <strong>DEBERÍA</strong> recomendación fuerte; se incumple solo con justificación escrita. <strong>PUEDE</strong> criterio propio.</p>
+<p><strong>Procedencias.</strong> <strong>[CANON]</strong> decisión tomada. <strong>[DERIVADO]</strong> consecuencia necesaria. <strong>[EXTENSIÓN — validar]</strong> pendiente de confirmar.</p>
+<hr>
+<p><a id="fundamento"></a></p>
+<h3>2. Fundamento</h3>
+<h4>2.1 Qué es y qué promete [CANON]</h4>
+<p>Un agregador de festivales de metal europeos con vocación de <strong>planificador</strong>. La promesa se puede decir en una frase: <strong>te decimos qué hay, cuándo, dónde, cuánto cuesta llegar y si aún puedes entrar.</strong> Todo lo demás es accesorio.</p>
+<h4>2.2 Los tres valores [CANON]</h4>
+<p><strong>La ruta primero.</strong> El sistema sirve a quien viaja. Fecha, ciudad y estado antes que cualquier efecto. Si un recurso no ayuda a decidir un viaje, sobra.</p>
+<p><strong>Sin jerarquía de escena.</strong> Las diez familias se tratan igual. Un festival de cuatrocientas personas se presenta con la misma dignidad que uno de ochenta mil. El tamaño se describe, nunca se premia. <strong>Corolario duro:</strong> nada de puntuaciones, rankings, «lo más popular» ni clasificaciones entre usuarios.</p>
+<p><strong>Libre por diseño.</strong> Licencia gratuita de uso comercial en todo activo, formatos abiertos, autoalojado. Y datos que se pueden llevar: quien se va, se lleva su ruta.</p>
+<h4>2.3 Traducidos a diseño [DERIVADO]</h4>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Consecuencia</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>La ruta primero</td>
+<td>El dato invariable (§12.1) manda sobre la composición. Funciona sin conexión (§15).</td>
+</tr>
+<tr>
+<td>Sin jerarquía de escena</td>
+<td>Tamaño en barras, nunca en color. Orden cronológico. Ni tablas de clasificación ni rachas.</td>
+</tr>
+<tr>
+<td>Libre por diseño</td>
+<td>Sin stock, sin tipografías de pago, sin iconos propietarios. Exportación de datos siempre disponible.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a id="publico"></a></p>
+<h3>3. El público</h3>
+<p>No es decoración de brief: es la razón por la que el sistema puede ser denso, técnico y oscuro sin perder a nadie, y el motivo de media docena de decisiones concretas.</p>
+<h4>3.1 Cuatro maneras de llegar [EXTENSIÓN — validar]</h4>
+<table>
+<thead>
+<tr>
+<th>Arquetipo</th>
+<th>Qué hace</th>
+<th>Qué necesita del diseño</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>El planificador</strong></td>
+<td>Decide el verano en enero, cruza fechas, presupuesto y kilómetros</td>
+<td>Tabla densa, comparador, presupuesto, ruta con tramos</td>
+</tr>
+<tr>
+<td><strong>El de una vez al año</strong></td>
+<td>Va a uno grande, quiere saber si quedan entradas y cómo llegar</td>
+<td>Ficha completa, estado clarísimo, cómo llegar y dónde dormir</td>
+</tr>
+<tr>
+<td><strong>El de escena</strong></td>
+<td>Sigue sellos y bandas pequeñas, va a salas y clubes</td>
+<td>Filtros finos, festivales pequeños con el mismo peso, avisos</td>
+</tr>
+<tr>
+<td><strong>El que ya está allí</strong></td>
+<td>Está en el recinto, sin cobertura, buscando horarios</td>
+<td>Sin conexión, pantalla legible a pleno sol y de noche, tipografía grande</td>
+</tr>
+</tbody></table>
+<h4>3.2 Aficiones y consecuencias [CANON]</h4>
+<table>
+<thead>
+<tr>
+<th>Afición</th>
+<th>Qué autoriza o prohíbe</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cine de terror</strong></td>
+<td>Autoriza el fondo negro, el granate y la calavera funcional. Prohíbe el susto gratuito: nada que salte, parpadee o suene sin permiso.</td>
+</tr>
+<tr>
+<td><strong>Ciencia ficción oscura</strong></td>
+<td>Justifica la mono tabular, las versales, los códigos de país y las cifras por todas partes.</td>
+</tr>
+<tr>
+<td><strong>Juegos de rol de mesa</strong></td>
+<td>Origen de la ficha con atributos comparables y de la ruta planificada como una campaña.</td>
+</tr>
+<tr>
+<td><strong>Mundo del motor</strong></td>
+<td>Da el vocabulario de materiales y la obsesión por distancia y tiempo de viaje.</td>
+</tr>
+<tr>
+<td><strong>Videojuegos</strong></td>
+<td>Autoriza filtros densos, comparadores, iconografía sin texto y menús profundos. Prohíbe el asistente de tres pasos para algo que cabe en un formulario.</td>
+</tr>
+<tr>
+<td><strong>Coleccionismo</strong></td>
+<td>Origen del parche de género y del perfil como chupa (§14.9).</td>
+</tr>
+<tr>
+<td><strong>Naturaleza y viaje</strong></td>
+<td>Obliga a que la ficha diga cómo se llega y dónde se duerme. Y explica por qué el modo sin conexión no es un extra.</td>
+</tr>
+<tr>
+<td><strong>Juegos de mesa</strong></td>
+<td>Justifica la tabla como modo principal y el orden cronológico: quieren ver el tablero entero, no una recomendación.</td>
+</tr>
+<tr>
+<td><strong>Humor negro</strong></td>
+<td>Permite el tono directo y algún golpe. Prohíbe reírse de una escena, de un cuerpo o del gusto de nadie.</td>
+</tr>
+</tbody></table>
+<h4>3.3 Reglas duras que salen de aquí [CANON]</h4>
+<ol>
+<li><strong>Nada de tono tutorial.</strong> Esta gente lleva veinte años leyendo interfaces densas.</li>
+<li><strong>Iconografía sin texto permitida</strong> en la interfaz densa (§6), porque están entrenados para leerla.</li>
+<li><strong>Sin gamificación competitiva.</strong> Ni puntos, ni rachas, ni clasificaciones. Solo parches, que ya los coleccionan de verdad.</li>
+<li><strong>Sin conexión no es opcional</strong> (§15).</li>
+<li><strong>Sin cuenta obligatoria.</strong> Nadie se registra para mirar fechas.</li>
+</ol>
+<hr>
+<p><a id="direccion"></a></p>
+<h3>4. Dirección creativa</h3>
+<p><strong>Ritual 30 / Fanzine 70 [CANON].</strong> El fanzine ocupa la página; el ritual protege los datos. El ritual —neutrales acromáticos, góticas, retícula— vive donde se compara y se decide.</p>
+<p><strong>Test de dosis.</strong> ¿Parece un cartel arrancado de un muro y aun así encuentras la fecha sin esfuerzo? Correcto. ¿Parece una web de venta de entradas? Falta carácter. ¿No sabes cuándo es el festival? Te has pasado.</p>
+<p><strong>Test de equilibrio [CANON].</strong> Aléjate dos metros de la pantalla. Deberías ver <strong>tres pesos</strong>: la masa oscura del fondo, las superficies de las tarjetas y <strong>tres o cuatro puntos de color</strong>, no más. Si ves confeti, sobra color. Si no ves ninguno, no hay nada accionable y algo falla en el dato.</p>
+<p><strong>Repertorio de firma.</strong> Grano generado · filo · seis separadores · emblemas circulares · sello rotado · línea de ruta · nodo de cierre. Siete, y ninguno más.</p>
+<hr>
+<hr>
+<h2>Parte II · Lenguaje visual</h2>
+<p><a id="color"></a></p>
+<h3>5. Color</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo A · CSS base</p>
+</blockquote>
+<h4>5.0 Cómo leer esta sección</h4>
+<p>El color de FestRoute tiene <strong>tres papeles que no se mezclan</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Qué hace</th>
+<th>Dónde vive</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Superficie</strong></td>
+<td>Construye el espacio: fondo, superficies, líneas, texto</td>
+<td>Neutrales, §5.1 y §5.2</td>
+</tr>
+<tr>
+<td><strong>Significado</strong></td>
+<td>Dice qué tiene que hacer el usuario</td>
+<td>El código, §5.3</td>
+</tr>
+<tr>
+<td><strong>Interfaz</strong></td>
+<td>Estados del control, no del dato</td>
+<td>Roles, §5.4</td>
+</tr>
+<tr>
+<td><strong>Materia</strong></td>
+<td>Carácter de marca. <strong>No significa nada</strong></td>
+<td>Metales, §5.5</td>
+</tr>
+</tbody></table>
+<p>Un valor <strong>nunca</strong> cruza de papel: un metal no puede indicar un estado, y un color del código no puede usarse para decorar.</p>
+<p><strong>Los valores viven en el <a href="#anexo-a">Anexo A</a> y solo allí.</strong> Esta sección da los nombres, el papel y la medición: contraste, croma y separación perceptual. Si un hex de aquí no coincidiera con el del Anexo A, manda el Anexo A, porque es lo que se ejecuta.</p>
+<p><strong>Dos nombres para lo mismo, a propósito.</strong> El <strong>token</strong> es lo que se escribe en código; el <strong>nombre de marca</strong> es lo que se dice hablando. <code>sup-alta</code> y <code>grafito</code> son el mismo color. En una regla CSS va siempre el token.</p>
+<h4>5.1 Neutrales · Nocturno [CANON]</h4>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Nombre de marca</th>
+<th>Papel</th>
+<th align="right">vs fondo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fondo</code></td>
+<td>noche</td>
+<td>Fondo base</td>
+<td align="right">—</td>
+</tr>
+<tr>
+<td><code>sup</code></td>
+<td>hormigón</td>
+<td>Superficie: tarjeta, tabla, modal</td>
+<td align="right">1.08</td>
+</tr>
+<tr>
+<td><code>sup-alta</code></td>
+<td>grafito</td>
+<td>Superficie elevada, hover, selección</td>
+<td align="right">1.21</td>
+</tr>
+<tr>
+<td><code>linea</code></td>
+<td>yunque</td>
+<td>Separador decorativo</td>
+<td align="right">1.45</td>
+</tr>
+<tr>
+<td><code>linea-fuerte</code></td>
+<td>—</td>
+<td><strong>Contorno de control</strong> (WCAG 1.4.11)</td>
+<td align="right">3.29 sobre superficie</td>
+</tr>
+<tr>
+<td><code>terciario</code></td>
+<td>peltre</td>
+<td>Etiquetas · <strong>nunca lectura</strong></td>
+<td align="right">6.20</td>
+</tr>
+<tr>
+<td><code>secundario</code></td>
+<td>plata</td>
+<td>Texto de lectura</td>
+<td align="right">11.72</td>
+</tr>
+<tr>
+<td><code>primario</code></td>
+<td>pulido</td>
+<td>Texto primario, cifras</td>
+<td align="right">13.50</td>
+</tr>
+<tr>
+<td><code>hueso</code></td>
+<td>hueso</td>
+<td>Títulos</td>
+<td align="right">15.18</td>
+</tr>
+<tr>
+<td><code>sobre-oscuro</code></td>
+<td>—</td>
+<td>Texto sobre <code>bloqueado</code> y rellenos oscuros. <strong>No sigue al tema</strong></td>
+<td align="right">7.73 sobre sangre</td>
+</tr>
+<tr>
+<td><code>sobre-accion</code></td>
+<td>—</td>
+<td>Texto del botón primario. <strong>No sigue al tema</strong></td>
+<td align="right">8.03 sobre acción</td>
+</tr>
+</tbody></table>
+<p>El techo de 13.50 es deliberado: el blanco casi puro sobre negro casi puro produce halación, sobre todo con astigmatismo. Sigue siendo AAA.</p>
+<h4>5.2 Neutrales · Fragua [CANON]</h4>
+<p>Los mismos ocho tokens cambian de valor; <strong>ni uno cambia de papel</strong>. Es lo que permite que Fragua intercambie una sola capa.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Papel</th>
+<th align="right">vs fondo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>fondo</code></td>
+<td>Fondo base</td>
+<td align="right">—</td>
+</tr>
+<tr>
+<td><code>sup</code></td>
+<td>Superficie</td>
+<td align="right">—</td>
+</tr>
+<tr>
+<td><code>sup-alta</code></td>
+<td>Superficie elevada, selección</td>
+<td align="right">—</td>
+</tr>
+<tr>
+<td><code>linea</code></td>
+<td>Separador decorativo</td>
+<td align="right">1.35</td>
+</tr>
+<tr>
+<td><code>linea-fuerte</code></td>
+<td><strong>Contorno de control</strong></td>
+<td align="right">3.39 sobre superficie</td>
+</tr>
+<tr>
+<td><code>terciario</code></td>
+<td>Etiquetas · <strong>nunca lectura</strong></td>
+<td align="right">5.32</td>
+</tr>
+<tr>
+<td><code>secundario</code></td>
+<td>Texto de lectura</td>
+<td align="right">9.13</td>
+</tr>
+<tr>
+<td><code>primario</code></td>
+<td>Texto primario</td>
+<td align="right">15.36</td>
+</tr>
+</tbody></table>
+<h4>5.3 El código · qué tiene que hacer el usuario [CANON]</h4>
+<p>Dos acentos y una escalera. <strong>Solo dos estados llevan color de verdad</strong>; los grados de certeza se codifican con luminosidad, casi sin croma.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Le dice al usuario</th>
+<th align="right">Contraste Noct.</th>
+<th align="right">Contraste Fragua</th>
+<th align="right">Croma</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accion</code></td>
+<td><strong>Actúa ya.</strong> Puedes comprar, guardar, añadir</td>
+<td align="right">7.44</td>
+<td align="right">4.91</td>
+<td align="right">0.165</td>
+</tr>
+<tr>
+<td><code>bloqueado</code></td>
+<td><strong>Olvídalo.</strong> Agotado, cancelado</td>
+<td align="right">3.50 relleno + <code>bloqueado-borde</code> · <code>sobre-oscuro</code> encima 7.73</td>
+<td align="right"><code>sobre-oscuro</code> encima <strong>9.97</strong></td>
+<td align="right">0.150</td>
+</tr>
+<tr>
+<td><code>certeza-alta</code></td>
+<td><strong>Fíate.</strong> Cartel cerrado</td>
+<td align="right">9.52</td>
+<td align="right">8.41</td>
+<td align="right">0.030</td>
+</tr>
+<tr>
+<td><code>certeza-media</code></td>
+<td><strong>Espera.</strong> Falta información</td>
+<td align="right">5.83</td>
+<td align="right">4.91</td>
+<td align="right">0.050</td>
+</tr>
+<tr>
+<td><code>certeza-baja</code></td>
+<td><strong>Aún nada.</strong> Solo hay fecha</td>
+<td align="right">3.31</td>
+<td align="right">3.36</td>
+<td align="right">0.012</td>
+</tr>
+<tr>
+<td><code>aviso</code></td>
+<td><strong>Mira esto.</strong> Novedad desde tu última visita</td>
+<td align="right">7.42</td>
+<td align="right">5.53</td>
+<td align="right">0.140</td>
+</tr>
+</tbody></table>
+<p><strong>Por qué funciona, medido.</strong> <code>accion</code> tiene <strong>3.5× más croma que <code>certeza-media</code> y 14× más que <code>certeza-baja</code></strong>. La saliencia es relativa: si todos los colores están igual de saturados, ninguno destaca. En la v3.1.0 los cuatro estaban entre 0.094 y 0.126 —un rango de 1.34×— y por eso no resaltaba nada.</p>
+<p><strong>Por qué la escalera va en luminosidad.</strong> Anunciado, parcial y completo son tres grados de lo mismo, y un grado se lee mejor como cantidad que como categoría. Los peldaños están separados <strong>0.133 y 0.141</strong> de distancia perceptual, y la escala la distingue incluso alguien con acromatopsia total.</p>
+<p><strong>El suelo de contraste de estos colores es 3:1, no 4.5:1.</strong> Son iconos y bordes, no texto. Exigirles 4.5 los encajonaba en la mitad clara del espacio de color y aplanaba los dos canales que sirven para destacar. Por eso <code>certeza-baja</code> puede quedarse en 3.31.</p>
+<h4>5.4 Roles de interfaz [CANON]</h4>
+<p>Estados del <strong>control</strong>, no del dato. Ninguno usa un color del código: en la v3.2.0 <code>accion</code> significaba comprar, enfocar y filtrar a la vez, y por eso había dejado de significar comprar.</p>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Tokens</th>
+<th>Medición</th>
+<th>Regla</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Foco de teclado</strong></td>
+<td><code>foco-1</code> anillo 2 px + <code>foco-2</code> aro 4 px</td>
+<td>Los dos aros contrastan <strong>15:1 entre sí</strong></td>
+<td>Anillo doble neutro: se ve sobre cualquier superficie. <strong>Sin color y sin animación.</strong> Es el único tratamiento de foco del sistema</td>
+</tr>
+<tr>
+<td><strong>Selección y filtro activo</strong></td>
+<td><code>sup-alta</code> + <code>linea-fuerte</code> + peso 600</td>
+<td>—</td>
+<td><strong>Sin color.</strong> Activo no es comprable</td>
+</tr>
+<tr>
+<td><strong>Error de formulario</strong></td>
+<td><code>error</code></td>
+<td>4.81 · 6.30</td>
+<td>Borde y texto, <strong>nunca relleno</strong>. Corregir no es «olvídalo»</td>
+</tr>
+<tr>
+<td><strong>Éxito momentáneo</strong></td>
+<td><code>exito</code></td>
+<td>6.41 · 5.15, <strong>medido sobre <code>sup-alta</code></strong>, la superficie del aviso efímero, único sitio donde existe. Sobre el fondo de página no llega (4.36 en Fragua) y por eso NO DEBE salir de ahí</td>
+<td><strong>Solo en avisos efímeros.</strong> Nunca en listado ni junto a <code>accion</code>: verde y naranja colapsan bajo deuteranopia a ΔE 0.065. La separación es de contexto, no de valor</td>
+</tr>
+<tr>
+<td><strong>Deshabilitado</strong></td>
+<td>—</td>
+<td>opacidad 45 %</td>
+<td>Nunca solo el color: siempre con explicación al lado</td>
+</tr>
+</tbody></table>
+<h4>5.5 Metales · materia, no significado [CANON]</h4>
+<p>Croma tope <strong>0.06</strong>, banda fría. Antes repetían tonos recién retirados del código —el cobre era el confirmado antiguo, el oro viejo el pendiente antiguo—, con lo que decoraban diciendo cosas sin querer.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th align="right">Contraste Noct.</th>
+<th align="right">Contraste Fragua</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>plata-viva</code></td>
+<td align="right">—</td>
+<td align="right">—</td>
+<td>Marca, títulos, filos</td>
+</tr>
+<tr>
+<td><code>acero</code></td>
+<td align="right">5.08</td>
+<td align="right">6.19</td>
+<td>Emblemas, degradados de cabecera</td>
+</tr>
+<tr>
+<td><code>estano</code></td>
+<td align="right">6.80</td>
+<td align="right">4.31</td>
+<td>Aros de emblema, detalles</td>
+</tr>
+</tbody></table>
+<p><strong>REGLA DURA.</strong> La medición demuestra que un metal de croma bajo <strong>no se puede separar por valor</strong> de una escalera de croma bajo: el más cercano queda a 0.066. La separación es de contexto: los metales existen <strong>solo como degradado o como aro de emblema</strong>, nunca como relleno plano de un control ni como color de un icono de estado.</p>
+<h4>5.6 Lo que no lleva color [CANON]</h4>
+<p><strong>El género</strong> se escribe en un parche: Mono 700, versales, <code>+0.14em</code>, texto primario, borde <code>linea-fuerte</code>, fondo base, radio <code>0</code>. Diez familias —nombradas en el <a href="#anexo-d">Anexo D.0</a>—, cero colores. Se lee igual de rápido, aguanta el blanco y negro y no compite con el código.</p>
+<p><strong>El tamaño de festival</strong> va en una a cuatro barras de 2 px más el nombre escrito. Descriptivo, nunca jerárquico, y sin color.</p>
+<h4>5.7 Dosificación [CANON]</h4>
+<ul>
+<li><strong>En un listado, un solo color por fila</strong>: el estado principal. Fuera de listado, máximo dos colores del código a la vez.</li>
+<li><code>aviso</code> y <code>exito</code> <strong>no entran nunca en un listado</strong>.</li>
+<li><strong>La sangre se derrama, no se escribe.</strong> <code>bloqueado</code> como texto sobre oscuro da 1.8:1. Va en relleno con <strong><code>sobre-oscuro</code></strong> encima: 7.73 en Nocturno, 9.97 en Fragua. <code>hueso</code> ya no vale aquí: en Fragua se vuelve oscuro para los títulos y sobre la sangre daría <strong>1.82</strong>.</li>
+<li>El botón primario lleva <strong><code>sobre-accion</code></strong> encima de <code>accion</code>: 8.03 en Nocturno, <strong>5.30</strong> en Fragua. Con <code>fondo</code> encima, Fragua se quedaba en 4.49 — por debajo de AA.</li>
+<li><strong>Seis significados es el techo.</strong> No se añaden colores al código.</li>
+</ul>
+<h4>5.8 Errores frecuentes</h4>
+<table>
+<thead>
+<tr>
+<th>Así no</th>
+<th>Así sí</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Un botón secundario en <code>accion</code> porque «destaca más»</td>
+<td><code>accion</code> solo en la acción principal, una por vista</td>
+</tr>
+<tr>
+<td>El filtro activo en naranja</td>
+<td>Superficie elevada más <code>linea-fuerte</code> y peso</td>
+</tr>
+<tr>
+<td>El anillo de foco en el color de marca</td>
+<td>Anillo doble neutro</td>
+</tr>
+<tr>
+<td>Un chip de género en verde porque «es folk»</td>
+<td>Parche escrito, sin color</td>
+</tr>
+<tr>
+<td><code>certeza-alta</code> para decorar un panel «positivo»</td>
+<td>Es un estado del dato; para decorar están los metales</td>
+</tr>
+<tr>
+<td>Un icono de estado a 12 px porque cabe mejor</td>
+<td>Mínimo 14 px; por debajo, la silueta deja de leerse</td>
+</tr>
+<tr>
+<td>Toast de guardado dentro de la lista de resultados</td>
+<td><code>exito</code> solo en avisos efímeros, fuera del listado</td>
+</tr>
+</tbody></table>
+<h4>5.9 Cómo se consume</h4>
+<p>Siempre desde la capa semántica, nunca desde un primitivo:</p>
+<pre><code class="language-css">/* correcto */
+.pastilla-venta { color: var(--accion); border-color: currentColor; }
+.campo--error   { border-color: var(--error); }
+
+/* incorrecto: apunta a un primitivo y se salta el tema */
+.pastilla-venta { color: #FE8449; }
+</code></pre>
+<h4>5.10 Cómo se verifica</h4>
+<p>Antes de entregar, tres comprobaciones, en este orden:</p>
+<ol>
+<li><strong>Escala de grises.</strong> Si dos estados no se distinguen sin color, la pantalla no sale. El icono tiene que bastar.</li>
+<li><strong>Prueba de un segundo.</strong> Mira una fila de la tabla durante un segundo. Si no sabes si puedes comprar, el acento no está haciendo su trabajo.</li>
+<li><strong>Recuento de colores.</strong> En un listado, más de dos colores del código a la vez significa que sobra alguno.</li>
+</ol>
+<h4>5.11 Retirados · eliminados en la v3.4.0</h4>
+<p><code>#C4794A</code> cobre · <code>#C9A227</code> oro viejo · <code>#4E7C93</code> azul revenido · <code>#9B6FC7</code> morado destacado · y los peldaños intermedios de la antigua rampa de rojo <code>#D0532C</code>, <code>#C0392B</code>, <code>#9B2A22</code>, <code>#4A1218</code>, que nunca llegaron a usarse. <strong>Una rampa que no se usa no es una rampa, es una lista</strong>: se elimina.</p>
+<hr>
+<p><a id="lexico"></a></p>
+<h3>6. Léxico icónico de estados</h3>
+<p><strong>El cambio mayor de esta versión.</strong> En la interfaz densa —tarjeta, tabla, calendario y mapa— el estado se muestra <strong>solo con icono y color</strong>. El texto no desaparece: cambia de sitio.</p>
+<h4>6.1 La regla [CANON]</h4>
+<blockquote>
+<p><strong>El icono dice qué. El color dice cuánto corre. El texto está a un gesto de distancia.</strong></p>
+</blockquote>
+<p>Cada estado tiene una <strong>silueta única, reconocible a 16 px y en blanco y negro</strong>. El color es refuerzo, nunca portador único del significado. Esto no es una concesión a la accesibilidad: es lo que hace que la pantalla siga funcionando a pleno sol, con brillo bajo o para el 8 % de hombres con daltonismo.</p>
+<h4>6.2 Los nueve estados [CANON]</h4>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Icono</th>
+<th>Color</th>
+<th>Escenario</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Anunciado</td>
+<td><code>calendar-blank</code></td>
+<td><code>certeza-baja</code></td>
+<td>Hay fecha y nada más</td>
+</tr>
+<tr>
+<td>Cartel parcial</td>
+<td><code>hourglass-medium</code></td>
+<td><code>certeza-media</code></td>
+<td>Espera</td>
+</tr>
+<tr>
+<td>Cartel completo</td>
+<td><code>check-circle</code></td>
+<td><code>certeza-alta</code></td>
+<td>Fíate</td>
+</tr>
+<tr>
+<td>Entradas a la venta</td>
+<td><code>ticket</code></td>
+<td><code>accion</code></td>
+<td>Actúa ya</td>
+</tr>
+<tr>
+<td>Últimas entradas</td>
+<td><code>fire</code></td>
+<td><code>accion</code></td>
+<td>Actúa ya, y corre</td>
+</tr>
+<tr>
+<td>Agotado</td>
+<td><code>prohibit</code></td>
+<td><code>bloqueado</code></td>
+<td>Olvídalo</td>
+</tr>
+<tr>
+<td>Cancelado</td>
+<td><code>skull</code></td>
+<td><code>bloqueado</code></td>
+<td>Olvídalo</td>
+</tr>
+<tr>
+<td>Pasado</td>
+<td><code>clock-counter-clockwise</code></td>
+<td><code>terciario</code> al 55 %</td>
+<td>Contexto, no decisión</td>
+</tr>
+<tr>
+<td>Novedad</td>
+<td><code>lightning</code></td>
+<td><code>aviso</code></td>
+<td>Mira esto</td>
+</tr>
+</tbody></table>
+<p><strong>Cabeza de cartel</strong> (<code>crown-simple</code>, <code>destacado</code>) no es un estado: es un adjetivo editorial y va siempre <strong>después</strong> del estado, separado por <code>s200</code>.</p>
+<h4>6.3 Cómo se muestra [CANON]</h4>
+<ul>
+<li><strong>Un solo estado principal por objeto.</strong> Si coinciden varios, gana el que exija acción más urgente: <code>bloqueado</code> &gt; <code>accion</code> &gt; <code>certeza-media</code> &gt; <code>certeza-alta</code> &gt; <code>terciario</code>.</li>
+<li><strong>Tamaños:</strong> 18 px en tarjeta y ficha, 16 px en tabla, 14 px en marcador de mapa y barra de calendario.</li>
+<li><strong>Nombre accesible obligatorio.</strong> Todo icono de estado lleva <code>aria-label</code> con el nombre escrito. Sin excepción.</li>
+<li><strong>Tooltip</strong> al pasar el ratón <strong>y al recibir foco</strong>. En táctil, un toque sobre el icono lo abre; no se depende del hover.</li>
+<li><strong>Leyenda persistente.</strong> Toda vista densa lleva un control «¿Qué significan?» que despliega los nueve con su nombre. Va en la barra de control, siempre en el mismo sitio.</li>
+<li><strong>La ficha escribe el estado con letras.</strong> El icono solo manda donde hay que comparar; donde se decide, se lee.</li>
+<li><strong>La primera visita muestra la leyenda abierta</strong> una vez y no vuelve a insistir.</li>
+</ul>
+<h4>6.4 Qué no se hace [DERIVADO]</h4>
+<p>NO DEBE usarse un icono de estado sin nombre accesible · NO DEBEN aparecer dos estados principales en la misma fila · NO DEBE cambiarse un icono de significado entre pantallas · NO DEBE reducirse por debajo de 14 px · NO DEBEN usarse emojis en ningún caso.</p>
+<hr>
+<p><a id="tipografia"></a></p>
+<h3>7. Tipografía</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo A · CSS base</p>
+</blockquote>
+<h4>7.1 Las cinco familias [CANON]</h4>
+<table>
+<thead>
+<tr>
+<th>Familia</th>
+<th>Papel</th>
+<th>Licencia</th>
+<th>Dónde sí</th>
+<th>Dónde no</th>
+<th>Mínimo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Should&#39;ve Known</strong></td>
+<td>Títulos</td>
+<td><strong>CC0</strong> · Larabie, Typodermic · 304 glifos</td>
+<td>Marca, portada, títulos de sección, campañas, cartelería</td>
+<td>Texto corrido, botones, formularios, tablas</td>
+<td>28 px</td>
+</tr>
+<tr>
+<td><strong>Grenze Gotisch</strong></td>
+<td>Subtítulos</td>
+<td>SIL OFL 1.1 · variable</td>
+<td>Nombres de festival, títulos de tarjeta y panel</td>
+<td>Párrafos, texto legal, bloques largos</td>
+<td>16 px</td>
+</tr>
+<tr>
+<td><strong>Geist</strong></td>
+<td>Texto</td>
+<td>SIL OFL 1.1 · Vercel</td>
+<td>Interfaz, editorial, botones, formularios, errores</td>
+<td>Titulares de portada</td>
+<td>12 px</td>
+</tr>
+<tr>
+<td><strong>Geist Mono</strong></td>
+<td>Dato</td>
+<td>SIL OFL 1.1 · Vercel</td>
+<td>Fechas, precios, distancias, aforos, etiquetas</td>
+<td>Prosa</td>
+<td>11 px</td>
+</tr>
+<tr>
+<td><strong>Pirata One</strong></td>
+<td>Ritual</td>
+<td>SIL OFL 1.1</td>
+<td>Citas, sellos, una campaña al año</td>
+<td>Interfaz, datos</td>
+<td>24 px</td>
+</tr>
+</tbody></table>
+<p><strong>REGLA DURA:</strong> una sola decorativa por pieza. Ninguna entra en tabla, calendario, mapa ni formulario.</p>
+<h4>7.2 Escala y composición</h4>
+<p>Escala 1.250, base 16. <code>display.xl</code> 3.815rem · <code>display.l</code> 3.052 · <code>display.m</code> 2.441 · <code>titulo.l</code> 1.953 · <code>titulo.m</code> 1.563 · <code>titulo.s</code> 1.250 · <code>cuerpo.l</code> 1.125 · <code>cuerpo.m</code> 1 · <code>cuerpo.s</code> 0.875 · <code>etiqueta</code> 0.750 (Mono 700, versales, <code>+0.14em</code>).</p>
+<p>Interlínea 1.0 títulos · <strong>1.55</strong> cuerpo · 1.35 datos. Medida 60–75 caracteres. Énfasis con peso, nunca con color. Un solo nivel de display por pieza.</p>
+<p><strong>En el recinto</strong> (§15) el cuerpo sube a <code>cuerpo.l</code> y los datos a <code>titulo.s</code>: se lee de pie, con guantes y a un metro.</p>
+<h4>7.3 Los nombres propios [CANON]</h4>
+<p>Festival, banda y ciudad <strong>exactamente como los escribe su dueño</strong>, con diacríticos. Jaroměř, no Jaromer. Gdańsk, no Gdansk. Königsbrunn, no Koenigsbrunn. Transliterar es un <strong>error de dato</strong>, no una simplificación, y rompe también la búsqueda.</p>
+<hr>
+<p><a id="espacio"></a></p>
+<h3>8. Espacio, forma y materia</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo A · CSS base</p>
+</blockquote>
+<p><strong>Espaciado</strong> base 4: <code>4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128</code>.</p>
+<p><strong>Densidad cómoda.</strong> Tarjeta, calendario y mapa con aire. <strong>La tabla es la excepción</strong>: fila de <strong>44 px</strong>, que es también el mínimo táctil.</p>
+<p><strong>Forma.</strong> Radio <code>8px</code> en controles, tarjetas, campos y pastillas. <code>0</code> en tabla, separadores, parches y bloques a sangre. Círculo en marcadores de mapa, puntos de estado, nodos de ruta y avatares.</p>
+<p><strong>Elevación.</strong> Nocturno sin sombras: un escalón de superficie más una línea. Fragua, una sola sombra: <code>0 1px 2px rgba(20,22,26,.10), 0 8px 24px rgba(20,22,26,.06)</code>.</p>
+<p><strong>Bordes de componente [CANON · v3.3.0].</strong> WCAG 1.4.11 exige <strong>3:1</strong> para el contorno de un control. La línea decorativa no llega: <code>yunque</code> sobre hormigón da 1.35 y <code>linea</code> sobre superficie 1.48. Por eso existe un token aparte:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Nocturno</th>
+<th>Fragua</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>linea</code></td>
+<td><code>#2B2F33</code> · 1.35</td>
+<td><code>#D2CCC1</code> · 1.48</td>
+<td>Separadores y bordes decorativos</td>
+</tr>
+<tr>
+<td><code>linea-fuerte</code></td>
+<td><code>#65696F</code> · <strong>3.29</strong></td>
+<td><code>#8A857E</code> · <strong>3.39</strong></td>
+<td>Campos, botones fantasma, conmutadores, cualquier contorno que defina un control</td>
+</tr>
+</tbody></table>
+<p><strong>Foco.</strong> El anillo doble neutro de §5.4: <code>outline:2px solid var(--foco-1); outline-offset:2px; box-shadow:0 0 0 4px var(--foco-2)</code>. Visible siempre, sin animación. <strong>Nunca un color del código:</strong> si el foco usa el color de comprar, el color de comprar deja de significar comprar. Código en el Anexo A.</p>
+<h4>8.1 Puntos de ruptura [CANON]</h4>
+<p>Medidos sobre el <strong>contenedor</strong>, no la ventana. <code>container queries</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Ancho</th>
+<th>Rejilla</th>
+<th>Navegación</th>
+<th>Tabla</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; 560</td>
+<td>1 columna</td>
+<td>Barra inferior</td>
+<td>Nombre, fechas, estado</td>
+</tr>
+<tr>
+<td>560–699</td>
+<td>2 columnas</td>
+<td>Barra inferior</td>
+<td>+ ciudad y precio desde 620</td>
+</tr>
+<tr>
+<td>700–899</td>
+<td>2 columnas</td>
+<td>Barra superior</td>
+<td>+ género desde 860</td>
+</tr>
+<tr>
+<td>≥ 900</td>
+<td>3 columnas</td>
+<td>Barra superior</td>
+<td>Completa</td>
+</tr>
+</tbody></table>
+<hr>
+<h4>8.2 Materia y separadores</h4>
+<p><strong>REGLA DURA: la textura se genera, no se descarga.</strong> <code>feTurbulence fractalNoise</code>, <code>baseFrequency</code> 0.9, <code>numOctaves</code> 4, desaturado. 8 % en Nocturno, 4 % en Fragua, <strong>0 %</strong> en tarjeta, tabla, modal y campo. Anclado al viewport.</p>
+<p><strong>Seis separadores, por jerarquía:</strong> filo (el más ligero) · medida (zonas de datos) · dientes (corte editorial fuerte, máximo dos por página) · cadena (cabeceras) · sello con calavera (separa capítulos, uno por página) · corte diagonal (de zona oscura a superficie, nunca dos seguidos).</p>
+<p><strong>El marco del cartel ajeno [CANON]:</strong> <strong>El marco del cartel ajeno.</strong> Proporción 3:4, radio <code>8px</code>, borde 1 px, velo <code>rgba(11,12,13,.28)</code> y <code>.72</code> bajo texto. <strong>Nada del sistema se superpone salvo el icono de estado.</strong> <code>alt</code> obligatorio con nombre y año. Ningún cartel ajeno como fondo de página.</p>
+<hr>
+<h4>8.3 Retícula de página [CANON · v4.5.0]</h4>
+<p><strong>No hay retícula de doce columnas, y es una decisión, no un olvido.</strong> Este sistema mide contenedores, no páginas (§8.1), y cada componente trae su propia rejilla: las tarjetas se reparten solas, la tabla ocupa todo el ancho, la ficha se parte en dos a partir de 820. Una retícula de página encima de eso serían dos sistemas de columnas discutiendo. Lo que la página sí necesita son <strong>cuatro medidas</strong>, y están en el <a href="#anexo-a">Anexo A</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Qué gobierna</th>
+<th>Regla</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ancho-max</code></td>
+<td>El ancho del contenido</td>
+<td>La página se centra a partir de ahí. Ningún componente de datos lo supera</td>
+</tr>
+<tr>
+<td><code>ancho-lectura</code></td>
+<td>La prosa</td>
+<td>66 caracteres, dentro del rango 60–75 de §7.2. <strong>La prosa nunca ocupa el ancho de la página:</strong> una línea de veintitantas palabras no hay quien la siga</td>
+</tr>
+<tr>
+<td><code>margen-pagina</code></td>
+<td>El aire lateral</td>
+<td><code>s400</code> por debajo de 700, <code>s600</code> desde 700. Nada toca el borde del cristal salvo lo que va a sangre</td>
+</tr>
+<tr>
+<td>Canal</td>
+<td>El hueco entre celdas de una rejilla local</td>
+<td><code>s400</code>; en la rejilla de tarjetas desde 900, <code>s500</code></td>
+</tr>
+</tbody></table>
+<p><strong>Qué PUEDE ir a sangre</strong>, rompiendo <code>ancho-max</code>: el mapa (§13.3), la rejilla del cartel por horas (§15.7), la portada y el corte diagonal entre zonas. <strong>Qué NO DEBE ir a sangre nunca:</strong> texto corrido, formularios y la tabla — la tabla llena <code>ancho-max</code>, no la ventana.</p>
+<p><strong>Jerarquía cuando chocan:</strong> <code>ancho-lectura</code> manda sobre la caja que lo contiene. Si un panel es más ancho que la medida, la prosa se queda en 66ch y el resto del panel lo llenan los datos, que sí saben usar el ancho.</p>
+<hr>
+<p><a id="iconografia"></a></p>
+<h3>9. Iconografía</h3>
+<p><strong>Phosphor Icons</strong> (MIT). Un concepto, un icono, y siempre el mismo. <strong>No hay iconos propios</strong>: si Phosphor no cubre un concepto, se replantea el concepto.</p>
+<p><strong>Pesos:</strong> <code>regular</code> por defecto · <code>fill</code> en activo, emblemas y marcadores de mapa · <code>bold</code> por debajo de 16 px · <code>light</code> ilustrativo desde 48 px · <strong><code>thin</code>, <code>duotone</code> y emojis prohibidos</strong>.</p>
+<p>Heredan <code>currentColor</code>. <strong>Todo icono que sea control o portador de significado lleva nombre accesible.</strong></p>
+<h4>9.1 Inventario [CANON]</h4>
+<p><strong>Catálogo:</strong> buscar <code>magnifying-glass</code> · filtrar <code>funnel</code> · ordenar <code>arrows-down-up</code> · calendario <code>calendar-blank</code> · mapa <code>map-trifold</code> · ubicación <code>map-pin</code> · comparar <code>columns</code> · duración <code>clock</code> · cartel <code>microphone-stage</code> · detalles <code>info</code> · web oficial <code>arrow-square-out</code> · compartir <code>share-network</code> · quitar <code>x</code> · leyenda <code>question</code> · rejilla <code>grid-four</code> · lista <code>rows</code> · mi posición <code>crosshair</code> · acercar <code>plus</code> · alejar <code>minus</code>.</p>
+<p><strong>Estados:</strong> los nueve de §6.2 más <code>crown-simple</code>.</p>
+<p><strong>Viaje:</strong> mi ruta <code>path</code> · tren <code>train</code> · coche <code>car</code> · vuelo <code>airplane-tilt</code> · alojamiento <code>tent</code> · punto de encuentro <code>users-three</code> · comida <code>fork-knife</code> · barra <code>beer-stein</code>.</p>
+<p><strong>Dinero:</strong> precio <code>currency-eur</code> · presupuesto <code>wallet</code> · entradas <code>ticket</code>.</p>
+<p><strong>Usuario:</strong> cuenta <code>user-circle</code> · guardado <code>bookmark-simple</code> · avisos <code>bell</code> · ajustes <code>gear</code> · corregir <code>pencil-simple</code> · aportar <code>plus-circle</code> · verificado <code>seal-check</code> · aviso de dato <code>warning-circle</code> · sin conexión <code>cloud-slash</code> · exportar <code>download-simple</code> · cerrar sesión <code>sign-out</code>.</p>
+<h4>9.2 Emblemas</h4>
+<p>Icono <code>fill</code> dentro de un anillo de 76 px con aro punteado. Un emblema se usa <strong>cuando nombra algo real</strong>. Mínimo 48 px; por debajo, icono suelto.</p>
+<hr>
+<h4>9.3 Icono o palabra [CANON · v3.4.0]</h4>
+<p>Un icono sustituye a una palabra <strong>solo si se cumplen las tres condiciones</strong>. Si falla una, va la palabra.</p>
+<ol>
+<li><strong>Tiene símbolo convencional.</strong> El usuario ya lo conoce de otras aplicaciones, no de esta.</li>
+<li><strong>Se repite o compite por espacio.</strong> Aparece muchas veces por pantalla, o está en una barra donde cada píxel cuenta.</li>
+<li><strong>La palabra se recupera con un gesto.</strong> Tooltip al pasar y al enfocar, pulsación en táctil, o leyenda en la vista.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Tratamiento</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Convención universal, sitio fijo</td>
+<td><strong>Solo icono</strong></td>
+<td>Modo de color (<code>sun</code> / <code>moon</code>), avisos, buscar, filtrar, posición, cerrar</td>
+</tr>
+<tr>
+<td>Destino de navegación</td>
+<td><strong>Icono y palabra</strong></td>
+<td>Barra inferior: cinco destinos que se aprenden una vez. La palabra no se quita «porque ya se lo saben»</td>
+</tr>
+<tr>
+<td>Estado repetido en listado</td>
+<td><strong>Solo icono</strong></td>
+<td>El léxico de §6: aparece decenas de veces por pantalla y la palabra estorba</td>
+</tr>
+<tr>
+<td>Acción que borra, paga o compromete</td>
+<td><strong>Nunca solo icono</strong></td>
+<td>«Quitar de mi ruta», «Borrar cuenta», «Comprar»</td>
+</tr>
+<tr>
+<td>Concepto propio sin símbolo consolidado</td>
+<td><strong>Nunca solo icono</strong></td>
+<td>«Cartel parcial» no tiene icono universal: por eso el suyo vive con leyenda</td>
+</tr>
+<tr>
+<td>Cajón de acciones variables</td>
+<td><strong>Prohibido</strong></td>
+<td>Tres puntos que esconden cosas distintas en cada pantalla. Si no sabes nombrar lo que hay dentro, el problema no es el icono</td>
+</tr>
+</tbody></table>
+<p><strong>El modo de color va con iconos</strong>, no con las palabras «Nocturno» y «Fragua»: sol y luna son de las convenciones más asentadas que existen, y las palabras propias de marca no se entienden fuera de casa.</p>
+<hr>
+<p><a id="movimiento"></a></p>
+<h3>10. Movimiento</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo G · Movimiento en código</p>
+</blockquote>
+<p><strong>Doce animaciones y ninguna más.</strong> Nada se mueve donde el usuario compara: dentro de la tabla, el calendario y el mapa el sistema está quieto.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Animación</th>
+<th>Especificación</th>
+<th>Dónde</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>Barrido especular</td>
+<td>9 s lineal, banda al 38 %</td>
+<td>Máximo uno por vista</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Haz concentrado</td>
+<td>1.4 s, núcleo 2 px con halo corto</td>
+<td>Revela lo que cruza</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Revelado escalonado</td>
+<td>320 ms, escalonado 60 ms</td>
+<td>Una vez al entrar</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Elevación</td>
+<td>120 ms, sin desplazamiento</td>
+<td>Hover de tarjeta y fila</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Sello</td>
+<td>160 ms</td>
+<td>Solo si un estado cambia de verdad</td>
+</tr>
+<tr>
+<td>06</td>
+<td>Marquesina</td>
+<td>22 s, se para al pasar el ratón</td>
+<td>Solo novedades reales</td>
+</tr>
+<tr>
+<td>07</td>
+<td>Contador</td>
+<td>900 ms, cifras tabulares</td>
+<td>Días que faltan, totales</td>
+</tr>
+<tr>
+<td>08</td>
+<td>Trazo de ruta</td>
+<td>1.1 s, línea y nodos detrás</td>
+<td>Mi ruta</td>
+</tr>
+<tr>
+<td>09</td>
+<td>Corte diagonal</td>
+<td>720 ms</td>
+<td>Cambio de estado o pantalla</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Chispas</td>
+<td>620 ms, oro viejo</td>
+<td>Solo al confirmar</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Ensamblado</td>
+<td>380 ms</td>
+<td>Solo portada</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Dígitos rodantes</td>
+<td>1.1 s, escalonado 90 ms</td>
+<td>Cuenta atrás y precios</td>
+</tr>
+</tbody></table>
+<p><strong>Prohibido:</strong> parallax, glitch, brillo permanente, neón, animar el foco, animar el color del texto, autoplay con sonido. Curva por defecto <code>cubic-bezier(.2,0,0,1)</code>. <code>prefers-reduced-motion</code> desactiva las doce.</p>
+<hr>
+<p><a id="voz"></a></p>
+<h3>11. Identidad verbal y marca</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo F · Textos</p>
+</blockquote>
+<p><strong>Voz [CANON]:</strong> directa, informada y sin postureo. FestRoute sabe de metal pero no lo demuestra a costa de la claridad. Nunca se ríe del usuario ni de ninguna escena.</p>
+<p><strong>Tono cálido</strong> — por defecto en lo que ve quien llega por primera vez: portada, alta, pantallas vacías, ayuda, correos. Y <strong>siempre</strong> en errores, cancelaciones y avisos malos.
+<strong>Tono directo</strong> — en lo que lee quien ya está dentro: listados, filtros, fichas, tooltips.</p>
+<p><strong>Regla que los ordena:</strong> cuanto más importante es lo que cuentas, más aire necesita la frase.</p>
+<h4>11.1 Suavizar sin perder carácter</h4>
+<table>
+<thead>
+<tr>
+<th>Así no</th>
+<th>Así sí</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cuatro arañazos ya son suciedad; tres son historia.</td>
+<td>Tres arañazos son historia; cuatro ya son suciedad.</td>
+</tr>
+<tr>
+<td>Un modo que no pueda mostrarlos no se envía.</td>
+<td>Si un modo no puede mostrar esos cuatro datos, todavía no está listo para salir.</td>
+</tr>
+<tr>
+<td>Acero nunca. Se queda en 5.15.</td>
+<td>El peltre se queda en 6.14:1, así que sirve para etiquetas pero no para leer un párrafo.</td>
+</tr>
+</tbody></table>
+<p>Poner primero lo que sí se hace, dejar la advertencia detrás y añadir el porqué cuando la frase da una orden.</p>
+<h4>11.2 Microcopy de la capa de usuario [CANON]</h4>
+<p><strong>Los textos definitivos están en el <a href="#anexo-f">Anexo F</a>.</strong> Aquí van solo las reglas que los gobiernan, porque un texto escrito en dos sitios acaba diciendo dos cosas.</p>
+<p><strong>Cuatro reglas [CANON].</strong> Se nombra lo que la persona reconoce, no cómo está construido el sistema. Un control dice qué pasa al usarlo, y <strong>conserva el mismo nombre en todo el recorrido</strong>: si el botón dice «Añadir a mi ruta», el aviso dice «Añadido a tu ruta». El error explica <strong>qué pasó y cómo seguir</strong>, nunca se disculpa ni se pone vago. Una pantalla vacía es una invitación a hacer algo, no un lamento.</p>
+<p><strong>Los tacos</strong> convocan, nunca informan. Permitidos con medida en portadas y campañas. <strong>Prohibidos</strong> en estados, precios, errores, ayuda, formularios y correos. Nunca contra personas ni escenas.</p>
+<p><strong>Los nombres propios</strong> con sus diacríticos. <strong>Archivos:</strong> <code>AAAA_MM_DD-Nombre-vX.Y.Z.ext</code>.</p>
+<hr>
+<h4>11.3 Marca</h4>
+<p><strong>La marca tipográfica es el canon de la v1.</strong> El símbolo, cuando exista, entrará como MENOR sin tocar nada de esto. La marca es tipográfica: <strong>FestRoute</strong> en Should&#39;ve Known con degradado metálico vertical. Tres lockups: horizontal, vertical e isotipo.</p>
+<p><strong>Cómo no:</strong> no recolorear con un color del código · no rotar · no sombras ni relieves · no deformar · no sobre cartel ajeno sin velo.</p>
+<hr>
+<h4>11.4 Internacionalización [CANON · v4.5.0]</h4>
+<p>La portada dice «multiidioma europeo» desde la v1 y hasta hoy no había ni una regla. Estas son, y casi todas se deducen de decisiones ya tomadas.</p>
+<p><strong>Qué se traduce y qué jamás.</strong> La interfaz se traduce entera. <strong>El dato, nunca:</strong> nombre de festival, banda, escenario, ciudad y topónimo se muestran como los escribe su dueño (§7.3 y §13.3). No existe «Praga» en la ficha de un festival checo: existe Praha, que es lo que pone en el andén.</p>
+<p><strong>La búsqueda perdona los diacríticos; la pantalla no.</strong> Escribir <code>jaromer</code> DEBE encontrar Jaroměř, y <code>koln</code>, Köln: el índice de búsqueda pliega diacríticos <strong>en las dos direcciones</strong>, consulta y dato. Pero el resultado se muestra siempre con su ortografía exacta. Plegar al buscar es cortesía con el teclado de quien viaja; plegar al mostrar es el error de dato de §7.3.</p>
+<p><strong>El alemán ocupa un tercio más.</strong> Toda pieza DEBE aguantar <strong>+35 %</strong> de texto sin romperse: el contenedor crece, el texto no se recorta. <strong>Un control jamás lleva puntos suspensivos</strong> — un botón truncado es un botón que no dice qué hace. El recorte con <code>…</code> solo se permite en contenido de datos (un nombre de festival kilométrico en una celda), siempre con el nombre completo a un gesto (§6.1). Nada esencial DEBE depender de que el texto quepa en una línea.</p>
+<p><strong>Fecha, hora y semana.</strong></p>
+<ul>
+<li><strong>Reloj de 24 horas, sin excepción.</strong> <code>18:30</code>, nunca <code>6:30 PM</code>, en cualquier idioma.</li>
+<li><strong>La fecha lleva el mes escrito:</strong> <code>10–13 ago 2027</code>, en el formato del idioma activo. <strong><code>10/08</code> está prohibido</strong> — para media Europa es agosto y para la otra media es octubre.</li>
+<li><strong>La semana empieza en lunes</strong> (ISO 8601) en el calendario y en cualquier selector. Producto europeo, canon europeo.</li>
+<li>El año se omite si es el corriente y se escribe si no lo es.</li>
+</ul>
+<p><strong>Cifras y moneda.</strong> Separadores decimales y de millar del idioma activo, vía <code>Intl.NumberFormat</code>, en Mono tabular como siempre (§7.2). <strong>El precio se muestra en la moneda en que se vende la entrada</strong>; la conversión a la moneda del usuario PUEDE acompañarlo, marcada como estimación con la frase del <a href="#anexo-f">Anexo F</a>: «Es un cálculo nuestro, no un precio oficial».</p>
+<p><strong>Orden alfabético con colación local</strong> (<code>Intl.Collator</code> del idioma activo): Š no se ordena como una S rota, ni Ø al final de todo. El orden por defecto sigue siendo cronológico (§12.4); esto aplica cuando el usuario ordena por nombre.</p>
+<p><strong>Las cadenas no se pegan.</strong> Prohibido construir frases concatenando trozos: «Añadido» + «a tu ruta» sobrevive al español y muere en polaco. Cada mensaje es una clave completa con sus variables dentro, y <strong>los plurales siguen las reglas del idioma</strong> — el polaco tiene tres formas y el checo también; «1 festival(es)» no es una solución, es una rendición.</p>
+<p><strong>El idioma sigue al sistema</strong> y se cambia en Ajustes (§14.8), efecto inmediato y sin reiniciar. <strong>Alfabeto latino solo</strong>, como fija la portada: sin bidireccional ni escrituras no latinas en esta etapa, y se declara en vez de fingir que se soporta.</p>
+<p><strong>El tono viaja con el idioma.</strong> Las reglas de §11.1 y §11.2 —cálido con quien llega, directo con quien está dentro, el error que dice cómo seguir— DEBEN sobrevivir a la traducción. Se traduce la intención, no la sintaxis del español.</p>
+<hr>
+<hr>
+<h2>Parte III · Patrones</h2>
+<p><a id="patron-indice"></a></p>
+<h3>12. El patrón índice</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo C · Especificación de pantallas</p>
+</blockquote>
+<h4>12.1 El dato invariable [CANON]</h4>
+<p>En los cuatro modos —tarjeta, tabla, calendario, mapa— DEBEN aparecer siempre: <strong>nombre · fechas · ciudad y país · estado</strong>. Si un modo no puede mostrar esos cuatro datos, todavía no está listo para salir.</p>
+<h4>12.2 Estructura [CANON]</h4>
+<p>Arriba, la <strong>barra de control</strong>: buscar, filtrar, ordenar, cambiar de modo, <strong>contar</strong> y la <strong>leyenda</strong> (§6.3). Debajo, los objetos. Los cuatro modos comparten barra: al cambiar de modo se conservan búsqueda, filtros y orden.</p>
+<h4>12.3 Filtros [CANON]</h4>
+<p>Cada filtro aplicado es una <strong>pastilla retirable con su categoría escrita</strong>: «Estado: A la venta», nunca «Parcial» a secas. Siempre existe <strong>Quitar todos</strong>. Las diez familias del <a href="#anexo-d">Anexo D.0</a> se muestran completas, sin «ver más». El estado vive <strong>en la URL</strong>. Los cambios se anuncian por <code>aria-live</code>.</p>
+<h4>12.4 Orden [CANON]</h4>
+<p>Por defecto <strong>cronológico</strong>. Por tamaño o precio PUEDE ofrecerse. <strong>Por popularidad NO DEBE existir.</strong></p>
+<hr>
+<p><a id="componentes"></a></p>
+<h3>13. Componentes</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo B · Anatomía de componentes</p>
+</blockquote>
+<p><strong>Aquí está lo que cada componente tiene que hacer. Las medidas están en el <a href="#anexo-b">Anexo B</a> y solo allí</strong>, para que no haya dos cifras para lo mismo.</p>
+<p><strong>Tarjeta.</strong> Cartel enmarcado 3:4 con el <strong>icono de estado</strong> arriba a la derecha, sobre velo. Debajo: nombre en Grenze Gotisch, fechas en Mono, ciudad y país, parche de género, marca de tamaño y <strong>dos acciones etiquetadas</strong>: guardar y añadir a la ruta.</p>
+<p><strong>Tabla.</strong> Cabecera ordenable con tres estados; solo la columna activa muestra flecha. Cifras Mono tabular a la derecha, estado como icono. Paginación al pie con filas por página y rango visible. Al estrechar caen columnas por prioridad: <strong>nombre, fechas y estado nunca se van</strong>.</p>
+<p><strong>Calendario.</strong> Rejilla mensual. Un festival de varios días es <strong>una barra continua</strong> que puede cruzar de mes, nunca puntos repetidos. La barra lleva el <strong>color del estado</strong>, no el del género, con el icono a la izquierda. En móvil pasa a lista por semanas conservando la barra.</p>
+<p><strong>Mapa.</strong> Marcador circular de 22 px con el icono de estado en <code>fill</code> dentro y anillo de 1 px. Agrupación numérica al alejar. <strong>El mapa NO DEBE ser el único camino a un festival</strong>: siempre existe la lista equivalente. Especificación completa y proveedor en <strong>§13.3</strong>.</p>
+<p><strong>Leyenda.</strong> Panel desplegable con los nueve estados, su icono y su nombre. Presente en las cuatro vistas, en el mismo sitio, y recordada entre sesiones si el usuario la deja abierta.</p>
+<p><strong>Tooltip.</strong> Superficie elevada con borde, texto <code>cuerpo.s</code>. Aparece en hover <strong>y en foco</strong>, se cierra con <code>Esc</code>, nunca contiene la única vía de acceso a una información.</p>
+<p><strong>Botones.</strong> Primario relleno <code>accion</code> con <strong><code>sobre-accion</code></strong> encima (8.03 · 5.30), <strong>uno por vista</strong>. Fantasma con borde. Silencioso solo texto. Destructivo en contorno <code>error</code> que se rellena al hover con <code>bloqueado</code> y texto <strong><code>sobre-oscuro</code></strong>, con confirmación obligatoria y lejos del primario.</p>
+<p><strong>Campo.</strong> Etiqueta encima; <strong>el placeholder nunca la sustituye</strong>.</p>
+<p><strong>Sello de verificación [CANON].</strong> Componente propio de FestRoute. Caja con borde izquierdo, icono y tres datos: <strong>fuente</strong>, <strong>fecha de comprobación</strong> y <strong>certeza</strong>. Alta → <code>certeza-alta</code> + <code>seal-check</code>. Media → <code>certeza-media</code> + <code>warning-circle</code>. Más de 30 días sin verificar → <code>error</code> + cinta de aviso arriba. <strong>Toda ficha lo lleva. Un dato sin fuente no se publica.</strong></p>
+<hr>
+<h4>13.1 Los cinco estados de vista</h4>
+<p>Toda vista los tiene y <strong>todos se diseñan</strong>, con título, explicación en tono cálido y al menos una salida concreta.</p>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Qué muestra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cargando</strong></td>
+<td>Esqueletos, nunca ruletas</td>
+</tr>
+<tr>
+<td><strong>Vacío por filtros</strong></td>
+<td>Filtros visibles, contador a 0, y se ofrece quitar el más restrictivo <em>y</em> quitar todos</td>
+</tr>
+<tr>
+<td><strong>Vacío de origen</strong></td>
+<td>Explica qué va a haber aquí y da el primer paso</td>
+</tr>
+<tr>
+<td><strong>Error</strong></td>
+<td>Dice que no es culpa del usuario, ofrece reintentar y una vía de aviso</td>
+</tr>
+<tr>
+<td><strong>Dato obsoleto</strong></td>
+<td>Cinta superior más sello degradado</td>
+</tr>
+</tbody></table>
+<p><strong>Carga [CANON].</strong> Esqueletos <strong>solo</strong> en componentes contenedores y de datos: tarjeta, fila, ficha. <strong>Nunca</strong> en botones, campos, menús ni modales. Pulso de 1.4 s. Más de tres segundos, se acompaña de texto. <code>aria-busy</code> en el contenedor. Con <code>prefers-reduced-motion</code> el esqueleto se queda quieto.</p>
+<hr>
+<h4>13.2 Formularios y validación</h4>
+<p>Una columna, etiquetas encima, campos agrupados por sentido. <strong>La validación llega al salir del campo, no mientras se escribe.</strong> El error se muestra junto al campo, en <code>error</code>, con icono <code>warning-circle</code> y texto que dice <strong>qué pasó y cómo seguir</strong>; nunca solo «campo inválido». En el envío, el foco salta al primer error y se anuncia por <code>aria-live</code>. El botón de envío <strong>no se desactiva</strong>: se envía y se explica lo que falta, porque un botón gris no dice por qué.</p>
+<hr>
+<h4>13.3 El mapa geográfico [CANON · v4.2.0]</h4>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo C.14</p>
+</blockquote>
+<p>Estaba bloqueado desde la v2.1.0 porque diseñarlo sin saber quién sirve las teselas era inventar. Se desbloquea aquí.</p>
+<h5>La decisión</h5>
+<p><strong>MapLibre GL JS como motor, teselas del basemap de Protomaps en formato PMTiles, autoalojadas, sobre datos de OpenStreetMap.</strong></p>
+<p>No es una preferencia estética. Sale de tres reglas que ya eran CANON y que eliminan casi todo el mercado por sí solas:</p>
+<table>
+<thead>
+<tr>
+<th>Regla previa</th>
+<th>Qué elimina</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sin conexión no es opcional</strong> (§15)</td>
+<td>Todo proveedor cuyas condiciones prohíban almacenar teselas más allá de una caché temporal. Es la razón principal, y descarta a los grandes</td>
+</tr>
+<tr>
+<td><strong>Libre por diseño</strong>, autoalojado antes que CDN (§2.2)</td>
+<td>Toda API con clave, cuota o factura por vista</td>
+</tr>
+<tr>
+<td><strong>Privacidad</strong> (§14.10)</td>
+<td>Todo tercero que reciba la posición del usuario en cada movimiento del mapa</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Licencia y coste</th>
+<th>Autoalojable</th>
+<th>Sin conexión</th>
+<th>Veredicto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Protomaps · PMTiles autoalojado</strong></td>
+<td>Estilos <strong>CC0</strong>, código <strong>BSD-3</strong>; teselas son Obra Derivada <strong>ODbL</strong> de OSM</td>
+<td>Sí: un archivo estático, sin servidor de teselas</td>
+<td><strong>Sí, de serie</strong>: el archivo <em>es</em> la descarga</td>
+<td><strong>Elegido</strong></td>
+</tr>
+<tr>
+<td><strong>OpenFreeMap</strong></td>
+<td>Gratis, sin clave, sin registro, sin cookies</td>
+<td>Sí, con descargas del planeta</td>
+<td>Sí, autoalojando</td>
+<td><strong>Suplente</strong>: sin SLA, sostenido por donaciones</td>
+</tr>
+<tr>
+<td><strong>MapTiler · Mapbox · Google</strong></td>
+<td>Clave, cuota y factura por vista</td>
+<td>No</td>
+<td>Restringido por condiciones de uso</td>
+<td><strong>Descartado</strong></td>
+</tr>
+<tr>
+<td><strong>Ráster de openstreetmap.org</strong></td>
+<td>Política de uso razonable, no para producción ajena</td>
+<td>No</td>
+<td>No</td>
+<td><strong>Descartado</strong>: además impide modo oscuro propio</td>
+</tr>
+</tbody></table>
+<p><strong>Por qué PMTiles y no un servidor de teselas [DERIVADO].</strong> Un servidor responde millones de preguntas pequeñas; PMTiles empaqueta la pirámide entera en <strong>un solo archivo</strong> que el cliente lee por rangos de bytes. Tres consecuencias: el archivo <strong>es</strong> la descarga sin conexión, así que no hay que construir un mecanismo aparte para el modo recinto; no hay servidor que mantener, y un proyecto que se autoaloja por principio necesita que autoalojarse sea barato de operar; y <strong>cada nivel de zoom adicional dobla aproximadamente el tamaño</strong>, lo que convierte el zoom máximo en una decisión de producto.</p>
+<h5>Qué se autoaloja · REGLA DURA</h5>
+<p>Un mapa no son solo teselas. <strong>Los cuatro artefactos DEBEN servirse desde el dominio propio</strong>, o el mapa se rompe sin cobertura y filtra tráfico a terceros:</p>
+<table>
+<thead>
+<tr>
+<th>Artefacto</th>
+<th>Si falta</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Teselas</strong> <code>.pmtiles</code></td>
+<td>No hay mapa</td>
+</tr>
+<tr>
+<td><strong>Estilo</strong> <code>style.json</code>, en Nocturno y Fragua</td>
+<td>El mapa no es nuestro</td>
+</tr>
+<tr>
+<td><strong>Glifos</strong> <code>.pbf</code> por familia y rango</td>
+<td><strong>Mapa mudo</strong>: sale sin un solo topónimo</td>
+</tr>
+<tr>
+<td><strong>Sprites</strong></td>
+<td>Fallo de arranque en algunos motores, aunque no se usen</td>
+</tr>
+</tbody></table>
+<p><strong>Las etiquetas del mapa van en Geist</strong>, con los glifos generados por nosotros. Ninguna decorativa entra en el mapa (§7.1). <strong>Los topónimos usan el campo de nombre local, nunca la versión inglesa</strong>: es §7.3 aplicado a la cartografía. Praha y Jaroměř, no Prague ni Jaromer. Un mapa que traduce los nombres deja de coincidir con los carteles de la carretera, que es justo cuando se usa.</p>
+<h5>El estilo · el mapa base es fondo, no dato [CANON]</h5>
+<blockquote>
+<p><strong>El mapa base construye el espacio. Los únicos objetos con significado sobre él son los marcadores.</strong></p>
+</blockquote>
+<ul>
+<li>El mapa base se dibuja <strong>solo con neutrales</strong>. Ningún color del código entra en el estilo base.</li>
+<li><strong>Tres pesos</strong>, como el resto del sistema: agua y relieve al fondo, red viaria y fronteras en <code>linea</code>, topónimos en <code>secundario</code>. El agua es el único elemento que <strong>PUEDE</strong> llevar un croma mínimo, dentro de la banda fría de los metales (§5.5).</li>
+<li><strong>Etiquetas a 4.5:1 como mínimo contra su fondo inmediato</strong>, con halo del color de fondo. Un topónimo sobre agua y sobre bosque tiene dos fondos: se mide contra los dos.</li>
+<li><strong>Nocturno por defecto también aquí</strong>, conmutado con el mismo control de sol y luna. El mapa <strong>NO DEBE</strong> quedarse en claro con el resto de la interfaz en oscuro.</li>
+<li><strong>Ni satélite, ni relieve sombreado, ni edificios en tres dimensiones.</strong></li>
+<li><strong>Plano y con el norte arriba.</strong> Inclinación y rotación bloqueadas: girar el mapa rompe la lectura de los topónimos y no resuelve ninguna tarea de este producto.</li>
+</ul>
+<h5>Marcadores, cúmulos y selección [CANON]</h5>
+<ul>
+<li><strong>Marcador:</strong> círculo de 22 px, icono de estado en <code>fill</code> dentro, anillo de 1 px. Objetivo táctil <strong>44×44</strong> aunque el círculo dibujado mida 22.</li>
+<li><strong>Un marcador, un estado principal</strong>, con la prioridad de §6.3.</li>
+<li><strong>Los cúmulos no llevan color.</strong> Un cúmulo no es un estado: es una cifra. Superficie elevada, borde <code>linea-fuerte</code>, número en Mono tabular. Colorearlo obligaría a inventar un «estado medio» que no existe.</li>
+<li><strong>Solapamiento:</strong> por debajo de 24 px de separación, se agrupa. <strong>Nunca se desplaza un marcador de su sitio real</strong> para que quepa: un festival mal situado es un error de dato.</li>
+<li><strong>Al pulsar</strong> se abre una tarjeta con el dato invariable (§12.1) y una acción etiquetada hacia la ficha.</li>
+<li><strong>El seleccionado</strong> se distingue por tamaño y anillo, <strong>sin color</strong> (§5.4).</li>
+</ul>
+<h5>Lista equivalente, teclado y anuncio [CANON]</h5>
+<ul>
+<li><strong>La lista equivalente muestra los mismos festivales, en el mismo orden y con los mismos filtros</strong>, y vive a un <code>Tab</code>: el primer elemento enfocable del mapa es <strong>«Ver estos 34 festivales en lista»</strong>.</li>
+<li>Los marcadores son enfocables en <strong>orden cronológico</strong>, no geográfico.</li>
+<li><strong>Sin secuestro del desplazamiento.</strong> La rueda no hace zoom por sí sola: hace falta <code>Ctrl</code>/<code>⌘</code>, y se explica con un rótulo al intentarlo. En táctil, dos dedos.</li>
+<li>Controles de zoom con objetivo de 44×44 y nombre accesible. <code>Esc</code> cierra la tarjeta y devuelve el foco al marcador.</li>
+<li><strong>Al mover el mapa, el recuento se anuncia</strong> por <code>aria-live</code>, como cualquier filtro (§12.3). El encuadre vive en la URL.</li>
+</ul>
+<h5>Sin conexión · qué se descarga y cuándo [CANON]</h5>
+<p><strong>El mapa se descarga por zonas y solo de lo que el usuario ha guardado.</strong> Nadie baja Europa entera para ir a un festival en Chequia.</p>
+<table>
+<thead>
+<tr>
+<th>Paquete</th>
+<th>Cuándo</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Índice de Europa</strong>, zoom bajo</td>
+<td>Con la instalación</td>
+<td>Ver dónde cae cada festival</td>
+</tr>
+<tr>
+<td><strong>Comarca del festival</strong>, zoom alto</td>
+<td><strong>Al guardar un festival</strong>, con el tamaño a la vista y confirmación</td>
+<td>Llegar y moverse sin cobertura</td>
+</tr>
+<tr>
+<td><strong>Recinto</strong></td>
+<td>Al descargar el día</td>
+<td>Escenarios y servicios (§15.4), que <strong>no</strong> es cartografía OSM sino plano propio</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>El tamaño se muestra antes de descargar y se puede borrar desde Ajustes.</strong> Nunca cientos de megas en segundo plano sin decirlo.</li>
+<li><strong>El techo de zoom es una decisión de producto:</strong> cada nivel dobla el archivo. Se fija el mínimo que permite reconocer la calle de acceso al recinto. Valor concreto pendiente de medir sobre un extracto real [EXTENSIÓN — validar].</li>
+<li>Sin el paquete descargado, el mapa <strong>se muestra atenuado y explicado</strong>, nunca vacío (§15.2).</li>
+</ul>
+<h5>Atribución y licencia · REGLA DURA</h5>
+<p>Las teselas son <strong>Obra Derivada de OpenStreetMap bajo ODbL</strong>, y eso obliga:</p>
+<ul>
+<li><strong>«© OpenStreetMap» visible en el mapa</strong>, en una esquina, siempre. <strong>NO DEBE</strong> esconderse tras un icono de información, ni desaparecer en pantallas pequeñas, ni atenuarse hasta incumplir el contraste de lectura. No es un crédito de cortesía: es la condición de la licencia.</li>
+<li>Se atribuye también a <strong>Protomaps</strong>, aunque su licencia CC0 no lo exija: lo pide el proyecto y coincide con cómo tratamos las fuentes ajenas.</li>
+<li><strong>Si alguna vez se sirve una API de teselas propia o un estilo bifurcado, el producto no puede llamarse Protomaps.</strong> No afecta a FestRoute, que consume sin renombrar.</li>
+</ul>
+<h5>Rendimiento, estados y qué no se hace</h5>
+<ul>
+<li><strong>El módulo del mapa se carga bajo demanda</strong>, solo al elegir ese modo. No entra en el presupuesto del primer render (§18.1).</li>
+<li><strong>Los cinco estados de vista existen también aquí</strong> (§13.1). El error de teselas <strong>no</strong> es culpa del usuario.</li>
+<li><strong>El sistema no anima el mapa.</strong> El usuario lo mueve; nosotros no. Sin vuelos de cámara.</li>
+<li>NO DEBE colorearse el mapa base con colores del código · NO DEBE usarse color para el tamaño del festival, que va en barras (§5.6) · NO DEBE un cúmulo llevar estado · NO DEBE el mapa ser la vista por defecto de la búsqueda · NO DEBE pedirse la ubicación al entrar, solo cuando el usuario pulsa el control de posición y explicando para qué · NO DEBE enviarse ninguna consulta a un tercero al mover el mapa.</li>
+</ul>
+<p><strong>Sigue pendiente y no se decide aquí:</strong> el geocodificador para buscar por ciudad y el cálculo de rutas entre festivales. Son servicios distintos del basemap, con sus propias condiciones, y merecen su propia decisión.</p>
+<hr>
+<hr>
+<h2>Parte IV · Producto</h2>
+<p><a id="usuario"></a></p>
+<h3>14. La capa de usuario</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo C · Especificación de pantallas</p>
+</blockquote>
+<p>Toda esta sección es nueva. El principio que la ordena:</p>
+<blockquote>
+<p><strong>Local primero.</strong> Todo funciona sin cuenta y sin conexión. La cuenta solo sirve para sincronizar entre dispositivos y para aportar datos. Nada que el usuario haya guardado se pierde por no registrarse.</p>
+</blockquote>
+<h4>14.1 Cuenta y sesión [CANON]</h4>
+<p><strong>Tres niveles de identidad:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Puede</th>
+<th>No puede</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Anónimo</strong></td>
+<td>Buscar, filtrar, guardar, crear rutas, exportar. Todo local</td>
+<td>Sincronizar entre dispositivos, aportar datos</td>
+</tr>
+<tr>
+<td><strong>Registrado</strong></td>
+<td>Todo lo anterior sincronizado, avisos por correo, proponer correcciones</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Colaborador</strong></td>
+<td>Además, sus aportaciones entran con revisión ligera</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p><strong>Reglas [DERIVADO]:</strong></p>
+<ul>
+<li><strong>NO DEBE existir un muro de registro.</strong> Ninguna función de consulta o planificación pide cuenta.</li>
+<li>La invitación a registrarse aparece <strong>como mucho una vez por sesión</strong>, en el momento en que aporta algo real: al crear la segunda ruta o al intentar aportar un dato. Nunca al entrar.</li>
+<li>El estado de sesión se ve en un solo sitio: el icono <code>user-circle</code> de la barra.</li>
+<li>Cerrar sesión <strong>no borra lo local</strong>, y se dice explícitamente en el diálogo.</li>
+<li><strong>Exportar siempre disponible</strong>, con o sin cuenta, en formato abierto. Quien se va, se lleva su ruta.</li>
+</ul>
+<h4>14.2 Alta y preferencias [CANON]</h4>
+<p>El alta es de <strong>tres campos como máximo</strong> y las preferencias se pueden saltar entero. Nada de asistentes de cinco pasos.</p>
+<p><strong>Preferencias que sí importan</strong>, todas opcionales y editables después: géneros favoritos (los diez, sin ordenar) · ciudad base · radio de viaje en km · presupuesto orientativo · medios de transporte disponibles · idioma, moneda y unidades.</p>
+<p>Las preferencias <strong>filtran por defecto pero nunca ocultan</strong>: el usuario siempre ve cuántos resultados se han quedado fuera y con un toque los recupera. Ocultar sin avisar rompe <em>sin jerarquía de escena</em>.</p>
+<h4>14.3 Guardados y rutas [CANON]</h4>
+<p><strong>Guardado</strong> es una marca simple: <code>bookmark-simple</code>, sin categorías ni carpetas.</p>
+<p><strong>Ruta</strong> es una secuencia con fechas. Un usuario PUEDE tener varias («Verano 2027», «Fin de semana en Praga»). Cada ruta muestra: festivales, días, kilómetros y coste de entradas, más los <strong>tramos</strong> entre paradas con transporte, tiempo y distancia.</p>
+<p><strong>Los tramos son el argumento del producto:</strong> ningún otro agregador dice cuánto hay de un festival al siguiente.</p>
+<p><strong>Conflictos:</strong> si dos festivales se solapan, la ruta lo marca con <code>certeza-media</code> y lo dice; <strong>no lo resuelve por su cuenta ni bloquea el guardado</strong>. El usuario decide.</p>
+<p><strong>Compartir:</strong> una ruta se comparte como enlace de solo lectura. No hay muros, no hay «regístrate para ver».</p>
+<h4>14.4 Comparador [CANON]</h4>
+<p>De dos a cuatro festivales en columnas, con las mismas filas que la ficha: fechas, ciudad, estado, aforo, precio desde, duración, cómo llegar, dónde dormir. Las diferencias se resaltan con peso, <strong>no con color</strong>: el color sigue reservado a los escenarios de decisión.</p>
+<h4>14.5 Presupuesto [EXTENSIÓN — validar]</h4>
+<p>Por ruta: entradas, transporte, alojamiento y un margen para gastos. Todo editable a mano, porque nuestras cifras son estimaciones y hay que decirlo. Cada cifra estimada lleva el icono <code>warning-circle</code> en <code>terciario</code> y su fuente en el tooltip.</p>
+<h4>14.6 Avisos [CANON]</h4>
+<p><strong>Tres motivos, y ninguno más:</strong> salen entradas de un festival guardado · cambia el cartel de un festival de tu ruta · se cancela o aplaza algo tuyo.</p>
+<p><strong>Reglas duras:</strong> el usuario elige cuáles quiere y puede apagarlos todos · <strong>nada de avisos promocionales, recordatorios de vuelta ni «te echamos de menos»</strong> · como máximo uno al día agrupado, salvo cancelación, que es inmediata · el centro de avisos usa <code>aviso</code> para lo no leído y <code>terciario</code> para lo leído · un aviso siempre lleva al sitio exacto donde se puede actuar.</p>
+<h4>14.7 Aportar y corregir datos [CANON]</h4>
+<p>El catálogo mejora si la escena lo corrige. Requiere cuenta.</p>
+<p><strong>Flujo:</strong> el usuario toca <code>pencil-simple</code> en cualquier dato de la ficha → propone el valor nuevo y, si puede, una fuente → la propuesta queda <strong>visible con estado propio</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Estado de la aportación</th>
+<th>Icono</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Propuesta</td>
+<td><code>hourglass-medium</code></td>
+<td><code>certeza-media</code></td>
+</tr>
+<tr>
+<td>En revisión</td>
+<td><code>hourglass-medium</code></td>
+<td><code>aviso</code></td>
+</tr>
+<tr>
+<td>Aceptada</td>
+<td><code>check-circle</code></td>
+<td><code>certeza-alta</code></td>
+</tr>
+<tr>
+<td>Rechazada</td>
+<td><code>x-circle</code></td>
+<td><code>terciario</code></td>
+</tr>
+</tbody></table>
+<p>Una propuesta rechazada <strong>DEBE explicar por qué</strong>. Y el sello de verificación (§13) actualiza fuente y fecha cuando una aportación se acepta: el trabajo de la comunidad se ve.</p>
+<h4>14.8 Ajustes [CANON]</h4>
+<p>Una sola pantalla, sin pestañas: modo (Nocturno / Fragua / según el sistema) · idioma · moneda · unidades · avisos · datos sin conexión · exportar · privacidad · cerrar sesión · borrar cuenta. <strong>Borrar cuenta DEBE estar visible</strong>, no escondido tras tres capas.</p>
+<h4>14.9 El perfil · la chupa [CANON · v3.5.0]</h4>
+<p>El perfil no es una tarjeta de puntuación: es una <strong>chupa con parches</strong>. Un parche por festival al que fuiste, con su año y su ciudad.</p>
+<p><strong>El color lo pone el festival, no el sistema.</strong> Cada parche lleva dentro el arte de su cartel, enmarcado igual que en §8.2. De ahí sale toda la variedad cromática, gratis y sin añadir un solo token — y ninguna chupa se parece a otra, que es exactamente lo que pasa con las de cuero.</p>
+<h4>14.9.1 Los cuatro acabados [CANON]</h4>
+<p>La jerarquía <strong>no está en el color</strong> —eso sería un ranking— sino en el acabado, que es lenguaje de coleccionista. Se distinguen por <strong>forma</strong>, así que siguen siendo cuatro cosas distintas a 60 px y en escala de grises.</p>
+<table>
+<thead>
+<tr>
+<th>Acabado</th>
+<th>Construcción</th>
+<th>Cuándo</th>
+<th>Cómo se verifica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Cosido simple</strong></td>
+<td>Borde punteado 1 px <code>estano</code>, radio 4</td>
+<td>Fuiste. Sin más</td>
+<td>Marcaste asistencia</td>
+</tr>
+<tr>
+<td><strong>Borde doble</strong></td>
+<td>Borde 2 px <code>acero</code> + filete interior</td>
+<td>Edición de aniversario</td>
+<td>Número de edición redondo, dato del catálogo</td>
+</tr>
+<tr>
+<td><strong>Aro remachado</strong></td>
+<td>Círculo, borde 3 px <code>plata-viva</code>, cuatro remaches en los cuadrantes</td>
+<td>Última edición celebrada hasta la fecha</td>
+<td>Dato del catálogo, revisable cada año</td>
+</tr>
+<tr>
+<td><strong>Sello lacrado</strong></td>
+<td>Círculo, borde doble 5 px, aro exterior punteado y relieve interior</td>
+<td>El festival ya no se celebra</td>
+<td>Estado del catálogo: extinto</td>
+</tr>
+</tbody></table>
+<p><strong>Los cuatro criterios describen al festival, nunca al usuario.</strong> Un garito de cuatrocientas personas puede llevar sello lacrado y un macro de ochenta mil llevar cosido simple. Eso es lo que mantiene intacto <em>sin jerarquía de escena</em>.</p>
+<p><strong>Por qué no la rampa de los MMO.</strong> Se valoró usar gris–blanco–verde–azul–morado, la de WoW, que este público lee sin pensar. Se descartó por tres motivos: su naranja legendario <strong>es nuestro <code>accion</code></strong>, y un parche legendario se leería como «puedes comprar»; añadía seis colores a un sistema cuya tesis es la escasez; y la rareza ordena a las personas, que es justo lo que el segundo valor prohíbe. Nota de precisión, porque se confunden dos linajes: en WoW el legendario es <strong>naranja</strong>, no amarillo; el amarillo de rareza viene de Diablo, donde el azul es mágico y el amarillo raro. Adoptar los dos a la vez habría hecho que medio público leyera una cosa y medio otra.</p>
+<h4>14.9.2 Reglas de incentivo [CANON]</h4>
+<p><strong>La prueba que decide si un incentivo entra:</strong> ¿describe algo que ocurrió de verdad, o intenta que ocurra algo? Lo primero es una colección. Lo segundo es un anzuelo.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sí</strong></td>
+<td>Un parche por festival al que fuiste, con año y ciudad</td>
+</tr>
+<tr>
+<td><strong>Sí</strong></td>
+<td>Acabado por criterio verificable <strong>del festival</strong>, nunca del usuario</td>
+</tr>
+<tr>
+<td><strong>Sí</strong></td>
+<td>Privado por defecto; se comparte como imagen si el usuario quiere</td>
+</tr>
+<tr>
+<td><strong>Sí</strong></td>
+<td>Reconocer una aportación aceptada al catálogo (§14.7)</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Puntos, niveles, experiencia, monedas</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Rachas ni recordatorios de «llevas X sin entrar»</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Clasificaciones ni comparación entre usuarios</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Parches por gastar, por comprar antes o por invitar a nadie</td>
+</tr>
+<tr>
+<td><strong>No</strong></td>
+<td>Caducidad, exclusivas por tiempo limitado ni prisa artificial</td>
+</tr>
+</tbody></table>
+<h4>14.10 Privacidad y consentimiento [CANON]</h4>
+<p>Banner de consentimiento <strong>con rechazo tan visible y tan fácil como la aceptación</strong>, sin casillas premarcadas y sin oscurecer la pantalla. Sin analítica de terceros por defecto. Los datos de ruta y preferencias son del usuario: exportables e eliminables en un gesto. En la UE esto no es una cortesía, es la ley.</p>
+<hr>
+<p><a id="recinto"></a></p>
+<h3>15. Sin conexión y modo recinto</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo C · Especificación de pantallas</p>
+</blockquote>
+<p><strong>En un recinto con veinte mil personas no hay cobertura.</strong> Para este público el modo sin conexión no es un extra: es la diferencia entre abrir la app en el festival o no abrirla.</p>
+<h4>15.1 Qué DEBE funcionar sin conexión [CANON]</h4>
+<p>Mis rutas completas · fichas de los festivales guardados · horarios descargados · el dato invariable de todo lo guardado · el mapa del recinto si existe · las entradas o códigos que el usuario haya guardado.</p>
+<h4>15.2 Cómo se muestra [CANON]</h4>
+<ul>
+<li><strong>Cinta superior</strong> discreta con <code>cloud-slash</code> en <code>terciario</code>, no en rojo: estar sin cobertura no es un error del usuario.</li>
+<li>Cada dato guardado muestra <strong>cuándo se sincronizó por última vez</strong>. El sello de verificación pasa a decir «guardado el …».</li>
+<li>Lo que no está disponible se muestra <strong>atenuado y explicado</strong>, nunca desaparece de la interfaz: si desaparece, el usuario cree que ha perdido sus datos.</li>
+<li>Las acciones que necesitan red se <strong>encolan</strong> y se avisa al recuperarla. Ninguna se pierde en silencio.</li>
+</ul>
+<h4>15.3 Modo recinto [CANON · v5.0.0]</h4>
+<p>Un modo que el usuario activa al llegar: tipografía un escalón más grande, brillo mínimo con Nocturno forzado, solo lo de hoy, y la información en este orden: <strong>qué toca ahora · qué escenario · cuánto falta</strong>.</p>
+<hr>
+<h4>15.4 Las cuatro pantallas de recinto [CANON · v3.4.0]</h4>
+<p>Es el momento de mayor uso de la aplicación: dentro del festival, de pie, con una mano, sin cobertura y con poca batería. Se diseña para eso, no para el escritorio.</p>
+<table>
+<thead>
+<tr>
+<th>Pantalla</th>
+<th>Qué resuelve</th>
+<th>Reglas propias</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ahora mismo</strong></td>
+<td>Qué suena, en qué escenario, cuánto queda y qué viene después</td>
+<td>El nombre de la banda en Grenze Gotisch a <code>titulo.l</code>: se lee a un brazo y de noche. Barra de progreso del bolo con minutos restantes en cifras, no solo en porcentaje</td>
+</tr>
+<tr>
+<td><strong>Cartel por horas</strong></td>
+<td>La rejilla clásica: escenarios en columnas, horas en vertical</td>
+<td>Lo del usuario lleva borde <code>accion</code>; lo que se pisa, borde <code>error</code> a rayas. <strong>Se lee sin leyenda porque el borde ya lo dice</strong></td>
+</tr>
+<tr>
+<td><strong>Choques</strong></td>
+<td>Dos bandas que quieres ver a la vez</td>
+<td><strong>La aplicación no decide.</strong> Da los minutos que se pierden de cada una, el tiempo a pie y una frase con la consecuencia real. Las dos salidas tienen el mismo peso visual</td>
+</tr>
+<tr>
+<td><strong>Recinto</strong></td>
+<td>Escenarios y servicios con tiempo a pie desde donde estás</td>
+<td>Descargado por completo. Los iconos van solos: se repiten y compiten por espacio</td>
+</tr>
+</tbody></table>
+<p><strong>El tiempo a pie entre escenarios es dato de primera clase</strong>, no un adorno. Es lo que convierte un cartel en una decisión.</p>
+<p><strong>Qué contiene y cuánto mide cada una: <a href="#anexo-c">Anexo C</a>, C.5 a C.8.</strong> Aquí solo la regla propia de cada pantalla.</p>
+<h4>15.5 Diseño para el pulgar [CANON · v3.4.0]</h4>
+<ul>
+<li><strong>Objetivo táctil 44×44 como mínimo</strong>, aunque el icono dibujado mida 19 px. En el recinto se usa de pie, con una mano y a veces con guantes.</li>
+<li><strong>Las acciones frecuentes van abajo.</strong> La mitad superior de una pantalla de teléfono queda fuera del alcance del pulgar: allí solo van título y contexto. Una acción que se repite —marcar una banda, cambiar de día— <strong>NO DEBE</strong> vivir únicamente en la cabecera.</li>
+<li><strong>Nada esencial detrás de un desplazamiento horizontal</strong> sin indicio visible de que hay más.</li>
+<li><strong>Contraste y tamaño suben un escalón</strong> en modo recinto: cuerpo a <code>cuerpo.l</code>, datos a <code>titulo.s</code>.</li>
+</ul>
+<h4>15.6 Gestos [EXTENSIÓN — validar]</h4>
+<p>En una rejilla de horarios el gesto es más rápido que cualquier botón, pero <strong>ningún gesto puede ser la única vía</strong>: todo lo que se hace deslizando tiene que poder hacerse también pulsando.</p>
+<table>
+<thead>
+<tr>
+<th>Gesto</th>
+<th>Acción</th>
+<th>Alternativa obligatoria</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Deslizar a la derecha sobre un bolo</td>
+<td>Añadir a mi horario</td>
+<td>Pulsar el bolo → botón</td>
+</tr>
+<tr>
+<td>Deslizar a la izquierda</td>
+<td>Quitar de mi horario</td>
+<td>Ídem</td>
+</tr>
+<tr>
+<td>Pulsación larga en un hueco del cartel</td>
+<td>Ver quién toca ahí</td>
+<td>Pulsación normal</td>
+</tr>
+<tr>
+<td>Deslizar horizontal en la rejilla</td>
+<td>Cambiar de día</td>
+<td>Selector de día en la barra inferior</td>
+</tr>
+</tbody></table>
+<p><strong>Resuelto en la v4.2.0 (§15.7).</strong> El gesto de «cambiar los escenarios visibles» se elimina: los escenarios se eligen antes, en un control escrito y visible. Un gesto que cambia <em>qué datos hay en pantalla</em> sin dejar rastro es indistinguible de un fallo.</p>
+<hr>
+<h4>15.7 El cartel cuando hay siete escenarios [CANON · v4.2.0]</h4>
+<blockquote>
+<p><strong>Implementación:</strong> Anexo C.6</p>
+</blockquote>
+<p>La rejilla se diseñó con tres escenarios. Los festivales grandes tienen seis o siete, y a partir de ahí deja de ser una rejilla: o encoge las columnas hasta que no se lee un nombre de banda, o esconde escenarios detrás de un desplazamiento horizontal, que §15.5 prohíbe.</p>
+<p><strong>La decisión: no se estira la rejilla. Se elige antes qué se ve, y existe una segunda vista que no tiene columnas.</strong></p>
+<h5>15.7.1 Cuántas columnas caben, medido [DERIVADO]</h5>
+<p>No se fija un número: se fija un <strong>ancho mínimo de columna de 120 px</strong>, se resta la columna de horas de 38 px del Anexo C.6 y los márgenes, y el número sale solo.</p>
+<table>
+<thead>
+<tr>
+<th>Contenedor</th>
+<th align="right">Columnas</th>
+<th>Realidad</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>390 px · teléfono</td>
+<td align="right"><strong>2</strong></td>
+<td>Un cartel de siete escenarios no cabe, y ninguna retícula lo va a arreglar</td>
+</tr>
+<tr>
+<td>560 px</td>
+<td align="right">4</td>
+<td></td>
+</tr>
+<tr>
+<td>700 px</td>
+<td align="right">5</td>
+<td></td>
+</tr>
+<tr>
+<td>900 px</td>
+<td align="right">6</td>
+<td></td>
+</tr>
+<tr>
+<td>≥ 910 px</td>
+<td align="right">7</td>
+<td>Solo aquí entra un festival grande entero</td>
+</tr>
+</tbody></table>
+<p>Por debajo de 120 px un nombre de banda se corta siempre y la columna se convierte en una lista de puntos suspensivos. <strong>NO DEBE dibujarse una columna más estrecha para que quepan más escenarios.</strong></p>
+<h5>15.7.2 El filtro previo de escenarios [CANON]</h5>
+<ul>
+<li>Aparece <strong>la primera vez que se abre el cartel de un festival cuyos escenarios no caben</strong>, y solo entonces. No es un asistente y no se le enseña a nadie que no lo necesite (§3.3).</li>
+<li>Es un <strong>panel de casillas en la propia pantalla</strong>, con los escenarios escritos y su recuento. Dos atajos: <strong>«Todos»</strong> y <strong>«Los míos»</strong>, que selecciona los escenarios donde el usuario ya ha marcado alguna banda.</li>
+<li><strong>Preselección por defecto:</strong> los escenarios de las bandas ya marcadas. Si no hay ninguna, los primeros que quepan <strong>en el orden que publica la organización</strong>. FestRoute <strong>NO DEBE</strong> reordenar los escenarios por tamaño, aforo ni importancia: sería jerarquía de escena por la puerta de atrás (§2.2).</li>
+<li><strong>Salida siempre visible:</strong> «Ver el cartel entero en lista». Nadie queda encerrado en una selección.</li>
+<li>Después vive en la cabecera como control permanente que <strong>dice su estado con cifras</strong>: <strong>«Escenarios · 3 de 7»</strong>. Cumple §9.3: no va solo con icono, porque no hay símbolo universal para esto.</li>
+<li><strong>La selección se guarda por festival y día</strong>, en local, sin cuenta, y viaja con el horario descargado (§15.1).</li>
+</ul>
+<h5>15.7.3 La vista de una columna [CANON]</h5>
+<p>Es la vista <strong>por defecto por debajo de 700 px</strong>, y la que sale siempre que la selección no cabe. No es un modo degradado: para quien está dentro del recinto con una mano ocupada, es mejor vista que la rejilla.</p>
+<p>Una sola línea de tiempo vertical. Cada bolo es una fila de <strong>44 px mínimo</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hora</strong></td>
+<td><code>18:30 – 19:20</code> en Mono tabular, en el canal fijo de 38 px</td>
+</tr>
+<tr>
+<td><strong>Banda</strong></td>
+<td><code>gotica</code> a <code>titulo.s</code>; en modo recinto sube un escalón (§7.2)</td>
+</tr>
+<tr>
+<td><strong>Escenario</strong></td>
+<td><strong>Parche escrito</strong> con la forma de §5.6: Mono 700, versales, sin color. El escenario es una categoría, no un estado</td>
+</tr>
+<tr>
+<td><strong>Lo mío</strong></td>
+<td>Borde <code>accion</code>, el mismo de la rejilla. Sin relleno</td>
+</tr>
+<tr>
+<td><strong>Choque</strong></td>
+<td>Los bolos que se pisan comparten bloque con filete a la izquierda y <strong>los minutos que se pierden de cada uno</strong>, con salida a la pantalla de Choques</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>Cabecera de hora pegajosa</strong> al recorrer. Separador <code>filo</code> entre horas, <code>medida</code> entre franjas.</li>
+<li><strong>Línea de «ahora»</strong> visible y botón <strong>«Ir a ahora»</strong> anclado abajo, al alcance del pulgar (§15.5). Es la única acción flotante que se permite en esta pantalla.</li>
+<li><strong>Ordenada por hora de comienzo</strong>, nunca por escenario ni por relevancia. A igual hora, el orden es el de la organización.</li>
+<li><strong>Los bolos fuera de la selección no desaparecen del todo</strong>: al final de cada franja, una línea escrita dice «Y 4 más en otros escenarios», que despliega. Esconder sin decirlo es lo que hace que la gente desconfíe de un cartel.</li>
+</ul>
+<h5>15.7.4 El conmutador de vistas [CANON]</h5>
+<ul>
+<li>Dos posiciones con <strong>icono y palabra</strong>: <strong>Rejilla</strong> (<code>grid-four</code>) y <strong>Lista</strong> (<code>rows</code>). Cambia la pantalla entera, así que no va solo con icono (§9.3).</li>
+<li><strong>Por defecto:</strong> lista por debajo de 700 px, rejilla a partir de 700. Si el usuario lo cambia, se recuerda <strong>por festival</strong>, no globalmente: un festival de tres escenarios y otro de siete no quieren la misma vista.</li>
+<li><strong>Las dos vistas comparten selección de escenarios, día y marcados.</strong> Cambiar de vista nunca pierde estado.</li>
+</ul>
+<h5>15.7.5 Accesibilidad [CANON]</h5>
+<blockquote>
+<p><strong>Toda rejilla temporal DEBE tener una lista equivalente.</strong> Es la misma regla del mapa (§13.3), por el mismo motivo: una retícula de dos ejes es un mal recorrido para un lector de pantalla y para quien navega con teclado.</p>
+</blockquote>
+<ul>
+<li>La rejilla se anuncia con semántica de tabla: <strong>la hora es el encabezado de fila y el escenario el de columna</strong>.</li>
+<li>Nombre accesible de cada bolo, completo y en este orden: <strong>banda, escenario, hora de inicio y fin, y si está en mi horario</strong>.</li>
+<li>El cambio de selección se anuncia por <code>aria-live</code> con el recuento resultante.</li>
+<li><strong>La lista es la vista que se ofrece cuando se detecta navegación por teclado o lector de pantalla</strong>, y se puede cambiar igual.</li>
+<li>Comprobación de §5.10 sin excepción: en escala de grises, «mío», «choque» y «ni una cosa ni otra» tienen que seguir distinguiéndose. Lo hacen por grosor y trazo del borde, no por color.</li>
+</ul>
+<hr>
+<hr>
+<h2>Parte V · Operación</h2>
+<p><a id="accesibilidad"></a></p>
+<h3>16. Accesibilidad</h3>
+<p><strong>WCAG 2.2 AA de suelo, AAA en texto de lectura [CANON].</strong></p>
+<ul>
+<li>Texto de lectura <strong>≥ 7:1</strong>. <code>terciario</code> —6.20 en Nocturno, 5.32 en Fragua— <strong>nunca para leer</strong>.</li>
+<li><strong>Techo de contraste en Nocturno [v3.3.0]:</strong> el texto primario baja de 16.48 a <strong>13.50</strong>. El blanco casi puro sobre negro casi puro produce halación, sobre todo con astigmatismo, que es muy común. Sigue siendo AAA y cansa menos. El 16:1 se reserva para display de gran tamaño.</li>
+<li><strong>Polaridad:</strong> la lectura con texto oscuro sobre claro tiene ventaja documentada en agudeza. Nocturno por defecto es una decisión de marca con un coste, no una decisión neutra; por eso Fragua está al alcance de un toque.</li>
+<li>Los seis colores del código superan 4.5:1 <strong>en los dos modos</strong>.</li>
+<li><code>bloqueado</code> jamás como texto: relleno con <code>sobre-oscuro</code> encima (7.73 · 9.97). Los metales (§5.5) son decorativos y nunca portan significado.</li>
+<li><strong>El léxico icónico es la garantía de la regla «nada solo por color»</strong>: cada estado tiene silueta única, reconocible en escala de grises, con nombre accesible y tooltip en hover <strong>y</strong> en foco, más leyenda persistente.</li>
+<li>Foco: <strong>anillo doble neutro</strong> de 2 px con aro de 4 px (§5.4), visible siempre, sin animar. Objetivo táctil 44×44.</li>
+<li>Todo icono de control o de significado, con nombre accesible. <strong>Sin emojis.</strong></li>
+<li><code>alt</code> en todo cartel ajeno. Mapa con lista equivalente. Filtros anunciados por <code>aria-live</code>. <code>aria-busy</code> en carga.</li>
+<li>Formularios: error junto al campo, foco al primero, botón nunca desactivado sin explicación.</li>
+<li><code>prefers-reduced-motion</code> desactiva las doce animaciones y congela esqueletos.</li>
+<li><strong>Comprobación obligatoria antes de entregar:</strong> abrir la pantalla en escala de grises. Si no se distingue un estado de otro, la pantalla no sale.</li>
+</ul>
+<hr>
+<p><a id="licencias"></a></p>
+<h3>17. Licencias</h3>
+<p><strong>REGLA DURA:</strong> todo activo con <strong>licencia gratuita de uso comercial</strong>, con copia del texto de licencia junto al activo.</p>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>Autoría</th>
+<th>Licencia</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Should&#39;ve Known</td>
+<td>Raymond Larabie · Typodermic</td>
+<td><strong>CC0</strong></td>
+</tr>
+<tr>
+<td>Grenze Gotisch</td>
+<td>—</td>
+<td>SIL OFL 1.1</td>
+</tr>
+<tr>
+<td>Geist · Geist Mono</td>
+<td>Vercel</td>
+<td>SIL OFL 1.1</td>
+</tr>
+<tr>
+<td>Pirata One</td>
+<td>Fuenzalida, Massi</td>
+<td>SIL OFL 1.1</td>
+</tr>
+<tr>
+<td>Phosphor Icons</td>
+<td>Zhang, Fried</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>MapLibre GL JS</td>
+<td>MapLibre</td>
+<td>3-Clause BSD</td>
+</tr>
+<tr>
+<td>PMTiles · especificación y CLI</td>
+<td>Protomaps</td>
+<td>Especificación abierta, de dominio público</td>
+</tr>
+<tr>
+<td>Estilos del basemap de Protomaps</td>
+<td>Protomaps</td>
+<td><strong>CC0</strong> el diseño · BSD-3 el código</td>
+</tr>
+<tr>
+<td>Teselas del basemap</td>
+<td>Protomaps sobre OpenStreetMap</td>
+<td><strong>ODbL</strong> · Obra Derivada · <strong>atribución visible obligatoria</strong></td>
+</tr>
+<tr>
+<td>Datos cartográficos</td>
+<td>Colaboradores de OpenStreetMap</td>
+<td>ODbL</td>
+</tr>
+<tr>
+<td>Texturas</td>
+<td>FestRoute (generadas)</td>
+<td>Propias</td>
+</tr>
+</tbody></table>
+<h4>17.1 La licencia del sistema · propuesta [DECISIÓN DEL EQUIPO]</h4>
+<p>El repositorio sin licencia es «todos los derechos reservados» por defecto, que contradice el tercer valor. Tres opciones, medidas contra §2.2:</p>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Qué permite</th>
+<th>Contra</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CC BY-SA 4.0 el documento + MIT el código embebido</strong></td>
+<td>Cualquiera lo usa y lo adapta citando; las mejoras vuelven abiertas</td>
+<td>Un competidor puede montar su sistema encima — con otro nombre, como exige la propia marca</td>
+</tr>
+<tr>
+<td>CC BY 4.0 todo</td>
+<td>Máxima adopción, sin copyleft</td>
+<td>Las mejoras pueden cerrarse</td>
+</tr>
+<tr>
+<td>Todos los derechos reservados</td>
+<td>Protege la identidad</td>
+<td>Contradice «libre por diseño» frontalmente: la regla dura que se exige a cada tipografía no se la aplicaría el sistema a sí mismo</td>
+</tr>
+</tbody></table>
+<p><strong>Recomendación: la primera.</strong> Es la misma lógica que ya se aplicó al elegir Protomaps: libre, con atribución, y el nombre no se hereda. La marca FestRoute y el nombre «Yunque» quedan fuera de la licencia en cualquier caso.</p>
+<p><strong>Descartadas en cartografía:</strong> las API de teselas con clave y cuota —MapTiler, Mapbox, Google— por chocar con «autoalojado» y con el modo sin conexión; las teselas ráster de openstreetmap.org por su política de uso y por impedir un modo oscuro propio; y la API CDN de Protomaps, gratuita solo para uso no comercial. <strong>OpenFreeMap queda como suplente</strong>, autoalojado o en su instancia pública, para desarrollo y como plan B.</p>
+<p><strong>Descartadas:</strong> Blacklet (sin confirmación escrita), Evanescent, Darkella, Regano, Traditian, Intterno, Angars Runes, Nieuwegein, Archivo, Big Shoulders, Metal Mania, Alfa Slab One. Y las referencias fotográficas de origen incierto.</p>
+<hr>
+<p><a id="gobernanza"></a></p>
+<h3>18. Gobernanza, medios y versiones</h3>
+<p><strong>EL GUARDIÁN [CANON · v4.3.0].</strong> Vive dentro del documento, en el <a href="#anexo-k">Anexo K</a>, y se pasa <strong>antes de publicar cualquier versión</strong>. Nueve comprobaciones; la lista completa está allí junto al código. <strong>Si falla, la versión no sale.</strong></p>
+<p><strong>REGLA DE MANTENIMIENTO [CANON · v3.4.0].</strong> Después de cada versión hay que <strong>releer entera la sección afectada</strong>, no solo el registro de cambios. En la v3.3.0 una sustitución automática dejó un color semántico dentro de la capa decorativa y el registro anunciaba cambios que la guía no explicaba. Una guía se audita abriéndola.</p>
+<p>Semver: MAYOR ruptura · MENOR adiciones · PARCHE correcciones. Jerarquía: accesibilidad &gt; este documento &gt; cualquier pieza. Un token retirado se marca <code>$deprecated</code> durante una versión menor antes de eliminarse.</p>
+<p><strong>Qué garantiza una versión estable [CANON · v5.0.0].</strong> A partir de la 5.0.0: un nombre de token no cambia ni desaparece sin pasar una versión MENOR marcado <code>$deprecated</code> · las anclas de sección no cambian · el contrato de §19.3 no encoge sin MAYOR · la checklist puede crecer, nunca acortarse sin MAYOR · <strong>ninguna versión se publica sin pasar el guardián del Anexo K</strong>.</p>
+<p><strong>Para firmar por el equipo — lo único que separa esta candidata de la 5.0.0 final:</strong></p>
+<ol>
+<li><strong>La licencia del sistema</strong> (§17.1): hay propuesta razonada; falta la firma.</li>
+<li><strong>Las diez familias</strong> (Anexo D.0): están escritas y son construibles; renombrarlas después es PARCHE.</li>
+</ol>
+<p><strong>Del producto, no de este documento:</strong> el geocodificador y el cálculo de rutas (§13.3) · el techo de zoom, que necesita un extracto real de teselas · las reglas de moderación de aportaciones — la interfaz de §14.7 es canon; la política editorial es del equipo de datos.</p>
+<p><strong>Extensiones abiertas que no bloquean:</strong> los arquetipos de §3.1 (investigación de usuarios) · el presupuesto de §14.5 (post-v1) · los gestos de §15.6 (validación en dispositivo real; las alternativas por pulsación, que son lo normativo, ya son canon).</p>
+<table>
+<thead>
+<tr>
+<th>Versión</th>
+<th>Cambios</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>5.0.0-rc.1</strong></td>
+<td><strong>Candidata a primera estable.</strong> Todo lo que un ejecutor necesitaba y no estaba: <strong>las diez familias del metal, nombradas por fin</strong> (Anexo D.0) con la regla de una a tres por festival y sin jerarquía tampoco en la taxonomía; el modelo de datos promovido a canon mínimo v1. <strong>Extensiones triadas con dueño:</strong> modo recinto y marca tipográfica promovidos a canon; el icono del círculo de tabla <strong>cerrado con render real</strong> —a 14 px la calavera colapsa, a 15 se lee: 15 px en <code>bold</code>—; arquetipos, presupuesto y gestos quedan abiertos declarando por qué no bloquean; el resto reclasificado como trabajo del producto. <strong>Contrato de estabilidad</strong> escrito en §18: qué puede y qué no puede cambiar sin MAYOR, y ninguna versión sale sin el guardián. <strong>Novena comprobación:</strong> los pares de contraste prometidos se recalculan contra los hex reales en los dos temas — y al estrenarse cazó la quinta cifra falsa: <code>exito</code> estaba medido contra la superficie equivocada y en Fragua no llegaba a AA sobre el fondo; queda medido y restringido a <code>sup-alta</code> (6.41 · 5.15). <strong>Propuesta de licencia</strong> en §17.1 con recomendación razonada. Para la 5.0.0 final faltan dos firmas: la licencia y la bendición de las diez familias.</td>
+</tr>
+<tr>
+<td><strong>4.6.0</strong></td>
+<td><strong>Auditoría numérica: dos fallos de accesibilidad reales que ninguna revisión de texto había visto.</strong> La pastilla <code>bloqueado</code> en Fragua quedaba a <strong>1.82:1</strong> —ilegible— porque <code>hueso</code> tenía dos papeles, títulos y texto-sobre-relleno, y el cambio de tema los separaba: en claro <code>hueso</code> se vuelve oscuro y la sangre se lo traga. El botón primario en Fragua quedaba a <strong>4.49</strong>, bajo AA. Corrección de raíz: dos tokens de papel único que <strong>no siguen al tema</strong> — <code>sobre-oscuro</code> (7.73 · 9.97) y <code>sobre-accion</code> (8.03 · 5.30) —, aplicados en §5, §13, §16, contrato, fragmento y Anexos A, B y J. <strong>Tres cifras fantasma corregidas:</strong> el 6.35 del botón, el 9.23 de la pastilla y el 7.93 de §16 no correspondían a ningún par real. Eliminado <code>azul-revenido</code> de §16, un token retirado que la rama 4.x arrastraba. Referencias «Anexos A–I» actualizadas a A–K; «trece pantallas» a catorce; glosario ampliado con seis términos e índice de tokens completado.</td>
+</tr>
+<tr>
+<td><strong>4.5.0</strong></td>
+<td><strong>Las dos secciones que faltaban desde la primera valoración.</strong> Retícula de página (§8.3): no hay doce columnas por decisión razonada —el sistema mide contenedores y cada componente trae su rejilla—; la página se gobierna con cuatro medidas nuevas en el Anexo A: <code>ancho-max</code> 1200, <code>ancho-lectura</code> 66ch, <code>margen-pagina</code> por ruptura y el canal; lista cerrada de lo que va a sangre. Internacionalización (§11.4): la interfaz se traduce y el dato jamás; la búsqueda pliega diacríticos en las dos direcciones y la pantalla los conserva —<code>jaromer</code> encuentra Jaroměř—; +35 % de expansión sin recortar y ningún control con puntos suspensivos; reloj de 24 horas, fecha con mes escrito, semana en lunes; cifras y colación por <code>Intl</code>; sin cadenas concatenadas y plurales por idioma; precio en la moneda de venta con conversión marcada como estimación; alfabeto latino declarado como límite. El Anexo J adopta <code>ancho-lectura</code>. Checklist y fragmento de §19.5 ampliados con los dos bloques.</td>
+</tr>
+<tr>
+<td><strong>4.4.0</strong></td>
+<td><strong>Preparado para viajar solo y ser ejecutado por un agente.</strong> Preámbulo «Si eres un agente» con orden de lectura, precedencia ante conflictos y la regla de nombre de marca frente a token. <strong>Tres roturas de resolución arregladas:</strong> <code>bloqueado-txt</code>, referenciado tres veces y jamás definido, pasa a <code>error</code> como ya mandaba §5.4; el estado Anunciado deja de decir <code>peltre</code> en §6.2 y dice <code>certeza-baja</code>, alineado con §5.3 y el contrato; las referencias colgantes del JSON —<code>{semantico.*}</code>, <code>{radio.0}</code>, <code>{fontFamily.texto}</code>, <code>{elevada}</code>— resuelven ahora a tokens del Anexo A. Los nombres de marca desaparecen del texto normativo y quedan solo en §5.1 como equivalencia. <strong>El guardián se embebe como Anexo K</strong> —el documento lleva dentro su verificador— y gana la octava comprobación: toda referencia de token resuelve a una definición del Anexo A, que es el fallo que más daño hace a un ejecutor. Verificado: la copia embebida, extraída, valida este mismo documento.</td>
+</tr>
+<tr>
+<td><strong>4.3.0</strong></td>
+<td><strong>Fuente única.</strong> Los colores dejan de vivir en cuatro sitios: §5 conserva el papel, la medición y el porqué, y los valores quedan solo en el Anexo A. El JSON de §19.3 pasa de duplicar la paleta a ser un <strong>contrato semántico</strong> —qué significa cada estado, con qué icono, qué gana cuando dos coinciden—, con ciento veinte líneas menos. §11.2 remite al Anexo F, del que era subconjunto literal; §13 suelta sus medidas al Anexo B; §15.4 suelta su contenido a C.5–C.8. <strong>Cuatro nombres unificados:</strong> <code>noche</code>, <code>hormigón</code>, <code>grafito</code>, <code>yunque</code>, <code>peltre</code>, <code>plata</code> y <code>pulido</code> quedan como nombres de marca de los tokens que ya existían. <strong>Conflictos resueltos:</strong> el foco es el anillo doble neutro también en §8, §16 y los tokens; el icono de estado en tabla sube de 13 a 14, que es el suelo medido; interlínea de cuerpo en 1.55; <code>s1000</code> incorporado al CSS. Numeración sin huecos en §8, §11, §13 y §18. <strong>Anexo J:</strong> la ficha de festival resuelta entera en HTML y CSS, con la tabla de qué regla demuestra cada línea. <strong>§19.5 reescrito</strong> como instrucción operativa. <strong>Guardián <code>validar.py</code></strong> con siete comprobaciones.</td>
+</tr>
+<tr>
+<td><strong>4.2.0</strong></td>
+<td><strong>Reinjerto de la rama 3.6.0, que se había quedado fuera de la 4.x.</strong> Mapa geográfico desbloqueado (§13.3 y C.14): MapLibre GL JS con teselas Protomaps en PMTiles autoalojadas sobre datos de OpenStreetMap, elegido porque el modo sin conexión descarta por sí solo a todo proveedor con clave y cuota. Cuatro artefactos que DEBEN autoalojarse, topónimos en nombre local, mapa base solo en neutrales, cúmulos sin color, descarga por zonas al guardar un festival y atribución ODbL como regla dura. <strong>Cartel de festivales grandes resuelto</strong> (§15.7 y C.6): ancho mínimo de columna de 120 px del que se deduce cuántas caben, filtro previo de escenarios en el orden de la organización, vista de una columna por defecto en teléfono y regla nueva —toda rejilla temporal tiene lista equivalente—. Retirado el gesto de cambiar escenarios visibles.</td>
+</tr>
+<tr>
+<td><strong>4.1.0</strong></td>
+<td>Reestructuración. Índice con enlaces, arranque en cinco minutos, seis partes que agrupan las secciones, anclas estables por nombre para que insertar deje de romper referencias, fusión de las cinco secciones enanas, cada sección de reglas emparejada con su anexo de implementación, glosario e índice de tokens. De 34 secciones planas a 19 numeradas en seis partes, más nueve anexos.</td>
+</tr>
+<tr>
+<td>4.0.0</td>
+<td><strong>Documento construible.</strong> Anexos A–I: CSS completo de tokens en los dos temas, anatomía de los diecinueve componentes con medidas exactas, especificación de las trece pantallas con contenido, acciones y comportamiento responsive, modelo de datos mínimo, mapa de rutas, textos definitivos, las doce animaciones en código, construcción CSS de los cuatro acabados de parche y orden de construcción recomendado. Antes de esta versión el sistema explicaba las reglas pero no permitía construir sin volver a preguntar.</td>
+</tr>
+<tr>
+<td>3.5.0</td>
+<td>Gamificación resuelta sin colores nuevos: los parches se jerarquizan por <strong>acabado</strong> —cosido, borde doble, remachado, lacrado— y el color lo pone el arte de cada festival. Cuatro criterios verificables que describen al festival, no al usuario. Reglas de incentivo con la prueba de «describe o induce». Descartada razonadamente la rampa de rareza de los MMO.</td>
+</tr>
+<tr>
+<td>3.4.0</td>
+<td>Regla de icono o palabra con sus tres condiciones. Las cuatro pantallas de recinto —ahora mismo, cartel por horas, choques y escenarios— especificadas y maquetadas. Diseño para el pulgar: objetivos de 44×44, acciones frecuentes abajo, sin desplazamientos ocultos. Catálogo de gestos, todos con alternativa por pulsación. Regla de mantenimiento: releer la sección afectada tras cada versión. Valores retirados, eliminados.</td>
+</tr>
+<tr>
+<td>3.3.0</td>
+<td>Un color, un significado. Foco de teclado con anillo doble neutro; selección sin color; error de formulario separado de bloqueado; verde de éxito como sexto color, restringido a avisos efímeros; deshabilitado documentado. Escalera de certeza separada de 0.088 a 0.133–0.141 y renombrada por rol. Metales revalorados a la banda fría con croma tope 0.06 y restringidos a degradados y emblemas. Valores retirados marcados <code>$deprecated</code>.</td>
+</tr>
+<tr>
+<td>3.2.0</td>
+<td><strong>Acento escaso.</strong> Solo <code>accion</code> y <code>bloqueado</code> llevan color; los grados de certeza pasan a una escalera de luminosidad casi sin croma. El suelo de contraste de los colores de estado baja de 4.5:1 a 3:1, que es el criterio que les corresponde por no ser texto. Token <code>certeza-baja</code> separado del texto terciario. Resultado medido: peor par de 0.029 a 0.070, separación media de 0.093 a 0.188, y la acción con 3.5× a 14× más croma que el resto.</td>
+</tr>
+<tr>
+<td>3.1.0</td>
+<td>Auditoría perceptual en OKLab con simulación de las tres dicromacias. Paleta remedida: luminosidad ordenada por urgencia, código de seis a cinco (<code>destacado</code> pasa a decorativo), croma de <code>certeza-alta</code> levantado para separarlo del neutro, Fragua reconstruida maximizando separación mutua en vez de contraste con el fondo. Token <code>linea-fuerte</code> para cumplir WCAG 1.4.11. Borde en la pastilla <code>bloqueado</code>. Techo de contraste del texto primario en 13.50.</td>
+</tr>
+<tr>
+<td>3.0.0</td>
+<td><strong>Léxico icónico de estados</strong>: nueve siluetas únicas, el icono dice qué y el color cuánto corre; texto en tooltip, leyenda y ficha. <strong>Capa de usuario completa</strong>: cuenta opcional local primero, preferencias, rutas múltiples, comparador, presupuesto, avisos con tres motivos, aportaciones con estado propio, ajustes, perfil como chupa de parches y consentimiento. <strong>Modo sin conexión</strong> y modo recinto. Formularios y validación. Test de equilibrio y comprobación en escala de grises.</td>
+</tr>
+<tr>
+<td>2.1.0</td>
+<td>Patrones de agregador, tokens en tres niveles, cinco estados de vista, esqueletos, tabla completa, sello de verificación, puntos de ruptura por contenedor.</td>
+</tr>
+<tr>
+<td>2.0.0</td>
+<td>Modo Fragua, Grenze Gotisch, metales y código de seis, perfil cultural.</td>
+</tr>
+<tr>
+<td>1.x</td>
+<td>Iteraciones de dirección: registro duro, sangre y tachuelas, código semántico, Should&#39;ve Known.</td>
+</tr>
+</tbody></table>
+<hr>
+<h4>18.1 Recetas de aplicación</h4>
+<p><strong>Web.</strong> Nocturno por defecto, <code>container queries</code>. Cuatro modos desde la misma barra. LCP &lt; 2.5 s, &lt; 1 MB inicial, fuentes e iconos autoalojados.
+<strong>App.</strong> Nocturno, densidad cómoda, Mi ruta como inicio, sin conexión desde el primer día.
+<strong>Newsletter.</strong> Cabecera en Should&#39;ve Known, cuerpo en Geist, un festival por bloque con el dato invariable.
+<strong>Redes.</strong> Vertical, lockup vertical, dato invariable siempre.
+<strong>Documento e impreso.</strong> Fragua, A4, grano ≤ 4 %, cifras Mono tabular.
+<strong>Evento.</strong> Fragua para credenciales, Nocturno para pantallas. Señalética legible a 10 m sin depender del color.</p>
+<hr>
+<p><a id="contrato"></a></p>
+<h3>19. Contrato de agente</h3>
+<blockquote>
+<p><strong>Implementación:</strong> Anexos A–K</p>
+</blockquote>
+<h4>19.1 Precedencia</h4>
+<p>1 Instrucción de la persona → 2 Accesibilidad y REGLAS DURAS → 3 Este documento → 4 Material previo → 5 Criterio propio. Si 1 contradice 2, señálalo y propón la alternativa accesible antes de ejecutar.</p>
+<h4>19.2 Algoritmo</h4>
+<pre><code>1 ¿Catálogo o usuario? (§12 | §14)
+→ 2 Modo (Nocturno por defecto | Fragua si claro o impreso)
+→ 3 Tono (§11: ¿primera vez o con prisa?)
+→ 4 Tokens (§19.3) · nunca desde un primitivo
+→ 5 Contenedor y punto de ruptura (§8.1)
+→ 6 ¿Hay dato de festival? dato invariable (§12.1)
+→ 7 ¿Estado? léxico icónico §6 · ¿Género? parche · ¿Tamaño? barras
+→ 8 ¿Es una vista? diseña sus cinco estados (§13.1)
+→ 9 ¿Hay dato externo? sello de verificación (§13)
+→ 10 ¿Funciona sin conexión? (§15)
+→ 11 Iconos Phosphor con nombre accesible (§9)
+→ 12 ¿Movimiento? solo del catálogo (§10)
+→ 13 Copy en el tono fijado (§11)
+→ 14 Checklist (§19.4) + prueba en escala de grises
+</code></pre>
+<p>Un valor fuera de §19.3 NO DEBE inventarse. Para medidas, textos o comportamiento de una pantalla concreta, ir a los <strong>Anexos A–K</strong> antes de improvisar.</p>
+<h4>19.3 Contrato semántico</h4>
+<p><strong>Los valores no están aquí.</strong> Color, espacio, radio, tipografía y duración viven en el <a href="#anexo-a">Anexo A</a>, que es lo que se ejecuta. Repetirlos en un JSON garantizaba que los dos se separaran, y es exactamente lo que pasó entre la v3.3.0 y la v4.2.0.</p>
+<p>Lo que sí vive aquí es lo que el CSS no sabe decir: <strong>qué significa cada estado, con qué icono se dibuja, qué gana cuando dos coinciden y qué NO lleva color.</strong></p>
+<pre><code class="language-json">{
+  &quot;$description&quot;: &quot;FestRoute · Yunque · v4.3.0 · contrato semántico. Los VALORES (color, espacio, radio, tipografía, duración) están en el Anexo A y NO se repiten aquí: este bloque solo declara qué significa cada cosa y con qué token se pinta.&quot;,
+  &quot;estado&quot;: {
+    &quot;$description&quot;: &quot;Léxico icónico · icono + color + nombre accesible obligatorio&quot;,
+    &quot;anunciado&quot;: {
+      &quot;icono&quot;: &quot;calendar-blank&quot;,
+      &quot;color&quot;: &quot;{certeza-baja}&quot;
+    },
+    &quot;cartel-parcial&quot;: {
+      &quot;icono&quot;: &quot;hourglass-medium&quot;,
+      &quot;color&quot;: &quot;{certeza-media}&quot;
+    },
+    &quot;cartel-completo&quot;: {
+      &quot;icono&quot;: &quot;check-circle&quot;,
+      &quot;color&quot;: &quot;{certeza-alta}&quot;
+    },
+    &quot;a-la-venta&quot;: {
+      &quot;icono&quot;: &quot;ticket&quot;,
+      &quot;color&quot;: &quot;{accion}&quot;
+    },
+    &quot;ultimas&quot;: {
+      &quot;icono&quot;: &quot;fire&quot;,
+      &quot;color&quot;: &quot;{accion}&quot;
+    },
+    &quot;agotado&quot;: {
+      &quot;icono&quot;: &quot;prohibit&quot;,
+      &quot;color&quot;: &quot;{bloqueado}&quot;
+    },
+    &quot;cancelado&quot;: {
+      &quot;icono&quot;: &quot;skull&quot;,
+      &quot;color&quot;: &quot;{bloqueado}&quot;
+    },
+    &quot;pasado&quot;: {
+      &quot;icono&quot;: &quot;clock-counter-clockwise&quot;,
+      &quot;color&quot;: &quot;{terciario}&quot;,
+      &quot;opacidad&quot;: &quot;55%&quot;
+    },
+    &quot;novedad&quot;: {
+      &quot;icono&quot;: &quot;lightning&quot;,
+      &quot;color&quot;: &quot;{aviso}&quot;
+    },
+    &quot;cabeza-cartel&quot;: {
+      &quot;icono&quot;: &quot;crown-simple&quot;,
+      &quot;color&quot;: null,
+      &quot;tipo&quot;: &quot;adjetivo&quot;,
+      &quot;$description&quot;: &quot;NO lleva color desde la v3.2.0: icono y peso. Va detras del estado.&quot;
+    },
+    &quot;prioridad&quot;: {
+      &quot;$value&quot;: [
+        &quot;bloqueado&quot;,
+        &quot;accion&quot;,
+        &quot;certeza-media&quot;,
+        &quot;certeza-alta&quot;,
+        &quot;neutro&quot;
+      ]
+    },
+    &quot;tamano&quot;: {
+      &quot;tarjeta&quot;: &quot;18px&quot;,
+      &quot;tabla&quot;: &quot;16px&quot;,
+      &quot;mapa&quot;: &quot;14px&quot;,
+      &quot;minimo&quot;: &quot;14px&quot;
+    }
+  },
+  &quot;aportacion&quot;: {
+    &quot;propuesta&quot;: {
+      &quot;icono&quot;: &quot;hourglass-medium&quot;,
+      &quot;color&quot;: &quot;{certeza-media}&quot;
+    },
+    &quot;en-revision&quot;: {
+      &quot;icono&quot;: &quot;hourglass-medium&quot;,
+      &quot;color&quot;: &quot;{aviso}&quot;
+    },
+    &quot;aceptada&quot;: {
+      &quot;icono&quot;: &quot;check-circle&quot;,
+      &quot;color&quot;: &quot;{certeza-alta}&quot;
+    },
+    &quot;rechazada&quot;: {
+      &quot;icono&quot;: &quot;x-circle&quot;,
+      &quot;color&quot;: &quot;{terciario}&quot;
+    }
+  },
+  &quot;componente&quot;: {
+    &quot;boton-primario&quot;: {
+      &quot;fondo&quot;: &quot;{accion}&quot;,
+      &quot;texto&quot;: &quot;{sobre-accion}&quot;
+    },
+    &quot;parche-genero&quot;: {
+      &quot;fondo&quot;: &quot;{fondo}&quot;,
+      &quot;borde&quot;: &quot;{terciario}&quot;,
+      &quot;radio&quot;: &quot;0px&quot;
+    },
+    &quot;fila-tabla&quot;: {
+      &quot;altura&quot;: &quot;44px&quot;
+    },
+    &quot;esqueleto&quot;: {
+      &quot;fondo&quot;: &quot;{linea}&quot;,
+      &quot;pulso&quot;: &quot;1400ms&quot;
+    },
+    &quot;foco&quot;: {
+      &quot;anillo&quot;: &quot;{foco-1}&quot;,
+      &quot;aro&quot;: &quot;{foco-2}&quot;,
+      &quot;grosor&quot;: &quot;2px&quot;,
+      &quot;separacion&quot;: &quot;2px&quot;,
+      &quot;aro-grosor&quot;: &quot;4px&quot;
+    },
+    &quot;sin-conexion&quot;: {
+      &quot;color&quot;: &quot;{terciario}&quot;,
+      &quot;icono&quot;: &quot;cloud-slash&quot;
+    },
+    &quot;tooltip&quot;: {
+      &quot;fondo&quot;: &quot;{sup-alta}&quot;,
+      &quot;radio&quot;: &quot;8px&quot;,
+      &quot;disparo&quot;: [
+        &quot;hover&quot;,
+        &quot;focus&quot;,
+        &quot;tap&quot;
+      ]
+    },
+    &quot;seleccion&quot;: {
+      &quot;fondo&quot;: &quot;{sup-alta}&quot;,
+      &quot;borde&quot;: &quot;{linea-fuerte}&quot;,
+      &quot;peso&quot;: 600,
+      &quot;color&quot;: null
+    },
+    &quot;campo-error&quot;: {
+      &quot;borde&quot;: &quot;{error}&quot;,
+      &quot;texto&quot;: &quot;{error}&quot;,
+      &quot;relleno&quot;: null
+    }
+  },
+  &quot;icon&quot;: {
+    &quot;sistema&quot;: {
+      &quot;$value&quot;: &quot;phosphor&quot;
+    },
+    &quot;defecto&quot;: {
+      &quot;$value&quot;: &quot;regular&quot;
+    },
+    &quot;activo&quot;: {
+      &quot;$value&quot;: &quot;fill&quot;
+    },
+    &quot;prohibidos&quot;: {
+      &quot;$value&quot;: [
+        &quot;thin&quot;,
+        &quot;duotone&quot;,
+        &quot;emoji&quot;
+      ]
+    },
+    &quot;propios&quot;: {
+      &quot;$value&quot;: []
+    }
+  },
+  &quot;mapa&quot;: {
+    &quot;$description&quot;: &quot;v4.2.0 · §13.3. El mapa base es fondo: ningun color del codigo entra en el estilo.&quot;,
+    &quot;pila&quot;: {
+      &quot;motor&quot;: {
+        &quot;$value&quot;: &quot;maplibre-gl-js&quot;,
+        &quot;licencia&quot;: &quot;BSD-3-Clause&quot;
+      },
+      &quot;formato&quot;: {
+        &quot;$value&quot;: &quot;pmtiles&quot;
+      },
+      &quot;teselas&quot;: {
+        &quot;$value&quot;: &quot;protomaps-basemap&quot;,
+        &quot;licencia&quot;: &quot;ODbL · obra derivada&quot;
+      },
+      &quot;datos&quot;: {
+        &quot;$value&quot;: &quot;openstreetmap&quot;,
+        &quot;licencia&quot;: &quot;ODbL&quot;
+      },
+      &quot;suplente&quot;: {
+        &quot;$value&quot;: &quot;openfreemap&quot;
+      }
+    },
+    &quot;autoalojado&quot;: {
+      &quot;$value&quot;: [
+        &quot;teselas&quot;,
+        &quot;estilo&quot;,
+        &quot;glifos&quot;,
+        &quot;sprites&quot;
+      ]
+    },
+    &quot;etiquetas&quot;: {
+      &quot;campo&quot;: &quot;name&quot;,
+      &quot;familia&quot;: &quot;{texto}&quot;,
+      &quot;contraste-minimo&quot;: &quot;4.5:1&quot;,
+      &quot;halo&quot;: true
+    },
+    &quot;camara&quot;: {
+      &quot;pitch&quot;: 0,
+      &quot;bearing&quot;: 0,
+      &quot;rotacion&quot;: false,
+      &quot;vuelo&quot;: false,
+      &quot;secuestro-rueda&quot;: false
+    },
+    &quot;marcador&quot;: {
+      &quot;diametro&quot;: &quot;22px&quot;,
+      &quot;icono&quot;: &quot;14px&quot;,
+      &quot;anillo&quot;: &quot;1px&quot;,
+      &quot;objetivo-tactil&quot;: &quot;44px&quot;
+    },
+    &quot;cumulo&quot;: {
+      &quot;borde&quot;: &quot;{linea-fuerte}&quot;,
+      &quot;color&quot;: null,
+      &quot;agrupa-bajo&quot;: &quot;24px&quot;
+    },
+    &quot;descarga&quot;: {
+      &quot;paquetes&quot;: [
+        &quot;europa-indice&quot;,
+        &quot;comarca-guardada&quot;,
+        &quot;recinto&quot;
+      ],
+      &quot;disparo&quot;: &quot;al guardar&quot;,
+      &quot;tamano-visible&quot;: true
+    },
+    &quot;atribucion&quot;: {
+      &quot;$value&quot;: &quot;© OpenStreetMap · Protomaps&quot;,
+      &quot;visible&quot;: true,
+      &quot;ocultable&quot;: false
+    }
+  },
+  &quot;cartel&quot;: {
+    &quot;$description&quot;: &quot;v4.2.0 · §15.7. Rejilla de horarios del dia de festival.&quot;,
+    &quot;columna-min&quot;: {
+      &quot;$value&quot;: &quot;120px&quot;
+    },
+    &quot;canal-horas&quot;: {
+      &quot;$value&quot;: &quot;38px&quot;
+    },
+    &quot;fila-min&quot;: {
+      &quot;$value&quot;: &quot;44px&quot;
+    },
+    &quot;vista-defecto&quot;: {
+      &quot;menor-700&quot;: &quot;lista&quot;,
+      &quot;desde-700&quot;: &quot;rejilla&quot;,
+      &quot;memoria&quot;: &quot;por festival&quot;
+    },
+    &quot;borde-mio&quot;: {
+      &quot;$value&quot;: &quot;{accion}&quot;
+    },
+    &quot;borde-choque&quot;: {
+      &quot;$value&quot;: &quot;{error}&quot;,
+      &quot;trazo&quot;: &quot;rayas&quot;
+    },
+    &quot;orden-escenarios&quot;: {
+      &quot;$value&quot;: &quot;el que publica la organizacion&quot;,
+      &quot;prohibido&quot;: [
+        &quot;aforo&quot;,
+        &quot;importancia&quot;,
+        &quot;popularidad&quot;
+      ]
+    },
+    &quot;escenarios-visibles&quot;: {
+      &quot;$description&quot;: &quot;floor((contenedor - canal-horas - margenes) / columna-min). Lo que no cabe no se esconde: se pasa a lista.&quot;
+    }
+  },
+  &quot;dato&quot;: {
+    &quot;invariable&quot;: {
+      &quot;$value&quot;: [
+        &quot;nombre&quot;,
+        &quot;fechas&quot;,
+        &quot;ciudad-pais&quot;,
+        &quot;estado&quot;
+      ]
+    },
+    &quot;orden-defecto&quot;: {
+      &quot;$value&quot;: &quot;cronologico&quot;
+    },
+    &quot;orden-prohibido&quot;: {
+      &quot;$value&quot;: [
+        &quot;popularidad&quot;
+      ]
+    },
+    &quot;vista-estados&quot;: {
+      &quot;$value&quot;: [
+        &quot;cargando&quot;,
+        &quot;vacio-filtros&quot;,
+        &quot;vacio-origen&quot;,
+        &quot;error&quot;,
+        &quot;obsoleto&quot;
+      ]
+    },
+    &quot;verificacion&quot;: {
+      &quot;$value&quot;: [
+        &quot;fuente&quot;,
+        &quot;fecha&quot;,
+        &quot;certeza&quot;
+      ]
+    },
+    &quot;sin-conexion&quot;: {
+      &quot;$value&quot;: [
+        &quot;rutas&quot;,
+        &quot;guardados&quot;,
+        &quot;horarios&quot;,
+        &quot;dato-invariable&quot;,
+        &quot;entradas&quot;
+      ]
+    },
+    &quot;avisos&quot;: {
+      &quot;$value&quot;: [
+        &quot;salen-entradas&quot;,
+        &quot;cambia-cartel&quot;,
+        &quot;cancelacion&quot;
+      ]
+    },
+    &quot;cuenta&quot;: {
+      &quot;$value&quot;: [
+        &quot;anonimo&quot;,
+        &quot;registrado&quot;,
+        &quot;colaborador&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h4>19.4 Checklist previa a la entrega</h4>
+<p><strong>Sistema</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Modo y tono correctos; dosis Ritual 30 / Fanzine 70. Pasa el <strong>test de equilibrio</strong>: tres pesos y tres o cuatro puntos de color.</li>
+<li><input disabled="" type="checkbox"> El contorno de todo control usa <code>linea-fuerte</code>, no <code>linea</code>.</li>
+<li><input disabled="" type="checkbox"> <strong>Solo <code>accion</code> y <code>bloqueado</code> llevan color</strong> en el listado. Si ves tres o más colores en una lista, sobra alguno.</li>
+<li><input disabled="" type="checkbox"> <code>aviso</code> y <code>exito</code> no aparecen dentro de un listado.</li>
+<li><input disabled="" type="checkbox"> El foco es el anillo doble neutro, no un color del código.</li>
+<li><input disabled="" type="checkbox"> La selección y el filtro activo no usan color.</li>
+<li><input disabled="" type="checkbox"> El error de formulario usa <code>error</code>, no <code>bloqueado</code>, y solo en borde y texto.</li>
+<li><input disabled="" type="checkbox"> Ningún metal aparece como relleno plano ni como color de un icono de estado.</li>
+<li><input disabled="" type="checkbox"> Cada icono sin palabra pasa las tres condiciones de §9.3.</li>
+<li><input disabled="" type="checkbox"> El modo de color se conmuta con <code>sun</code> y <code>moon</code>, no con las palabras de marca.</li>
+<li><input disabled="" type="checkbox"> Ninguna acción que borre, pague o comprometa va sin palabra.</li>
+<li><input disabled="" type="checkbox"> Objetivos táctiles de 44×44 y acciones frecuentes al alcance del pulgar.</li>
+<li><input disabled="" type="checkbox"> Todo gesto tiene una alternativa por pulsación.</li>
+<li><input disabled="" type="checkbox"> Colores solo de §19.3, y <strong>solo desde la capa semántica</strong>: ningún componente apunta a un primitivo.</li>
+<li><input disabled="" type="checkbox"> Máximo dos colores del código a la vez; en listado, uno por fila.</li>
+<li><input disabled="" type="checkbox"> Texto de lectura ≥ 7:1. <code>terciario</code> nunca para leer. <code>bloqueado</code> nunca como texto.</li>
+<li><input disabled="" type="checkbox"> Tipografía en su territorio; una sola decorativa por pieza. Nombres con <strong>diacríticos</strong> correctos.</li>
+<li><input disabled="" type="checkbox"> Espaciado de la escala de 4; radio 8 en controles, 0 en tabla y parches; filas de 44 px.</li>
+<li><input disabled="" type="checkbox"> Puntos de ruptura medidos sobre el contenedor.</li>
+</ul>
+<p><strong>Catálogo</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> El <strong>dato invariable</strong> aparece en los cuatro modos.</li>
+<li><input disabled="" type="checkbox"> Estado con <strong>icono del léxico §6</strong>, nombre accesible, tooltip en hover y foco, y leyenda en la vista.</li>
+<li><input disabled="" type="checkbox"> Un solo estado principal por objeto, según la prioridad declarada.</li>
+<li><input disabled="" type="checkbox"> Filtros con categoría escrita, «Quitar todos», contador visible y estado en la URL.</li>
+<li><input disabled="" type="checkbox"> Orden cronológico por defecto. Los diez géneros visibles sin desplegar.</li>
+<li><input disabled="" type="checkbox"> Tabla con cabecera ordenable de tres estados, paginación, y nombre, fechas y estado siempre presentes.</li>
+<li><input disabled="" type="checkbox"> Toda ficha con <strong>sello de verificación</strong>; aviso si pasa de 30 días.</li>
+<li><input disabled="" type="checkbox"> Cartel ajeno en marco 3:4 con velo y <code>alt</code>; solo el estado se le superpone.</li>
+</ul>
+<p><strong>Usuario</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>Ningún muro de registro.</strong> Todo lo de consulta y planificación funciona sin cuenta.</li>
+<li><input disabled="" type="checkbox"> La invitación a registrarse aparece como mucho una vez por sesión y en un momento útil.</li>
+<li><input disabled="" type="checkbox"> Exportar disponible siempre. Cerrar sesión no borra lo local, y se dice.</li>
+<li><input disabled="" type="checkbox"> Avisos solo por los tres motivos; todos desactivables; ninguno promocional.</li>
+<li><input disabled="" type="checkbox"> Aportaciones con estado visible y motivo escrito si se rechazan.</li>
+<li><input disabled="" type="checkbox"> Sin puntos, niveles, rachas ni clasificaciones.</li>
+<li><input disabled="" type="checkbox"> Todo incentivo pasa la prueba: describe algo que ocurrió, no induce a que ocurra.</li>
+<li><input disabled="" type="checkbox"> Los acabados de parche se distinguen en escala de grises y a 60 px.</li>
+<li><input disabled="" type="checkbox"> Consentimiento con rechazo tan fácil como la aceptación, sin casillas premarcadas.</li>
+<li><input disabled="" type="checkbox"> Borrar cuenta visible en Ajustes.</li>
+</ul>
+<p><strong>Mapa y cartel de horarios</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> El mapa base se dibuja <strong>solo con neutrales</strong>; ningún color del código en el estilo.</li>
+<li><input disabled="" type="checkbox"> Los cuatro artefactos —teselas, estilo, glifos y sprites— se sirven desde el dominio propio.</li>
+<li><input disabled="" type="checkbox"> Topónimos en su <strong>nombre local</strong>, no en inglés.</li>
+<li><input disabled="" type="checkbox"> <strong>«© OpenStreetMap» visible</strong> en el mapa, no escondido tras un icono. Es la licencia, no un crédito.</li>
+<li><input disabled="" type="checkbox"> Cúmulos sin color; marcadores con objetivo táctil de 44×44.</li>
+<li><input disabled="" type="checkbox"> Lista equivalente a un <code>Tab</code> del mapa, con los mismos filtros y el mismo orden.</li>
+<li><input disabled="" type="checkbox"> Sin secuestro del desplazamiento; sin inclinación ni rotación; sin vuelos de cámara.</li>
+<li><input disabled="" type="checkbox"> Ninguna petición a terceros al mover el mapa; ubicación solo si el usuario la pide.</li>
+<li><input disabled="" type="checkbox"> Ninguna columna del cartel por debajo de <strong>120 px</strong>. Si la selección no cabe, se pasa a lista y <strong>se dice</strong>.</li>
+<li><input disabled="" type="checkbox"> El selector de escenarios muestra su estado con cifras («3 de 7») y tiene salida a la lista completa.</li>
+<li><input disabled="" type="checkbox"> Los escenarios van en el <strong>orden de la organización</strong>, nunca por aforo ni importancia.</li>
+<li><input disabled="" type="checkbox"> La rejilla temporal tiene <strong>lista equivalente</strong>, con hora como encabezado de fila y escenario como encabezado de columna.</li>
+</ul>
+<p><strong>Página e idiomas</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> El contenido respeta <code>ancho-max</code>; solo mapa, cartel por horas, portada y corte diagonal van a sangre.</li>
+<li><input disabled="" type="checkbox"> La prosa no pasa de <code>ancho-lectura</code>, tampoco dentro de paneles anchos.</li>
+<li><input disabled="" type="checkbox"> La semana empieza en lunes; el reloj es de 24 horas; la fecha lleva el mes escrito, jamás <code>10/08</code>.</li>
+<li><input disabled="" type="checkbox"> Buscar sin diacríticos encuentra; mostrar conserva la ortografía exacta.</li>
+<li><input disabled="" type="checkbox"> La pieza aguanta +35 % de texto sin recortar; ningún control lleva puntos suspensivos.</li>
+<li><input disabled="" type="checkbox"> Ninguna cadena concatenada; los plurales siguen las reglas del idioma activo.</li>
+<li><input disabled="" type="checkbox"> El orden por nombre usa colación local.</li>
+</ul>
+<p><strong>Robustez</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> La vista tiene sus <strong>cinco estados</strong> diseñados, con copy y salida.</li>
+<li><input disabled="" type="checkbox"> Carga con esqueletos, nunca ruletas; <code>aria-busy</code> puesto.</li>
+<li><input disabled="" type="checkbox"> <strong>Sin conexión:</strong> rutas, guardados y horarios accesibles; lo no disponible atenuado y explicado, nunca desaparecido; acciones encoladas.</li>
+<li><input disabled="" type="checkbox"> Formularios: validación al salir del campo, error junto al campo, foco al primero, botón nunca desactivado sin explicación.</li>
+<li><input disabled="" type="checkbox"> Movimiento solo del catálogo §10; nada animado en tabla, calendario ni mapa; foco sin animar; <code>prefers-reduced-motion</code> respetado.</li>
+<li><input disabled="" type="checkbox"> <strong>Prueba en escala de grises superada:</strong> los estados se distinguen sin color.</li>
+<li><input disabled="" type="checkbox"> Todo activo con licencia gratuita de uso comercial archivada.</li>
+<li><input disabled="" type="checkbox"> Se ha retirado un elemento antes de entregar.</li>
+</ul>
+<h4>19.5 Fragmento de instrucción reutilizable</h4>
+<p>Se pega tal cual en cualquier agente. <strong>Es la única parte del documento que repite valores a propósito:</strong> tiene que funcionar sin el resto delante.</p>
+<pre><code>Diseña con el FestRoute Design System «Yunque». Agregador y planificador de festivales
+de metal en Europa. Quien lo usa lleva veinte años leyendo interfaces densas: sin tono
+tutorial, sin asistentes de tres pasos, sin gamificación competitiva.
+
+LAS TRES REGLAS QUE DECIDEN TODO
+1. El color dice QUÉ TIENE QUE HACER EL USUARIO, nunca de qué categoría es algo.
+2. El icono dice qué; el color, cuánto corre; la palabra está a un gesto de distancia.
+3. La ruta primero: nombre, fechas, ciudad y país, y estado, antes que cualquier efecto.
+
+ALGORITMO
+1 ¿Es catálogo o es capa de usuario?
+2 Modo: Nocturno por defecto; Fragua si es claro o impreso.
+3 ¿Hay dato de festival? Entonces el dato invariable, completo, sin excepción.
+4 ¿Hay estado? Icono del léxico + aria-label + tooltip en hover Y en foco + leyenda.
+5 ¿Es una vista? Diseña sus cinco estados: cargando, vacío por filtros, vacío de
+  origen, error y dato obsoleto. Los cinco, con copy y con salida.
+6 ¿Hay dato de terceros? Sello de verificación: fuente, fecha y certeza.
+7 ¿Funciona sin cobertura? Si no, no está terminado.
+8 Comprueba en escala de grises antes de dar nada por bueno.
+
+COLOR · Nocturno / Fragua
+fondo #0B0C0D / #EFECE6 · sup #141618 / #F8F6F2 · sup-alta #1E2124 / #FFFFFF
+linea #2B2F33 / #D2CCC1 · linea-fuerte #65696F / #8A857E (TODO contorno de control)
+terciario #8A9199 / #5A6169 (jamás para leer) · secundario #C3C9CE / #3A3E43
+primario #D2D7DB / #14161A · hueso #E8E2D6
+Solo DOS cosas llevan color de verdad:
+  accion #FE8449 / #B84800 — actúa ya: comprar, guardar, añadir. Una por vista.
+  bloqueado, relleno #861118 con texto fijo encima (#E8E2D6 noct / #FFFFFF fragua)
+  — olvídalo: agotado o cancelado.
+Los grados de certeza van en luminosidad, casi sin croma:
+  certeza-alta #ABC1B4 / #394D42 · media #9F916F / #786A4A · baja #646A70 / #81878D
+aviso #4AADF5 / #0068A4 y exito #52B766 / #017F31 JAMÁS dentro de un listado.
+error #E0554A / #B02218 solo en borde y texto, nunca en relleno.
+Foco: anillo doble neutro, #E8E2D6 de 2px sobre aro #0B0C0D de 4px. Nunca accion.
+Botón primario: texto #0B0C0D en Nocturno y #FFFFFF en Fragua sobre la acción.
+Selección y filtro activo: superficie elevada + linea-fuerte + peso. SIN COLOR.
+Los colores de estado son iconos: su suelo es 3:1, no 4.5:1.
+
+LOS NUEVE ESTADOS (icono Phosphor)
+anunciado calendar-blank · parcial hourglass-medium · completo check-circle
+a la venta ticket · últimas fire · agotado prohibit · cancelado skull
+pasado clock-counter-clockwise al 55% · novedad lightning
+Cabeza de cartel es crown-simple, va detrás y NO lleva color.
+Uno solo por objeto. Si coinciden, gana el más urgente. Nunca por debajo de 14px.
+
+SIN COLOR, POR REGLA
+Género = parche escrito: Mono 700, versales, +0.14em, radio 0.
+Tamaño = de una a cuatro barras de 2px, más el nombre. Descriptivo, nunca jerárquico.
+Orden por defecto cronológico. Por popularidad NO EXISTE.
+
+TIPOGRAFÍA
+Should&#39;ve Known en títulos ≥28px · Grenze Gotisch en nombres de festival
+Geist para leer · Geist Mono tabular para toda cifra · Pirata One de acento
+Una decorativa por pieza. Ninguna en tabla, calendario, mapa ni formulario.
+Diacríticos exactos, siempre: Jaroměř, Gdańsk, Königsbrunn.
+
+MEDIDAS
+Escala de 4 para huecos: 4 8 12 16 24 32 48 64 96 128.
+Radio 8 en controles, 0 en tabla y parches. Fila de tabla 44. Objetivo táctil 44×44.
+Rupturas medidas sobre el CONTENEDOR, no la ventana: 560 / 700 / 860 / 900.
+
+MAPA
+MapLibre GL JS + teselas PMTiles de Protomaps sobre OpenStreetMap, todo autoalojado:
+teselas, estilo, glifos y sprites. El mapa base solo con neutrales; los únicos objetos
+con significado son los marcadores. Topónimos en su nombre local. Cúmulos sin color.
+Sin inclinación, sin rotación, sin vuelos, sin secuestrar la rueda. Lista equivalente
+a un Tab. «© OpenStreetMap» visible siempre: lo exige la licencia.
+
+CARTEL POR HORAS
+Columna mínima 120px sobre canal de horas de 38px: de ahí sale cuántos escenarios
+caben. Si no caben, filtro previo —en el orden de la organización, nunca por aforo— y
+vista de una columna, que es la de por defecto por debajo de 700px.
+Toda rejilla temporal tiene lista equivalente.
+
+PÁGINA
+Contenido a ancho máximo de 1200px, centrado. La prosa a 66ch, nunca al ancho de la
+página. A sangre solo el mapa, la rejilla del cartel y la portada. No hay retícula de
+doce columnas: cada componente trae la suya y se mide sobre su contenedor.
+
+IDIOMAS
+La interfaz se traduce; el dato jamás: Praha, no Praga. Buscar sin diacríticos
+encuentra (jaromer → Jaroměř); mostrar conserva la ortografía exacta. Reloj de 24h.
+Fecha con mes escrito, jamás 10/08. La semana empieza en lunes. Todo aguanta +35% de
+texto sin recortar y ningún control lleva puntos suspensivos. Sin cadenas concatenadas;
+plurales según el idioma. Precio en la moneda de venta; la conversión, marcada como
+estimación.
+
+PROHIBIDO
+Muro de registro · puntos, niveles, rachas o clasificaciones · orden por popularidad
+tres puntos con acciones variables · emojis · iconos duotone o thin · fotografía de
+stock · texturas descargadas · parallax, glitch o brillo permanente · ruletas de carga
+autoplay con sonido · animar el foco · un botón desactivado sin explicar por qué.
+
+TONO
+Cálido para quien llega y SIEMPRE para errores, cancelaciones y avisos malos.
+Directo para quien ya está dentro. El error dice qué pasó y cómo seguir; no se
+disculpa. Un control conserva el mismo nombre en todo el recorrido.
+
+SUELO
+WCAG 2.2 AA, con 7:1 en texto de lectura. Y la pantalla tiene que seguir funcionando
+en escala de grises: si dos estados no se distinguen sin color, no sale.
+</code></pre>
+<hr>
+<p><em>FestRoute · festroute.com · Sistema «Yunque» v5.0.0-rc.1 · 2026-08-06</em>
+<em><strong>La ruta primero.</strong></em></p>
+<hr>
+<h2>Anexos de implementación</h2>
+<p>Todo lo que hace falta para construir la aplicación sin volver a preguntar. Las secciones §2–§19 dicen <strong>qué</strong> y <strong>por qué</strong>; estos anexos dicen <strong>cuánto</strong> y <strong>cómo</strong>.</p>
+<hr>
+<hr>
+<h2>Parte VI · Implementación</h2>
+<p><a id="anexo-a"></a></p>
+<h3>Anexo A · CSS base</h3>
+<p>Copiar tal cual. Es la única definición de tokens que existe; cualquier valor fuera de aquí es un error.</p>
+<pre><code class="language-css">:root{
+  /* superficie */
+  --fondo:#0B0C0D; --sup:#141618; --sup-alta:#1E2124;
+  --linea:#2B2F33; --linea-fuerte:#65696F;
+  --terciario:#8A9199; --secundario:#C3C9CE; --primario:#D2D7DB; --hueso:#E8E2D6;
+  /* código · qué tiene que hacer el usuario */
+  --accion:#FE8449;
+  --bloqueado:#861118; --bloqueado-borde:#B14E49;
+  --certeza-alta:#ABC1B4; --certeza-media:#9F916F; --certeza-baja:#646A70;
+  --aviso:#4AADF5;
+  /* roles de interfaz */
+  --exito:#52B766; --error:#E0554A;
+  --foco-1:#E8E2D6; --foco-2:#0B0C0D;
+  /* texto sobre rellenos de color · §5.4 · NO cambian de tema como hueso */
+  --sobre-oscuro:#E8E2D6; --sobre-accion:#0B0C0D;
+  /* materia · solo degradados y aros de emblema */
+  --plata-viva:#D2D7DB; --acero:#628F94; --estano:#94A0AA;
+  /* espacio, forma, tiempo */
+  --s100:4px; --s200:8px; --s300:12px; --s400:16px; --s500:24px;
+  --s600:32px; --s700:48px; --s800:64px; --s900:96px; --s1000:128px;
+  --r:8px; --r0:0px; --r-completo:9999px;
+  /* página · §8.3 */
+  --ancho-max:1200px; --ancho-lectura:66ch; --margen-pagina:var(--s400);
+  --ruta:cubic-bezier(.2,0,0,1);
+  --sombra:none; --grano:.08;
+  /* tipografía */
+  --titulo:&#39;Shouldve Known&#39;,&#39;Grenze Gotisch Variable&#39;,Impact,serif;
+  --gotica:&#39;Grenze Gotisch Variable&#39;,serif;
+  --texto:&#39;Geist&#39;,&#39;Inter&#39;,&#39;Segoe UI&#39;,Arial,sans-serif;
+  --dato:&#39;Geist Mono&#39;,&#39;Consolas&#39;,monospace;
+}
+
+:root[data-tema=&quot;claro&quot;]{
+  --fondo:#EFECE6; --sup:#F8F6F2; --sup-alta:#FFFFFF;
+  --linea:#D2CCC1; --linea-fuerte:#8A857E;
+  --terciario:#5A6169; --secundario:#3A3E43; --primario:#14161A; --hueso:#14161A;
+  --accion:#B84800;
+  --bloqueado:#861118; --bloqueado-borde:#861118;
+  --certeza-alta:#394D42; --certeza-media:#786A4A; --certeza-baja:#81878D;
+  --aviso:#0068A4;
+  --exito:#017F31; --error:#B02218;
+  --foco-1:#14161A; --foco-2:#FFFFFF;
+  --sobre-oscuro:#FFFFFF; --sobre-accion:#FFFFFF;
+  --plata-viva:#5A6169; --acero:#366368; --estano:#6A767F;
+  --sombra:0 1px 2px rgba(20,22,26,.10), 0 8px 24px rgba(20,22,26,.06);
+  --grano:.04;
+}
+
+/* base */
+body{
+  margin:0; background:var(--fondo); color:var(--secundario);
+  font-family:var(--texto); font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* grano generado · anclado al viewport, nunca sobre superficies */
+body::before{
+  content:&quot;&quot;; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:var(--grano);
+  background-image:url(&quot;data:image/svg+xml;utf8,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;300&#39; height=&#39;300&#39;&gt;&lt;filter id=&#39;n&#39;&gt;&lt;feTurbulence type=&#39;fractalNoise&#39; baseFrequency=&#39;0.9&#39; numOctaves=&#39;4&#39; stitchTiles=&#39;stitch&#39;/&gt;&lt;feColorMatrix type=&#39;saturate&#39; values=&#39;0&#39;/&gt;&lt;/filter&gt;&lt;rect width=&#39;300&#39; height=&#39;300&#39; filter=&#39;url(%23n)&#39;/&gt;&lt;/svg&gt;&quot;);
+}
+
+/* foco · anillo doble neutro, sin color y sin animación */
+:focus-visible{
+  outline:2px solid var(--foco-1);
+  outline-offset:2px;
+  box-shadow:0 0 0 4px var(--foco-2);
+}
+
+/* contenedores · las rupturas se miden aquí, no en la ventana */
+.app{container-type:inline-size; container-name:app;}
+.pagina{max-width:var(--ancho-max); margin-inline:auto; padding-inline:var(--margen-pagina)}
+@container app (min-width:700px){ .pagina{--margen-pagina:var(--s600)} }
+.prosa{max-width:var(--ancho-lectura)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}
+</code></pre>
+<p><strong>Tipografía · escala 1.250 sobre base 16.</strong></p>
+<pre><code class="language-css">--display-xl:3.815rem; --display-l:3.052rem; --display-m:2.441rem;
+--titulo-l:1.953rem;   --titulo-m:1.563rem;  --titulo-s:1.250rem;
+--cuerpo-l:1.125rem;   --cuerpo-m:1rem;      --cuerpo-s:0.875rem;
+--etiqueta:0.750rem;   /* Mono 700, versales, letter-spacing .14em */
+</code></pre>
+<p>Interlínea 1.0 en títulos · 1.55 en cuerpo · 1.35 en datos. Cifras siempre <code>font-variant-numeric: tabular-nums</code>.</p>
+<hr>
+<p><a id="anexo-b"></a></p>
+<h3>Anexo B · Anatomía de componentes</h3>
+<p>Medidas exactas. <strong>Los huecos y los márgenes salen de la escala de 4; los tamaños de componente, no.</strong> Un objetivo táctil de 44, un icono de 19 o una fila de 44 son medidas de ergonomía, no de retícula, y forzarlas a la escala las empeoraría. Lo que sí es innegociable: <strong>ningún icono por debajo de 14</strong> (§6.4).</p>
+<p><strong>Cerrado con render (v5.0.0):</strong> a 14 px dentro del círculo de 22, las cuencas de la calavera colapsan y la silueta se pierde; a 15 px se lee. El icono en el círculo de tabla va a <strong>15 px</strong>, en <code>bold</code> como ya manda §9 por debajo de 16. El suelo general de 14 no cambia.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Medidas</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Botón</strong></td>
+<td>Alto 40 (pequeño 32) · padding lateral 16 (pequeño 12) · radio 8 · icono 16 · hueco icono-texto 8 · peso 600 · tamaño 0.9rem</td>
+</tr>
+<tr>
+<td><strong>Botón primario</strong></td>
+<td>Fondo <code>accion</code>, texto <code>fondo</code>. <strong>Uno por vista</strong></td>
+</tr>
+<tr>
+<td><strong>Botón fantasma</strong></td>
+<td>Transparente, borde 1 px <code>linea-fuerte</code></td>
+</tr>
+<tr>
+<td><strong>Botón destructivo</strong></td>
+<td>Contorno <code>error</code>; se rellena al hover con <code>bloqueado</code> y texto <code>sobre-oscuro</code></td>
+</tr>
+<tr>
+<td><strong>Campo</strong></td>
+<td>Alto 44 en buscador, 40 en formulario · padding lateral 12 · borde 1 px <code>linea-fuerte</code> · radio 8 · etiqueta encima en <code>etiqueta</code></td>
+</tr>
+<tr>
+<td><strong>Icono-botón</strong></td>
+<td>40×40 · icono 19 · borde 1 px <code>linea-fuerte</code> · radio 8</td>
+</tr>
+<tr>
+<td><strong>Tarjeta de festival</strong></td>
+<td>Radio 8 · borde 1 px <code>linea</code> · cartel 3:4 con borde inferior · cuerpo con padding 16 y hueco 8 · título <code>gotica</code> 700 a 1.35rem · hover: borde a <code>terciario</code></td>
+</tr>
+<tr>
+<td><strong>Icono de estado sobre cartel</strong></td>
+<td>Círculo 26 (22 en tabla) · borde 1 px del color del estado · icono <strong>15, también en tabla</strong> (validado con render, en <code>bold</code>) · posición: 12 desde arriba y desde la derecha</td>
+</tr>
+<tr>
+<td><strong>Fila de tabla</strong></td>
+<td>Alto <strong>44</strong> · padding 12 · borde inferior 1 px <code>linea</code> · hover <code>sup-alta</code></td>
+</tr>
+<tr>
+<td><strong>Cabecera de tabla</strong></td>
+<td><code>etiqueta</code> en <code>terciario</code> · borde inferior 1 px · <code>white-space: nowrap</code></td>
+</tr>
+<tr>
+<td><strong>Pastilla de estado</strong></td>
+<td>Padding 4×9 · radio 8 · borde 1 px <code>currentColor</code> · Mono 700 a 0.68rem con tracking .1em</td>
+</tr>
+<tr>
+<td><strong>Parche de género</strong></td>
+<td>Padding 3×7 · <strong>radio 0</strong> · borde 1 px <code>linea-fuerte</code> · Mono 700 a 0.64rem con tracking .14em</td>
+</tr>
+<tr>
+<td><strong>Barras de tamaño</strong></td>
+<td>Cuatro barras de 2 px de ancho · alturas 4, 7, 9, 11 · hueco 2 · margen derecho 6</td>
+</tr>
+<tr>
+<td><strong>Barra inferior</strong></td>
+<td>Icono 23 · texto 0.6rem · padding 12 arriba y 4 abajo, más 6 de resguardo inferior · destino activo en <code>accion</code></td>
+</tr>
+<tr>
+<td><strong>Cabecera de app</strong></td>
+<td>Padding 12×16 · borde inferior 1 px · <code>position: sticky</code> · título <code>gotica</code> 700 a 1.15rem</td>
+</tr>
+<tr>
+<td><strong>Emblema</strong></td>
+<td>Círculo 76 · borde 1 px <code>linea</code> · aro interior punteado a 5 de separación · icono 30 en peso <code>fill</code></td>
+</tr>
+<tr>
+<td><strong>Separador filo</strong></td>
+<td>1 px, degradado con la banda clara al 38 %</td>
+</tr>
+<tr>
+<td><strong>Objetivo táctil</strong></td>
+<td><strong>44×44 mínimo</strong>, aunque el icono dibujado mida 19</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a id="anexo-c"></a></p>
+<h3>Anexo C · Especificación de pantallas</h3>
+<h4>C.0 Mapa de la aplicación</h4>
+<table>
+<thead>
+<tr>
+<th>Pantalla</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Índice de festivales · cuatro modos</td>
+<td>Especificada</td>
+</tr>
+<tr>
+<td>Resultados con filtros y tabla</td>
+<td>Especificada</td>
+</tr>
+<tr>
+<td>Ficha de festival</td>
+<td>Especificada</td>
+</tr>
+<tr>
+<td>Mi ruta</td>
+<td>Especificada</td>
+</tr>
+<tr>
+<td>Los cinco estados de vista</td>
+<td>Especificada</td>
+</tr>
+<tr>
+<td>Calendario</td>
+<td>Especificada</td>
+</tr>
+<tr>
+<td>Alta y preferencias</td>
+<td>Especificada aquí, sin maquetar</td>
+</tr>
+<tr>
+<td>Cuenta y ajustes</td>
+<td>Especificada aquí, sin maquetar</td>
+</tr>
+<tr>
+<td>Centro de avisos</td>
+<td>Especificada aquí, sin maquetar</td>
+</tr>
+<tr>
+<td>Comparador</td>
+<td>Especificada aquí, sin maquetar</td>
+</tr>
+<tr>
+<td>Aportar corrección</td>
+<td>Especificada aquí, sin maquetar</td>
+</tr>
+<tr>
+<td>Perfil · la chupa</td>
+<td>Extensión, sin maquetar</td>
+</tr>
+<tr>
+<td>Ahora mismo · día de festival</td>
+<td>Especificada y maquetada</td>
+</tr>
+<tr>
+<td>Cartel por horas</td>
+<td>Especificada y maquetada</td>
+</tr>
+<tr>
+<td>Choques de horario</td>
+<td>Especificada y maquetada</td>
+</tr>
+<tr>
+<td>Recinto · escenarios y servicios</td>
+<td>Especificada y maquetada</td>
+</tr>
+<tr>
+<td>Mapa geográfico</td>
+<td>Especificada (§13.3 y C.14), sin maquetar</td>
+</tr>
+<tr>
+<td>Cartel por horas · vista de una columna</td>
+<td>Especificada (§15.7 y C.6), sin maquetar</td>
+</tr>
+<tr>
+<td>Modo recinto</td>
+<td>Extensión, sin maquetar</td>
+</tr>
+</tbody></table>
+<hr>
+<p>Cada pantalla, con lo que contiene, lo que hace y cómo se comporta al estrechar.</p>
+<h4>C.1 Índice de festivales</h4>
+<p><strong>Contiene</strong> cabecera con marca, navegación y accesos a avisos y cuenta · barra de control (buscar, filtros, orden, leyenda, contador) · rejilla de tarjetas.
+<strong>Acciones</strong> buscar · filtrar · ordenar · cambiar de modo de recorrido · guardar · añadir a la ruta · abrir ficha.
+<strong>Estados</strong> los cinco de §13.1.
+<strong>Responsive</strong> 1 columna hasta 560 · 2 hasta 900 · 3 por encima. Navegación inferior por debajo de 700, superior por encima.</p>
+<h4>C.2 Resultados y tabla</h4>
+<p><strong>Contiene</strong> buscador con término activo · pastillas de filtro aplicado con su categoría escrita · «Quitar todos» · contador «7 de 63» · tabla ordenable · paginación.
+<strong>Orden</strong> tres estados en cabecera: sin ordenar, ascendente, descendente. Solo la columna activa muestra flecha.
+<strong>Prioridad de columnas</strong> nombre, fechas y estado nunca desaparecen · ciudad y precio desde 620 · género desde 860.
+<strong>Paginación</strong> filas por página, rango visible, anterior y siguiente.</p>
+<h4>C.3 Ficha de festival</h4>
+<p><strong>Contiene</strong> cinta de aviso si procede · nombre · fechas · estado · parches de género · tamaño · descripción · atributos (aforo, precio desde, duración, escenarios) · acciones · sello de verificación · panel de viaje (tren, coche, vuelo) · panel de alojamiento.
+<strong>Acción principal</strong> «Añadir a mi ruta», botón primario.
+<strong>Aquí el estado se escribe con letras</strong>, no solo con icono: es donde se decide.
+<strong>Responsive</strong> dos columnas a partir de 820; por debajo, el panel de viaje cae bajo la ficha.</p>
+<h4>C.4 Mi ruta</h4>
+<p><strong>Contiene</strong> resumen de cuatro cifras (festivales, días, kilómetros, entradas) · paradas encadenadas por la línea de ruta con nodos · <strong>tramos</strong> entre paradas con transporte, tiempo y distancia · aviso de solape si lo hay.
+<strong>Regla</strong> si dos festivales se pisan se marca y se explica, pero <strong>no se bloquea el guardado</strong>. Decide el usuario.</p>
+<h4>C.5 Ahora mismo · día de festival</h4>
+<p><strong>Contiene</strong> cinta de sin conexión con hora de última sincronización · bloque «tocando ahora» con escenario, banda, horario, barra de progreso y minutos restantes · lista «después» con hora, banda, escenario, tiempo a pie y marca de si está en tu horario.
+<strong>Tipografía</strong> nombre de banda en <code>gotica</code> a <code>titulo-l</code>: se lee a un brazo y de noche.</p>
+<h4>C.6 Cartel por horas</h4>
+<p><strong>Contiene</strong> rejilla con escenarios en columnas y horas en vertical · bolos posicionados por hora de inicio y duración.
+<strong>Medidas</strong> columna de horas 38 px · <strong>una hora = 60 px</strong> · bolo con margen lateral de 3 · radio 6 · padding 5×6.
+<strong>Marcado</strong> lo del usuario con borde <code>accion</code> de 3 px a la izquierda · lo que se pisa con borde <code>error</code> a rayas · icono indicador arriba a la derecha.
+<strong>Cuántas columnas</strong> ancho mínimo de columna <strong>120 px</strong>: caben 2 a 390, 4 a 560, 5 a 700, 6 a 900 y 7 desde 910. Lo que no cabe <strong>no se esconde</strong>: se avisa y se pasa a lista.
+<strong>Filtro previo</strong> panel de casillas la primera vez que los escenarios no caben, con «Todos» y «Los míos», en el orden que publica la organización. Después, control permanente en cabecera: «Escenarios · 3 de 7».
+<strong>Vista de una columna</strong> por defecto por debajo de 700. Fila de 44 mínimo · hora en el canal de 38 · banda en <code>gotica</code> · escenario como parche escrito · cabecera de hora pegajosa · línea de «ahora» y botón «Ir a ahora» anclado abajo.
+<strong>Conmutador</strong> «Rejilla» / «Lista» con icono y palabra, recordado por festival. Regla completa en §15.7.</p>
+<h4>C.7 Choques</h4>
+<p><strong>Contiene</strong> aviso con los minutos que se pisan · comparación lado a lado de las dos bandas con hora y escenario · tiempo a pie entre ambas · dos salidas del mismo peso visual · frase con la consecuencia real.
+<strong>Regla</strong> la aplicación <strong>no decide</strong>: da los datos y las dos salidas.</p>
+<h4>C.8 Recinto</h4>
+<p><strong>Contiene</strong> mapa del recinto con marcadores de escenarios, servicios y posición del usuario · lista de escenarios y servicios con lo que toca ahora y el tiempo a pie.
+<strong>Marcador</strong> círculo 26 con icono 14 dentro y etiqueta debajo en <code>etiqueta</code>. El del usuario va en <code>accion</code>.
+<strong>Funciona sin conexión.</strong></p>
+<h4>C.9 Alta y preferencias</h4>
+<p><strong>Contiene</strong> máximo tres campos · botón «Seguir sin cuenta» con el mismo peso que crear · géneros como opciones múltiples · ciudad base, radio de viaje, presupuesto.
+<strong>Regla</strong> las preferencias filtran por defecto pero <strong>siempre se ve cuántos resultados quedan fuera</strong> y se recuperan con un toque.</p>
+<h4>C.10 Centro de avisos</h4>
+<p><strong>Contiene</strong> lista de avisos con icono de estado, título, explicación y antigüedad · no leídos con borde izquierdo <code>aviso</code> · tres interruptores de motivo.
+<strong>Regla</strong> solo tres motivos: salen entradas, cambia el cartel, cancelación. Ninguno promocional.</p>
+<h4>C.11 Aportar corrección</h4>
+<p><strong>Contiene</strong> selector de dato · valor actual bloqueado · valor propuesto · fuente opcional · historial de aportaciones con su estado.
+<strong>Estados</strong> propuesta, en revisión, aceptada, rechazada. <strong>Una rechazada explica por qué.</strong></p>
+<h4>C.12 Ajustes</h4>
+<p><strong>Una sola pantalla, sin pestañas.</strong> Modo · idioma · moneda y unidades · avisos · datos sin conexión · exportar · cerrar sesión · borrar cuenta.
+<strong>Regla</strong> exportar y borrar cuenta <strong>visibles</strong>, no escondidos.</p>
+<h4>C.13 El perfil · la chupa</h4>
+<p><strong>Contiene</strong> resumen de tres cifras (festivales, países, desde) · rejilla de parches a dos columnas · compartir como imagen.
+<strong>Parche</strong> 132×132 en el perfil, 120 en documentación. Arte del festival dentro con velo <code>rgba(11,12,13,.32)</code> · nombre en <code>gotica</code> 700 con sombra de texto · pie con año y ciudad en <code>dato</code>.</p>
+<h4>C.14 Mapa geográfico</h4>
+<p><strong>Contiene</strong> la misma barra de control que los otros tres modos · mapa a sangre · marcadores de estado · cúmulos numéricos · atribución fija · control de posición · controles de zoom.
+<strong>Medidas</strong> marcador círculo 22 con icono 14 en <code>fill</code> y anillo 1 · objetivo táctil 44×44 · cúmulo con borde <code>linea-fuerte</code> y cifra en <code>dato</code> · agrupa por debajo de 24 de separación.
+<strong>Primer elemento enfocable</strong> «Ver estos N festivales en lista». La lista equivalente es obligatoria.
+<strong>Atribución</strong> «© OpenStreetMap · Protomaps» visible en esquina, <strong>nunca oculta tras un icono</strong>. Es la licencia, no un crédito.
+<strong>Cámara</strong> sin inclinación, sin rotación, sin vuelos. La rueda solo hace zoom con <code>Ctrl</code>/<code>⌘</code>; en táctil, dos dedos.
+<strong>Responsive</strong> por debajo de 700 el mapa ocupa la altura disponible y la lista equivalente pasa a hoja inferior desplegable; nunca se solapa con la barra inferior.
+<strong>Sin conexión</strong> con el paquete descargado, funciona entero; sin él, mapa atenuado y explicado, nunca vacío. Regla completa en §13.3.</p>
+<hr>
+<p><a id="anexo-d"></a></p>
+<h3>Anexo D · Modelo de datos mínimo</h3>
+<p>[CANON · mínimo v1] Es lo mínimo que exige lo especificado arriba. Ampliarlo es MENOR; romperlo, MAYOR.</p>
+<h4>D.0 Las diez familias [CANON · v5.0.0]</h4>
+<p>Se citaban en todo el documento desde la v1 y no estaban escritas en ninguna parte: un agente no podía construir el filtro de géneros. Aquí están. El <strong>parche muestra la familia</strong>; el subgénero es dato buscable, no parche. Diez y ninguna más: añadir una familia es MAYOR, porque rompe todos los filtros guardados. Renombrar una es PARCHE.</p>
+<table>
+<thead>
+<tr>
+<th>Familia · el parche</th>
+<th>Qué agrupa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>HEAVY</strong></td>
+<td>Heavy clásico, NWOBHM, hard rock duro, speed melódico</td>
+</tr>
+<tr>
+<td><strong>THRASH</strong></td>
+<td>Thrash, speed, crossover</td>
+</tr>
+<tr>
+<td><strong>DEATH</strong></td>
+<td>Death, death técnico, brutal, death&#39;n&#39;roll</td>
+</tr>
+<tr>
+<td><strong>BLACK</strong></td>
+<td>Black, black atmosférico, DSBM</td>
+</tr>
+<tr>
+<td><strong>DOOM</strong></td>
+<td>Doom, stoner, sludge, post-metal, funeral</td>
+</tr>
+<tr>
+<td><strong>POWER</strong></td>
+<td>Power, sinfónico, épico, neoclásico</td>
+</tr>
+<tr>
+<td><strong>FOLK</strong></td>
+<td>Folk, pagan, viking, medieval</td>
+</tr>
+<tr>
+<td><strong>PROG</strong></td>
+<td>Progresivo, avantgarde, técnico experimental</td>
+</tr>
+<tr>
+<td><strong>CORE</strong></td>
+<td>Metalcore, deathcore, hardcore, nu, djent</td>
+</tr>
+<tr>
+<td><strong>GÓTICO</strong></td>
+<td>Gótico, industrial, dark rock</td>
+</tr>
+</tbody></table>
+<p>Un festival lleva <strong>de una a tres familias</strong>, las que dominan su cartel; nunca las diez «por si acaso». Las fronteras discutibles se resuelven por dónde programa la organización, no por dónde lo pondría un crítico: <strong>sin jerarquía de escena tampoco en la taxonomía</strong> (§2.2).</p>
+<pre><code>Festival
+  id · nombre (con diacríticos) · pais · ciudad · web_oficial
+  generos[] (de los diez de §5.6) · tamano (sala|club|mediano|macro)
+  extinto (bool) · primera_edicion (año)
+
+Edicion
+  id · festival_id · numero_edicion · fecha_inicio · fecha_fin
+  estado (anunciado|cartel-parcial|cartel-completo|a-la-venta|
+          ultimas|agotado|cancelado|pasado)
+  precio_desde · moneda · aforo · num_escenarios · url_entradas
+  cartel_url · cartel_alt
+  verificacion { fuente · fecha · certeza (alta|media|baja) }
+
+Escenario        id · edicion_id · nombre · lat · lon
+Banda            id · nombre (con diacríticos) · generos[]
+Bolo             id · edicion_id · escenario_id · banda_id · inicio · fin
+Trayecto         origen_escenario_id · destino_escenario_id · minutos_a_pie
+
+Usuario          id · ciudad_base · radio_km · presupuesto ·
+                 generos_favoritos[] · moneda · unidades · tema
+Ruta             id · usuario_id · nombre · paradas[]
+Parada           edicion_id · orden
+Tramo            parada_origen · parada_destino · modo (tren|coche|vuelo) ·
+                 minutos · km
+Guardado         usuario_id · festival_id
+MiHorario        usuario_id · bolo_id
+Asistencia       usuario_id · edicion_id        → genera el parche
+Aportacion       usuario_id · edicion_id · campo · valor_propuesto ·
+                 fuente · estado · motivo_rechazo
+</code></pre>
+<p><strong>Reglas derivadas:</strong> el estado del dato invariable sale de <code>Edicion</code>. El acabado del parche (§14.9.1) se calcula: cosido por defecto · borde doble si <code>numero_edicion</code> es múltiplo de 5 o 10 · remachado si es la última edición celebrada · lacrado si <code>festival.extinto</code>. Los choques se calculan cruzando <code>MiHorario</code> con <code>Bolo.inicio/fin</code> y <code>Trayecto.minutos_a_pie</code>.</p>
+<hr>
+<p><a id="anexo-e"></a></p>
+<h3>Anexo E · Rutas y navegación</h3>
+<pre><code>/                         índice de festivales
+/buscar                   resultados con filtros (estado en la URL)
+/calendario/:año/:mes
+/mapa
+/festival/:slug           ficha
+/festival/:slug/:año      edición concreta
+/mi-ruta                  lista de rutas
+/mi-ruta/:id
+/festival/:slug/cartel    cartel por horas · día de festival
+/festival/:slug/ahora     ahora mismo
+/festival/:slug/recinto
+/mi-horario               con choques
+/avisos
+/cuenta                   la chupa
+/ajustes
+/entrar · /alta
+</code></pre>
+<p><strong>Cinco destinos en la barra inferior</strong>, y no más: Festivales, Calendario, Mapa, Mi ruta, Cuenta. <strong>En modo festival la barra cambia</strong> a: Ahora, Cartel, Mi horario, Recinto, Cuenta.</p>
+<p><strong>El estado de búsqueda y filtros vive en la URL</strong> para que una búsqueda se pueda compartir.</p>
+<hr>
+<p><a id="anexo-f"></a></p>
+<h3>Anexo F · Textos</h3>
+<p>Los definitivos. Tono cálido para quien llega y para lo malo; directo para quien ya está dentro.</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Texto</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Portada</td>
+<td>Todos los festivales de metal de Europa, con las fechas por delante</td>
+</tr>
+<tr>
+<td>Invitación a registrarse</td>
+<td>Si te creas una cuenta, tus rutas te siguen al móvil. Si no, se quedan aquí y funcionan igual</td>
+</tr>
+<tr>
+<td>Ruta vacía</td>
+<td>Tu ruta está esperando. Echa un vistazo al calendario de junio y guarda el primero que te apetezca</td>
+</tr>
+<tr>
+<td>Sin resultados</td>
+<td>Nada encaja con esos tres filtros. Prueba a quitar el mes, o mira lo que hay en el resto de Escandinavia</td>
+</tr>
+<tr>
+<td>Error de carga</td>
+<td>No hemos podido cargar los festivales. Ha fallado la conexión con nuestro catálogo, no es cosa tuya</td>
+</tr>
+<tr>
+<td>Cancelación</td>
+<td>Tons of Rock 2027 no se celebra este año. Si tenías entradas, la organización devuelve el importe hasta el 30 de septiembre; te ayudamos a buscar alternativas para esas fechas</td>
+</tr>
+<tr>
+<td>Solape en la ruta</td>
+<td>Estos dos se pisan el día 7. Puedes dejarlo así, ya te apañarás</td>
+</tr>
+<tr>
+<td>Choque en el cartel</td>
+<td>Se pisan 20 minutos. Si te vas a mitad de Bölzer llegas a Dark Funeral con 14 min de margen</td>
+</tr>
+<tr>
+<td>Sin conexión</td>
+<td>Sin cobertura. Sigues teniendo tu ruta y lo que guardaste</td>
+</tr>
+<tr>
+<td>Dato sin verificar</td>
+<td>Sin verificar desde hace 47 días. La organización pudo cambiar fechas o precios. Confirma en la web oficial antes de comprar o viajar</td>
+</tr>
+<tr>
+<td>Aportación rechazada</td>
+<td>No hemos podido confirmarlo con la organización. Si tienes una fuente, vuelve a proponerlo</td>
+</tr>
+<tr>
+<td>Cerrar sesión</td>
+<td>Cerramos la sesión. Lo que tengas guardado en este dispositivo se queda</td>
+</tr>
+<tr>
+<td>Estimación de precio</td>
+<td>Es un cálculo nuestro, no un precio oficial</td>
+</tr>
+</tbody></table>
+<p><strong>Los estados se escriben siempre así:</strong> Anunciado · Cartel parcial · Cartel completo · Entradas a la venta · Últimas entradas · Agotado · Cancelado · Pasado · Novedad.</p>
+<hr>
+<p><a id="anexo-g"></a></p>
+<h3>Anexo G · Movimiento en código</h3>
+<pre><code class="language-css">/* 01 barrido especular · 9s · uno por vista */
+@keyframes barrido{ to{ transform:translateX(560%) } }
+.filo.vivo::after{
+  content:&quot;&quot;; position:absolute; left:0; top:0; height:1px; width:22%;
+  background:linear-gradient(90deg,transparent,var(--hueso),transparent);
+  transform:translateX(-120%); animation:barrido 9s linear infinite;
+}
+
+/* 03 revelado escalonado · 320ms, escalón 60ms */
+@keyframes revelar{ to{ opacity:1; transform:none } }
+.rev{ opacity:0; transform:translateY(8px); animation:revelar 320ms var(--ruta) forwards }
+.rev:nth-child(2){ animation-delay:60ms }
+.rev:nth-child(3){ animation-delay:120ms }
+
+/* 04 elevación · 120ms · sube superficie, no se mueve */
+.tarjeta{ transition:background 120ms var(--ruta), border-color 120ms var(--ruta) }
+
+/* 05 sello · 160ms · solo si el estado cambia de verdad */
+@keyframes sello{ from{ transform:scale(.94); opacity:.6 } to{ transform:none; opacity:1 } }
+
+/* 08 trazo de ruta · 1.1s · la línea se dibuja y los nodos llegan detrás */
+@keyframes trazo{ to{ stroke-dashoffset:0 } }
+@keyframes nodo{ to{ opacity:1 } }
+.ruta path{ stroke-dasharray:340; stroke-dashoffset:340; animation:trazo 1100ms var(--ruta) forwards }
+.ruta circle{ opacity:0; animation:nodo 260ms var(--ruta) forwards }
+.ruta circle:nth-of-type(2){ animation-delay:340ms }
+
+/* 12 dígitos rodantes · 1.1s · escalón 90ms */
+@keyframes rodar{ to{ transform:translateY(-440px) } }
+</code></pre>
+<p><strong>Nunca dentro de tabla, calendario ni mapa.</strong> Con <code>prefers-reduced-motion</code> se desactivan las doce.</p>
+<hr>
+<p><a id="anexo-h"></a></p>
+<h3>Anexo H · Construcción de los parches</h3>
+<p>Los cuatro acabados de §14.9.1, en CSS. El color lo pone el arte del festival; el acabado, el sistema.</p>
+<pre><code class="language-css">.parche .arte{ width:132px; height:132px; position:relative; overflow:hidden;
+  display:grid; place-content:center; background:var(--sup); color:var(--hueso); }
+.parche .arte .vel{ position:absolute; inset:0; background:rgba(11,12,13,.32); z-index:1 }
+.parche .arte b{ font-family:var(--gotica); font-weight:700; font-size:.95rem;
+  line-height:1.05; padding:0 10px; text-shadow:0 1px 3px rgba(0,0,0,.85); z-index:2 }
+
+/* 1 · cosido simple — fuiste, sin más */
+.ac-1 .arte{ border:1px dashed var(--estano); border-radius:4px }
+
+/* 2 · borde doble — edición de aniversario */
+.ac-2 .arte{ border:2px solid var(--acero); border-radius:4px;
+  box-shadow:inset 0 0 0 2px var(--fondo), inset 0 0 0 4px var(--acero) }
+
+/* 3 · aro remachado — última edición celebrada */
+.ac-3 .arte{ border-radius:50%; border:3px solid var(--plata-viva) }
+.ac-3 .rem{ position:absolute; width:9px; height:9px; border-radius:50%; z-index:3;
+  background:linear-gradient(160deg,var(--plata-viva),var(--linea-fuerte));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 1px 2px rgba(0,0,0,.8) }
+/* cuatro remaches, uno por cuadrante, a 8px del borde */
+
+/* 4 · sello lacrado — el festival ya no se celebra */
+.ac-4 .arte{ border-radius:50%; border:5px double var(--plata-viva);
+  box-shadow:0 0 0 2px var(--fondo), 0 0 0 3px var(--estano),
+             inset 0 2px 6px rgba(0,0,0,.7) }
+.ac-4::after{ content:&quot;&quot;; position:absolute; inset:-7px 0 auto; height:134px;
+  border-radius:50%; border:1px dashed var(--estano); opacity:.5 }
+</code></pre>
+<p><strong>Comprobación obligatoria:</strong> los cuatro acabados deben distinguirse <strong>a 60 px y en escala de grises</strong>. Si no, el acabado no vale.</p>
+<hr>
+<p><a id="anexo-i"></a></p>
+<h3>Anexo I · Orden de construcción</h3>
+<ol>
+<li>Anexo A y el <code>.woff2</code> de las cinco tipografías autoalojadas.</li>
+<li>Modelo de datos (Anexo D) con veinte festivales reales de prueba, incluidos los casos difíciles: nombres largos, cartel sin confirmar, fechas a caballo entre dos meses, diacríticos polacos y checos.</li>
+<li>Índice de festivales con sus <strong>cinco estados de vista</strong> desde el primer día. Es más barato hacerlos ahora que añadirlos luego.</li>
+<li>Ficha y sello de verificación.</li>
+<li>Mi ruta con tramos.</li>
+<li>Las cuatro pantallas de recinto y el modo sin conexión.</li>
+<li>Capa de usuario: cuenta opcional, preferencias, avisos, aportaciones.</li>
+<li>La chupa.</li>
+</ol>
+<p><strong>Antes de cada entrega, la checklist de §19.4 y las tres pruebas de §5.10</strong>: escala de grises, prueba de un segundo y recuento de colores.</p>
+<hr>
+<p><a id="anexo-j"></a></p>
+<h3>Anexo J · Una pantalla resuelta entera</h3>
+<p>Todo lo anterior son reglas sueltas. Aquí están <strong>todas a la vez, en la pantalla que más importa</strong>: la ficha de festival. Se lee mejor que veinte tablas y sirve de patrón para construir el resto.</p>
+<p>Usa los tokens del Anexo A sin declarar ni uno nuevo. Marcado semántico, sin dependencias.</p>
+<pre><code class="language-html">&lt;article class=&quot;ficha&quot; aria-labelledby=&quot;ficha-nombre&quot;&gt;
+
+  &lt;!-- §13.2 · dato obsoleto: cinta arriba, no un cartel a media página --&gt;
+  &lt;p class=&quot;cinta&quot; role=&quot;status&quot;&gt;
+    Sin verificar desde hace 47 días. La organización pudo cambiar fechas o precios.
+    &lt;a href=&quot;#oficial&quot;&gt;Confirma en la web oficial&lt;/a&gt; antes de comprar o viajar.
+  &lt;/p&gt;
+
+  &lt;header class=&quot;ficha__cab&quot;&gt;
+    &lt;!-- §7.3 · el nombre, exactamente como lo escribe su dueño --&gt;
+    &lt;h1 class=&quot;ficha__nombre&quot; id=&quot;ficha-nombre&quot;&gt;Brutal Assault&lt;/h1&gt;
+
+    &lt;!-- §12.1 · dato invariable: nombre, fechas, ciudad y país, estado --&gt;
+    &lt;p class=&quot;dato&quot;&gt;
+      &lt;time datetime=&quot;2027-08-10&quot;&gt;10&lt;/time&gt;–&lt;time datetime=&quot;2027-08-13&quot;&gt;13 ago 2027&lt;/time&gt;
+      &lt;span class=&quot;sep&quot; aria-hidden=&quot;true&quot;&gt;·&lt;/span&gt; Jaroměř, Chequia
+    &lt;/p&gt;
+
+    &lt;!-- §6.3 · en la FICHA el estado se escribe con letras: aquí se decide --&gt;
+    &lt;p class=&quot;estado estado--venta&quot;&gt;
+      &lt;svg class=&quot;i&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;#ticket&quot;/&gt;&lt;/svg&gt;
+      Entradas a la venta
+    &lt;/p&gt;
+
+    &lt;!-- §5.6 · género en parche escrito, cero colores --&gt;
+    &lt;ul class=&quot;parches&quot; aria-label=&quot;Géneros&quot;&gt;
+      &lt;li&gt;Death&lt;/li&gt;&lt;li&gt;Black&lt;/li&gt;&lt;li&gt;Grindcore&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;!-- §5.6 · tamaño en barras Y escrito. Descriptivo, nunca jerárquico --&gt;
+    &lt;p class=&quot;tamano&quot;&gt;&lt;span class=&quot;barras barras--4&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt; Macro · 20.000&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;div class=&quot;ficha__cuerpo&quot;&gt;
+    &lt;section class=&quot;col&quot;&gt;
+      &lt;p class=&quot;lede&quot;&gt;Cuatro días dentro de una fortaleza del XVIII a orillas del Elba.
+        El recinto es el argumento: murallas, túneles y un escenario en el foso.&lt;/p&gt;
+
+      &lt;!-- §13.1 · atributos comparables, herencia del juego de rol --&gt;
+      &lt;dl class=&quot;atributos&quot;&gt;
+        &lt;div&gt;&lt;dt&gt;Precio desde&lt;/dt&gt;&lt;dd class=&quot;cifra&quot;&gt;159 €&lt;/dd&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;dt&gt;Aforo&lt;/dt&gt;&lt;dd class=&quot;cifra&quot;&gt;20.000&lt;/dd&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;dt&gt;Escenarios&lt;/dt&gt;&lt;dd class=&quot;cifra&quot;&gt;7&lt;/dd&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;dt&gt;Duración&lt;/dt&gt;&lt;dd class=&quot;cifra&quot;&gt;4 días&lt;/dd&gt;&lt;/div&gt;
+      &lt;/dl&gt;
+
+      &lt;!-- §13.1 · sello de verificación. Un dato sin fuente no se publica --&gt;
+      &lt;aside class=&quot;sello sello--media&quot;&gt;
+        &lt;svg class=&quot;i&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;#warning-circle&quot;/&gt;&lt;/svg&gt;
+        &lt;p&gt;&lt;b&gt;Cartel parcial.&lt;/b&gt; Fuente: web oficial · Comprobado el 20 jun 2026 ·
+           Certeza media&lt;/p&gt;
+      &lt;/aside&gt;
+    &lt;/section&gt;
+
+    &lt;aside class=&quot;col col--lado&quot;&gt;
+      &lt;!-- §2.2 · si no ayuda a decidir un viaje, sobra. Esto ayuda --&gt;
+      &lt;h2 class=&quot;h2&quot;&gt;Cómo llegar&lt;/h2&gt;
+      &lt;ul class=&quot;viaje&quot;&gt;
+        &lt;li&gt;&lt;svg class=&quot;i&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;#train&quot;/&gt;&lt;/svg&gt;
+            Praga → Jaroměř &lt;span class=&quot;cifra&quot;&gt;2 h 10&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;svg class=&quot;i&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;#car&quot;/&gt;&lt;/svg&gt;
+            Desde Berlín &lt;span class=&quot;cifra&quot;&gt;4 h 30 · 340 km&lt;/span&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;h2 class=&quot;h2&quot;&gt;Dónde dormir&lt;/h2&gt;
+      &lt;p&gt;Camping incluido en el abono. Hotel en Hradec Králové, a 20 min.&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/div&gt;
+
+  &lt;!-- §15.5 · la acción frecuente, abajo y al alcance del pulgar --&gt;
+  &lt;footer class=&quot;ficha__pie&quot;&gt;
+    &lt;button class=&quot;btn btn--primario&quot; type=&quot;button&quot;&gt;Añadir a mi ruta&lt;/button&gt;
+    &lt;button class=&quot;btn btn--fantasma&quot; type=&quot;button&quot;&gt;
+      &lt;svg class=&quot;i&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;#bookmark&quot;/&gt;&lt;/svg&gt; Guardar
+    &lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;
+</code></pre>
+<pre><code class="language-css">/* Ni un valor nuevo: todo sale del Anexo A */
+.ficha{container-type:inline-size; background:var(--sup); border:1px solid var(--linea);
+       border-radius:var(--r); overflow:hidden}
+
+.cinta{margin:0; padding:var(--s300) var(--s400); background:var(--sup-alta);
+       border-bottom:1px solid var(--linea-fuerte); color:var(--secundario);
+       font-size:var(--cuerpo-s)}
+
+.ficha__cab{padding:var(--s500) var(--s400) var(--s400)}
+.ficha__nombre{font-family:var(--gotica); font-weight:700; font-size:var(--titulo-l);
+               line-height:1; margin:0 0 var(--s300); color:var(--hueso)}
+
+/* toda cifra en mono tabular, sin excepción */
+.dato,.cifra{font-family:var(--dato); font-variant-numeric:tabular-nums;
+             color:var(--primario)}
+.dato{margin:0 0 var(--s300); font-size:var(--cuerpo-s)}
+.sep{color:var(--terciario); margin:0 var(--s200)}
+
+/* el estado es el ÚNICO color de esta pantalla */
+.estado{display:inline-flex; align-items:center; gap:var(--s200); margin:0 0 var(--s400);
+        padding:4px 9px; border:1px solid currentColor; border-radius:var(--r);
+        font-family:var(--dato); font-weight:700; font-size:.68rem;
+        letter-spacing:.1em; text-transform:uppercase}
+.estado--venta{color:var(--accion)}
+.estado--agotado{color:var(--sobre-oscuro); background:var(--bloqueado);
+                 border-color:var(--bloqueado-borde)}
+
+/* género: escrito, radio 0, sin una gota de color */
+.parches{display:flex; flex-wrap:wrap; gap:var(--s200); list-style:none; margin:0 0 var(--s300); padding:0}
+.parches li{padding:3px 7px; border:1px solid var(--linea-fuerte); border-radius:0;
+            font-family:var(--dato); font-weight:700; font-size:.64rem;
+            letter-spacing:.14em; text-transform:uppercase; color:var(--primario)}
+
+.tamano{margin:0; color:var(--secundario); font-size:var(--cuerpo-s)}
+.barras{display:inline-flex; align-items:flex-end; gap:2px; margin-right:6px}
+.barras::before{content:&quot;&quot;; width:2px; height:11px; background:var(--terciario);
+                box-shadow:-4px 2px 0 var(--terciario), -8px 4px 0 var(--terciario),
+                           -12px 7px 0 var(--terciario); margin-left:12px}
+
+.ficha__cuerpo{display:grid; gap:var(--s500); padding:0 var(--s400) var(--s500);
+               border-top:1px solid var(--linea)}
+/* rupturas medidas sobre el CONTENEDOR */
+@container (min-width:820px){ .ficha__cuerpo{grid-template-columns:1fr 300px} }
+
+.lede{margin:var(--s400) 0; max-width:var(--ancho-lectura); line-height:1.55}
+.h2{font-family:var(--gotica); font-size:var(--titulo-s); color:var(--hueso);
+    margin:var(--s400) 0 var(--s200)}
+
+.atributos{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--s300);
+           margin:0; padding:var(--s400) 0; border-top:1px solid var(--linea)}
+.atributos dt{font-family:var(--dato); font-size:.75rem; letter-spacing:.14em;
+              text-transform:uppercase; color:var(--terciario)}
+.atributos dd{margin:4px 0 0; font-size:var(--cuerpo-l)}
+
+.sello{display:flex; gap:var(--s300); padding:var(--s300);
+       border-left:3px solid var(--certeza-media); background:var(--sup-alta)}
+.sello p{margin:0; font-size:var(--cuerpo-s); color:var(--secundario)}
+.sello--alta{border-left-color:var(--certeza-alta)}
+
+.viaje{list-style:none; margin:0; padding:0}
+.viaje li{display:flex; align-items:center; gap:var(--s300); min-height:44px;
+          border-bottom:1px solid var(--linea)}
+.viaje .cifra{margin-left:auto}
+
+.ficha__pie{display:flex; gap:var(--s300); padding:var(--s400);
+            border-top:1px solid var(--linea); background:var(--sup-alta)}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:var(--s200);
+     min-height:44px; padding:0 var(--s400); border-radius:var(--r);
+     font-family:var(--texto); font-weight:600; font-size:.9rem; cursor:pointer}
+.btn--primario{background:var(--accion); color:var(--sobre-accion); border:0}
+.btn--fantasma{background:transparent; color:var(--primario);
+               border:1px solid var(--linea-fuerte)}
+
+.i{width:19px; height:19px; fill:currentColor; flex:none}
+
+/* el foco, una sola vez y para todo */
+:focus-visible{outline:2px solid var(--foco-1); outline-offset:2px;
+               box-shadow:0 0 0 4px var(--foco-2)}
+</code></pre>
+<h4>Qué demuestra, regla por regla</h4>
+<table>
+<thead>
+<tr>
+<th>Se ve en</th>
+<th>La regla que aplica</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Un solo naranja en toda la pantalla</td>
+<td>§5.7 · máximo dos colores del código, y aquí basta uno</td>
+</tr>
+<tr>
+<td>Los géneros sin color y el tamaño en barras</td>
+<td>§5.6 · ni el género ni el tamaño son decisiones del usuario</td>
+</tr>
+<tr>
+<td>El estado escrito con letras, no solo con icono</td>
+<td>§6.3 · el icono manda donde se compara; <strong>donde se decide, se lee</strong></td>
+</tr>
+<tr>
+<td>El sello con fuente, fecha y certeza</td>
+<td>§13.1 · un dato sin fuente no se publica</td>
+</tr>
+<tr>
+<td>La cinta de obsoleto arriba, discreta</td>
+<td>§13.2 · avisa sin secuestrar la pantalla</td>
+</tr>
+<tr>
+<td><code>container-type</code> y la ruptura a 820</td>
+<td>§8.1 · se mide el contenedor, no la ventana</td>
+</tr>
+<tr>
+<td>Las dos acciones abajo, con palabra</td>
+<td>§15.5 y §9.3 · lo frecuente al alcance del pulgar; nada que comprometa va solo con icono</td>
+</tr>
+<tr>
+<td><code>:focus-visible</code> declarado una vez</td>
+<td>§5.4 · un solo tratamiento de foco en todo el sistema</td>
+</tr>
+<tr>
+<td><code>tabular-nums</code> en toda cifra</td>
+<td>§7.2 · las cifras se comparan en columna</td>
+</tr>
+<tr>
+<td><code>max-width:var(--ancho-lectura)</code></td>
+<td>§8.3 y §7.2 · la prosa nunca ocupa el ancho de la página</td>
+</tr>
+</tbody></table>
+<h4>Lo que esta pantalla NO hace, a propósito</h4>
+<p>No usa metales, porque no hay ni emblema ni degradado de cabecera. No anima nada: una ficha es donde se decide, y ahí el sistema está quieto. No tiene sombras, porque en Nocturno la elevación es un escalón de superficie y una línea. Y no lleva un segundo botón primario, por muy tentador que sea poner «Comprar entradas» en naranja al lado de «Añadir a mi ruta».</p>
+<p><strong>El ejercicio que enseña más:</strong> ponla en escala de grises. Debe seguir sabiéndose que hay entradas a la venta, porque el <code>ticket</code> y la palabra lo dicen sin el naranja.</p>
+<hr>
+<p><a id="anexo-k"></a></p>
+<h3>Anexo K · El guardián</h3>
+<p>El documento viaja solo, así que su verificador viaja dentro. <strong>Antes de publicar cualquier versión de este <code>.md</code>, se extrae este bloque a <code>validar.py</code> y se ejecuta contra el documento.</strong> Si falla, la versión no sale. Nueve comprobaciones: versión coherente entre portada, título y pie · numeración sin huecos · ningún color definido en dos sitios fuera de las zonas libres · ningún icono por debajo de 14 px · todo <code>$deprecated</code> con versión de retirada · toda remisión a una sección o anexo que existe · el JSON parsea · toda referencia de token resuelve a una definición del Anexo A · <strong>los pares de contraste que el sistema promete se recalculan contra los hex reales, en los dos temas</strong>.</p>
+<p>La octava existe porque en la v4.3.0 había tres referencias a <code>bloqueado-txt</code>, un token que nunca existió. La novena, porque en la v4.5.0 había cuatro cifras de contraste que no correspondían a ningún par real — y al estrenarla cazó la quinta: <code>exito</code> medido contra la superficie equivocada.</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+&quot;&quot;&quot;
+FestRoute · Yunque — guardián de coherencia del sistema de diseño.
+
+Uso:  python3 validar.py 2026_08_06-FestRoute_Design_System-v4_3_0.md
+
+Convierte la REGLA DE MANTENIMIENTO de §18 en algo que se cumple solo.
+Nueve comprobaciones. Devuelve 0 si el documento puede publicarse.
+&quot;&quot;&quot;
+import json
+import re
+import sys
+from collections import Counter
+
+# Zonas donde un valor PUEDE repetirse, con su motivo escrito.
+ZONAS_LIBRES = {
+    &quot;Anexo A&quot;: &quot;es la definición de tokens&quot;,
+    &quot;19.5&quot;: &quot;el fragmento se pega solo y por eso se autocontiene&quot;,
+}
+
+
+def zonas(texto):
+    &quot;&quot;&quot;Devuelve el texto partido en (nombre_de_zona, contenido).&quot;&quot;&quot;
+    marcas = [(m.start(), m.group(1).strip())
+              for m in re.finditer(r&quot;^#{1,3} (.+)$&quot;, texto, re.M)]
+    marcas.append((len(texto), &quot;FIN&quot;))
+    return [(marcas[i][1], texto[marcas[i][0]:marcas[i + 1][0]])
+            for i in range(len(marcas) - 1)]
+
+
+def es_zona_libre(nombre):
+    return any(z in nombre for z in ZONAS_LIBRES)
+
+
+def c1_version(t, fallos):
+    portada = re.search(r&quot;^version:\s*([\d.]+)&quot;, t, re.M)
+    titulo = re.search(r&quot;^# .*v([\d.]+)&quot;, t, re.M)
+    pie = re.search(r&quot;Sistema «Yunque» v([\d.]+)&quot;, t)
+    vs = {&quot;portada&quot;: portada, &quot;título&quot;: titulo, &quot;pie&quot;: pie}
+    leidas = {k: (v.group(1) if v else None) for k, v in vs.items()}
+    if len(set(leidas.values())) != 1:
+        fallos.append(f&quot;1· La versión no coincide: {leidas}&quot;)
+
+
+def c2_numeracion(t, fallos):
+    subs = re.findall(r&quot;^### (\d+)\.(\d+)(?:\.\d+)?&quot;, t, re.M)
+    por_seccion = {}
+    for sec, sub in subs:
+        por_seccion.setdefault(int(sec), set()).add(int(sub))
+    for sec, nums in sorted(por_seccion.items()):
+        esperado = set(range(1, max(nums) + 1))
+        faltan = esperado - nums - {0}
+        if faltan:
+            fallos.append(f&quot;2· §{sec} tiene huecos de numeración: falta &quot;
+                          + &quot;, &quot;.join(f&quot;{sec}.{n}&quot; for n in sorted(faltan)))
+
+
+def c3_hex(t, fallos):
+    cuenta = Counter()
+    for nombre, cuerpo in zonas(t):
+        if es_zona_libre(nombre):
+            continue
+        for h in set(re.findall(r&quot;#[0-9A-Fa-f]{6}\b&quot;, cuerpo)):
+            cuenta[h.upper()] += 1
+    repetidos = {h: n for h, n in cuenta.items() if n &gt; 1}
+    if repetidos:
+        fallos.append(&quot;3· Colores definidos en más de un sitio fuera de las &quot;
+                      f&quot;zonas libres: {repetidos}&quot;)
+
+
+def c4_iconos(t, fallos):
+    # Tamaños de icono declarados: &quot;icono 15&quot;, &quot;icono 13 px&quot;, &quot;icono: 12px&quot;
+    patron = re.compile(r&quot;icono[s]?\s*(?:de\s*)?(\d{1,2})(?:\s*px)?&quot;
+                        r&quot;(?:\s*\(\s*\**(\d{1,2})\**\s*(?:en [^)]*)?\))?&quot;, re.I)
+    for m in patron.finditer(t):
+        n = min(int(g) for g in m.groups() if g)
+        if n &lt; 14:
+            ctx = t[max(0, m.start() - 60):m.start() + 40].replace(&quot;\n&quot;, &quot; &quot;)
+            fallos.append(f&quot;4· Icono de {n} px, por debajo del mínimo de 14 &quot;
+                          f&quot;(§6.4): …{ctx}…&quot;)
+
+
+def c5_deprecated(t, fallos):
+    for m in re.finditer(r&#39;&quot;\$deprecated&quot;:\s*(&quot;[^&quot;]*&quot;|true)&#39;, t):
+        v = m.group(1)
+        if v == &quot;true&quot; or not re.search(r&quot;v?\d+\.\d+\.\d+&quot;, v):
+            fallos.append(f&quot;5· $deprecated sin versión de retirada: {v}&quot;)
+
+
+def c6_referencias(t, fallos):
+    secciones = {int(m) for m in re.findall(r&quot;^## (\d+)\.&quot;, t, re.M)}
+    anexos = set(re.findall(r&quot;^## Anexo ([A-Z])&quot;, t, re.M))
+    for m in set(re.findall(r&quot;§(\d+)&quot;, t)):
+        if int(m) not in secciones:
+            fallos.append(f&quot;6· Referencia a §{m}, que no existe&quot;)
+    for m in set(re.findall(r&quot;Anexo ([A-Z])\b&quot;, t)):
+        if m not in anexos:
+            fallos.append(f&quot;6· Referencia al Anexo {m}, que no existe&quot;)
+
+
+PARES_CONTRASTE = [
+    # (texto/figura, fondo, mínimo) · el contrato de accesibilidad, ejecutable
+    (&quot;secundario&quot;, &quot;fondo&quot;, 7.0), (&quot;primario&quot;, &quot;fondo&quot;, 7.0),
+    (&quot;hueso&quot;, &quot;fondo&quot;, 4.5),
+    (&quot;accion&quot;, &quot;fondo&quot;, 3.0), (&quot;aviso&quot;, &quot;fondo&quot;, 3.0),
+    (&quot;certeza-alta&quot;, &quot;fondo&quot;, 3.0), (&quot;certeza-media&quot;, &quot;fondo&quot;, 3.0),
+    (&quot;certeza-baja&quot;, &quot;fondo&quot;, 3.0),
+    (&quot;error&quot;, &quot;sup&quot;, 4.5), (&quot;exito&quot;, &quot;sup-alta&quot;, 4.5),
+    (&quot;linea-fuerte&quot;, &quot;sup&quot;, 3.0),
+    (&quot;sobre-accion&quot;, &quot;accion&quot;, 4.5), (&quot;sobre-oscuro&quot;, &quot;bloqueado&quot;, 4.5),
+    (&quot;foco-1&quot;, &quot;foco-2&quot;, 13.0),
+]
+
+
+def _lum(h):
+    h = h.lstrip(&quot;#&quot;)
+    r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    f = lambda c: c / 12.92 if c &lt;= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+
+
+def _ratio(a, b):
+    la, lb = sorted((_lum(a), _lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
+def c9_contrastes(t, fallos):
+    &quot;&quot;&quot;Los pares de contraste que el sistema promete se recalculan contra
+    los hex reales del Anexo A, en los dos temas. Las cifras del texto
+    pueden mentir; estas no.&quot;&quot;&quot;
+    m = re.search(r&quot;^## Anexo A[^\n]*$&quot;, t, re.M)
+    fin = re.search(r&quot;^## Anexo B&quot;, t, re.M)
+    if not (m and fin):
+        return
+    zona = t[m.start():fin.start()]
+    corte = zona.find(&#39;data-tema&#39;)
+    temas = {&quot;Nocturno&quot;: zona[:corte], &quot;Fragua&quot;: zona[corte:]}
+    base = dict(re.findall(r&quot;--([a-z0-9-]+)\s*:\s*(#[0-9A-Fa-f]{6})&quot;, temas[&quot;Nocturno&quot;]))
+    for nombre, cuerpo in temas.items():
+        vals = dict(base)
+        vals.update(re.findall(r&quot;--([a-z0-9-]+)\s*:\s*(#[0-9A-Fa-f]{6})&quot;, cuerpo))
+        for fg, bg, minimo in PARES_CONTRASTE:
+            if fg in vals and bg in vals:
+                r = _ratio(vals[fg], vals[bg])
+                if r &lt; minimo:
+                    fallos.append(f&quot;9· {nombre}: {fg} sobre {bg} da {r:.2f}, &quot;
+                                  f&quot;por debajo del mínimo {minimo}&quot;)
+
+
+def c8_tokens(t, fallos):
+    &quot;&quot;&quot;Toda referencia var(--x) o {x} resuelve a una definición del Anexo A
+    o a un tamaño tipográfico, o a un bloque del contrato.&quot;&quot;&quot;
+    m = re.search(r&quot;^## Anexo A[^\n]*$&quot;, t, re.M)
+    fin = re.search(r&quot;^## Anexo B&quot;, t, re.M)
+    if not (m and fin):
+        fallos.append(&quot;8· No encuentro el Anexo A para leer las definiciones&quot;)
+        return
+    zona = t[m.start():fin.start()]
+    defs = set(re.findall(r&quot;--([a-z0-9-]+)\s*:&quot;, zona))
+    for ref in set(re.findall(r&quot;var\(--([a-z0-9-]+)\)&quot;, t)):
+        if ref not in defs:
+            fallos.append(f&quot;8· var(--{ref}) no está definido en el Anexo A&quot;)
+    bloques_contrato = set(re.findall(r&#39;^  &quot;([a-z]+)&quot;&#39;, t, re.M))
+    for ref in set(re.findall(r&#39;&quot;\{([a-z0-9-]+)\}&quot;&#39;, t)):
+        base = ref.split(&quot;.&quot;)[0]
+        if ref not in defs and base not in defs and base not in bloques_contrato:
+            fallos.append(f&quot;8· {{{ref}}} del contrato no resuelve a un token del Anexo A&quot;)
+
+
+def c7_json(t, fallos):
+    for bloque in re.findall(r&quot;```json\n(.*?)\n```&quot;, t, re.S):
+        try:
+            json.loads(bloque)
+        except Exception as e:
+            fallos.append(f&quot;7· El bloque JSON no parsea: {e}&quot;)
+
+
+def main():
+    if len(sys.argv) &lt; 2:
+        print(&quot;Uso: python3 validar.py &lt;documento.md&gt;&quot;)
+        return 2
+    t = open(sys.argv[1], encoding=&quot;utf-8&quot;).read()
+    # El guardián vive embebido en el Anexo K: no debe leerse a sí mismo.
+    t = re.sub(r&quot;```python\n.*?\n```&quot;, &quot;```python\n(guardián)\n```&quot;, t, flags=re.S)
+    fallos = []
+    for f in (c1_version, c2_numeracion, c3_hex, c4_iconos,
+              c5_deprecated, c6_referencias, c7_json, c8_tokens, c9_contrastes):
+        f(t, fallos)
+    if not fallos:
+        print(&quot;Sin fallos. El documento puede publicarse.&quot;)
+        return 0
+    print(f&quot;{len(fallos)} fallo(s):\n&quot;)
+    for f in fallos:
+        print(&quot; ·&quot;, f)
+    return 1
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+
+```json\n(.*?)\n```&quot;, t, re.S):
+        try:
+            json.loads(bloque)
+        except Exception as e:
+            fallos.append(f&quot;7· El bloque JSON no parsea: {e}&quot;)
+
+
+def main():
+    if len(sys.argv) &lt; 2:
+        print(&quot;Uso: python3 validar.py &lt;documento.md&gt;&quot;)
+        return 2
+    t = open(sys.argv[1], encoding=&quot;utf-8&quot;).read()
+    fallos = []
+    for f in (c1_version, c2_numeracion, c3_hex, c4_iconos,
+              c5_deprecated, c6_referencias, c7_json, c8_tokens):
+        f(t, fallos)
+    if not fallos:
+        print(&quot;Sin fallos. El documento puede publicarse.&quot;)
+        return 0
+    print(f&quot;{len(fallos)} fallo(s):\n&quot;)
+    for f in fallos:
+        print(&quot; ·&quot;, f)
+    return 1
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</code></pre>
+<hr>
+<p><a id="glosario"></a></p>
+<h3>Glosario</h3>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Dosis</strong></td>
+<td>El reparto Ritual 30 / Fanzine 70 que ordena cada pieza</td>
+</tr>
+<tr>
+<td><strong>Escalera de certeza</strong></td>
+<td>Los tres grados —alta, media, baja— codificados con luminosidad y casi sin croma</td>
+</tr>
+<tr>
+<td><strong>Léxico icónico</strong></td>
+<td>Los nueve estados con silueta propia que permiten quitar el texto en la interfaz densa</td>
+</tr>
+<tr>
+<td><strong>Parche</strong></td>
+<td>La etiqueta escrita de género, sin color. También, cada festival al que fuiste, en el perfil</td>
+</tr>
+<tr>
+<td><strong>La chupa</strong></td>
+<td>El perfil: la colección de parches, jerarquizada por acabado y nunca por color</td>
+</tr>
+<tr>
+<td><strong>Acento escaso</strong></td>
+<td>La regla de que solo dos estados llevan croma alto, para que uno destaque</td>
+</tr>
+<tr>
+<td><strong>Dato invariable</strong></td>
+<td>Nombre, fechas, ciudad y país, estado. Aparece en los cuatro modos de recorrido</td>
+</tr>
+<tr>
+<td><strong>Sello de verificación</strong></td>
+<td>Fuente, fecha de comprobación y certeza. Toda ficha lo lleva</td>
+</tr>
+<tr>
+<td><strong>Modo recinto</strong></td>
+<td>El estado de la aplicación dentro del festival: sin conexión, tipografía mayor, solo lo de hoy</td>
+</tr>
+<tr>
+<td><strong>Tramo</strong></td>
+<td>Lo que hay entre dos paradas de una ruta: transporte, tiempo y kilómetros</td>
+</tr>
+<tr>
+<td><strong>Nocturno / Fragua</strong></td>
+<td>Los dos modos de color. Nocturno por defecto</td>
+</tr>
+<tr>
+<td><strong>Filo, medida, dientes, cadena, sello, corte</strong></td>
+<td>Los seis separadores, ordenados por jerarquía</td>
+</tr>
+<tr>
+<td><strong>A sangre</strong></td>
+<td>Lo que rompe el ancho máximo de página: mapa, cartel por horas, portada y corte diagonal. Nada más (§8.3)</td>
+</tr>
+<tr>
+<td><strong>Plegado de diacríticos</strong></td>
+<td>La búsqueda iguala <code>jaromer</code> con Jaroměř; la pantalla nunca (§11.4)</td>
+</tr>
+<tr>
+<td><strong>Contrato semántico</strong></td>
+<td>§19.3: qué significa cada estado y con qué se dibuja, sin un solo valor</td>
+</tr>
+<tr>
+<td><strong>El guardián</strong></td>
+<td>El verificador embebido del Anexo K: ocho comprobaciones antes de publicar</td>
+</tr>
+<tr>
+<td><strong>Sobre-oscuro / sobre-acción</strong></td>
+<td>Los dos textos que no siguen al tema: encima de <code>bloqueado</code> y encima de <code>accion</code> (§5.1)</td>
+</tr>
+</tbody></table>
+<p><a id="tokens"></a></p>
+<h3>Índice de tokens</h3>
+<p><strong>Superficie</strong> <code>fondo</code> · <code>sup</code> · <code>sup-alta</code> · <code>linea</code> · <code>linea-fuerte</code> · <code>terciario</code> · <code>secundario</code> · <code>primario</code> · <code>hueso</code>
+<strong>Código</strong> <code>accion</code> · <code>bloqueado</code> · <code>bloqueado-borde</code> · <code>certeza-alta</code> · <code>certeza-media</code> · <code>certeza-baja</code> · <code>aviso</code>
+<strong>Interfaz</strong> <code>exito</code> · <code>error</code> · <code>foco-1</code> · <code>foco-2</code> · <code>sobre-oscuro</code> · <code>sobre-accion</code>
+<strong>Materia</strong> <code>plata-viva</code> · <code>acero</code> · <code>estano</code>
+<strong>Espacio</strong> <code>s100</code>–<code>s1000</code> · <code>r</code> · <code>r0</code> · <code>r-completo</code>
+<strong>Página</strong> <code>ancho-max</code> · <code>ancho-lectura</code> · <code>margen-pagina</code>, en <a href="#espacio">§8.3</a>
+<strong>Tipografía</strong> <code>titulo</code> · <code>gotica</code> · <code>texto</code> · <code>dato</code>
+<strong>Tiempo</strong> <code>ruta</code> y las doce duraciones del <a href="#anexo-g">Anexo G</a>
+<strong>Contrato</strong> <code>estado</code> · <code>aportacion</code> · <code>componente</code> · <code>mapa</code> · <code>cartel</code> · <code>dato</code>, en <a href="#contrato">§19.3</a>. Sin valores: solo significado</p>
+<p>Valores en el <a href="#anexo-a">Anexo A</a>. Ningún componente apunta a un primitivo: siempre a la capa semántica.</p>
+
+</main>
+</body>
+</html>
