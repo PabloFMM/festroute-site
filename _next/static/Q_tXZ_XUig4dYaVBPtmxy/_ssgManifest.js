@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fcalendario\u002F[anyo]\u002F[mes]","\u002Ffestival\u002F[slug]","\u002Ffestival\u002F[slug]\u002Fahora","\u002Ffestival\u002F[slug]\u002Fcartel","\u002Ffestival\u002F[slug]\u002Frecinto"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
