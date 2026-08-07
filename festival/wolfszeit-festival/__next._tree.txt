@@ -1,4 +1,3 @@
-:HL["/festroute-site/_next/static/chunks/3jys8owsmyjql.css","style"]
+:HL["/festroute-site/_next/static/chunks/15ws6e387y5na.css","style"]
 :HC["/",""]
-:HL["https://static.wixstatic.com/media/c088f2_7c5221696dac43da893e9c125405e46c~mv2.jpg/v1/fill/w_859,h_641,al_c/c088f2_7c5221696dac43da893e9c125405e46c~mv2.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"wolfszeit-festival","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"pSmWWz0z5JdXznBv8wx_k"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"wolfszeit-festival","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"yJj7CaldXahjYpgp7Q3uo"}
