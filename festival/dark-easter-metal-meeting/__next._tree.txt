@@ -1,3 +1,3 @@
-:HL["/festroute-site/_next/static/chunks/0g9n962wo4f7n.css","style"]
+:HL["/festroute-site/_next/static/chunks/3jys8owsmyjql.css","style"]
 :HC["/",""]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"dark-easter-metal-meeting","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"eC-Q6W7gyWCF8O-e9Qx8v"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"dark-easter-metal-meeting","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"pSmWWz0z5JdXznBv8wx_k"}

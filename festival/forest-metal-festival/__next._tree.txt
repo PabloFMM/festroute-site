@@ -1,4 +1,4 @@
-:HL["/festroute-site/_next/static/chunks/0g9n962wo4f7n.css","style"]
+:HL["/festroute-site/_next/static/chunks/3jys8owsmyjql.css","style"]
 :HC["/",""]
 :HL["https://metal-fest.de/wp-content/uploads/2023/07/forest_metal_fest_metalmusik_festival_metal_music_melodic_death_hardcore_deathcore_heavymetal_folkmetal_heavymetal_thrashmetal_doommetal_blackmetal_metalfestival.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"forest-metal-festival","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"eC-Q6W7gyWCF8O-e9Qx8v"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"forest-metal-festival","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"pSmWWz0z5JdXznBv8wx_k"}
