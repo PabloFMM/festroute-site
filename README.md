@@ -12,8 +12,8 @@ el siguiente, que sustituye todo el contenido.
 | Web publicada | https://pablofmm.github.io/festroute-site |
 | Código fuente | `PabloFMM/Fetivales-Metal-App` |
 | Cómo llega aquí | `deploy-site.yml`, tras CI en verde sobre `main` |
-| Commit de origen | `1cdc01b` |
-| Generado | `2026-08-07T10:54Z` |
+| Commit de origen | `2d3fffc` |
+| Generado | `2026-08-07T11:27Z` |
 
 ¿Has encontrado un dato equivocado de un festival —fechas, cartel, ciudad— o un
 fallo en la web? Escríbenos: se corrige en el origen y sale publicado en el
@@ -26,7 +26,7 @@ versión modificada como servicio en red, su §13 te obliga a ofrecer tu código
 quien la use.
 
 Si el repositorio de código no estuviera accesible en este momento, pide la
-fuente correspondiente a esta versión —`1cdc01b`— abriendo una incidencia
+fuente correspondiente a esta versión —`2d3fffc`— abriendo una incidencia
 aquí y se te entrega.
 
 El design system «Yunque» va aparte, bajo **CC0-1.0** (dominio público). Los
