@@ -786,11 +786,6 @@
 <priority>0.5</priority>
 </url>
 <url>
-<loc>https://pablofmm.github.io/festroute-site/festival/leyendas-del-rock/ahora/</loc>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-<url>
 <loc>https://pablofmm.github.io/festroute-site/festival/leyendas-del-rock/recinto/</loc>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
