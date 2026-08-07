@@ -1,2 +1,2 @@
-:HL["/festroute-site/_next/static/chunks/07_51gnhc-fow.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"xLo4t5nlqVGyGji0gyqrN"}
+:HL["/festroute-site/_next/static/chunks/3411mn2lfhc-6.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"z6jBkrJDsPC9Ut3Zvmy04"}
