@@ -1,4 +1,4 @@
-:HL["/festroute-site/_next/static/chunks/3_x_nvzhrji16.css","style"]
+:HL["/festroute-site/_next/static/chunks/0g9n962wo4f7n.css","style"]
 :HC["/",""]
 :HL["https://cdn.prod.website-files.com/68c901d27ee80cba98cdc8c8/69c9ad556f10f84195ffd3c4_Contact%20STOOM%20%20Heavy%20Music%20Festival%2C%20Gigs%20%26%20Tours%20(6).jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"stoomfest","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"6UNjJm55A2GmO3-rSGuGK"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"festival","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"stoomfest","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"eC-Q6W7gyWCF8O-e9Qx8v"}
