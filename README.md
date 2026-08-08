@@ -13,7 +13,7 @@ el siguiente, que sustituye todo el contenido.
 | Código fuente | `PabloFMM/Fetivales-Metal-App` |
 | Cómo llega aquí | `deploy-site.yml`, tras CI en verde sobre `main` |
 | Commit de origen | `3da7347` |
-| Generado | `2026-08-08T00:06Z` |
+| Generado | `2026-08-08T00:09Z` |
 
 ¿Has encontrado un dato equivocado de un festival —fechas, cartel, ciudad— o un
 fallo en la web? Escríbenos: se corrige en el origen y sale publicado en el
