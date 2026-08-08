@@ -1,0 +1,261 @@
+1:"$Sreact.fragment"
+2:I[37634,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"CintaSinConexion"]
+3:I[22016,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],""]
+4:I[56008,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"EnlaceSesion"]
+5:I[52748,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"ThemeToggle"]
+6:I[39756,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"default"]
+7:I[37457,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"default"]
+8:I[58720,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"BarraInferior"]
+9:I[83543,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"Sincronizacion"]
+13:I[68027,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"default",1]
+:HL["/festroute-site/_next/static/chunks/4148ih881geax.css","style"]
+:HC["/",""]
+11:X
+0:{"P":null,"c":["","acerca","bajo-el-capo",""],"q":"","i":false,"f":[[["",{"children":["acerca",{"children":["bajo-el-capo",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/festroute-site/_next/static/chunks/4148ih881geax.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"es","data-tema":"oscuro","children":[["$","head",null,{"children":[["$","meta",null,{"name":"referrer","content":"strict-origin-when-cross-origin"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var t=localStorage.getItem('festroute:tema');if(t!=='claro'&&t!=='oscuro'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'claro':'oscuro'}document.documentElement.dataset.tema=t}catch(e){document.documentElement.dataset.tema='oscuro'}})()"}}]]}],["$","body",null,{"children":[["$","div",null,{"className":"cabecera-fija","children":[["$","$L2",null,{}],["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"wrap","children":[["$","$L3",null,{"href":"/","className":"marca","children":"FestRoute"}],["$","nav",null,{"className":"site-nav","aria-label":"Navegación principal","children":[["$","$L3",null,{"href":"/","children":"Festivales"}],["$","$L3",null,{"href":"/buscar/","children":"Buscar"}],["$","$L3",null,{"href":"/mi-ruta/","children":"Mi ruta"}],["$","$L4",null,{}]]}],["$","div",null,{"className":"site-controles","children":[["$","$L3",null,{"className":"icono-btn","href":"/acerca/","aria-label":"Qué es FestRoute","data-tooltip":"Qué es FestRoute","children":["$","svg",null,{"className":"icono","viewBox":"0 0 256 256","width":20,"height":20,"fill":"currentColor","role":"$undefined","aria-label":"$undefined","aria-hidden":true,"dangerouslySetInnerHTML":{"__html":"<path d=\"M108,84a16,16,0,1,1,16,16A16,16,0,0,1,108,84Zm128,44A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Zm-72,36.68V132a20,20,0,0,0-20-20,12,12,0,0,0-4,23.32V168a20,20,0,0,0,20,20,12,12,0,0,0,4-23.32Z\"/>"}}]}],["$","$L5",null,{}]]}]]}]}]]}],["$","hr",null,{"className":"sep-cadena"}],["$","main",null,{"children":["$","$L6",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"wrap pagina-texto","children":[["$","h1",null,{"children":"Esta página no existe"}],["$","p",null,{"children":"Puede que el festival haya cambiado de nombre o que el enlace esté mal escrito. Empieza por el catálogo: ahí están todos."}],["$","p",null,{"children":["$","$L3",null,{"href":"/","className":"volver","children":"Volver a todos los festivales"}]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","div",null,{"className":"sep-corte","aria-hidden":"true"}],["$","footer",null,{"className":"site-footer","children":["$","div",null,{"className":"wrap","children":[["$","nav",null,{"className":"footer-legal","aria-label":"Información legal","children":[["$","$L3",null,{"href":"/legal/codigo-fuente/","children":"Código fuente"}],["$","$L3",null,{"href":"/legal/aviso-legal/","children":"Aviso legal"}],["$","$L3",null,{"href":"/legal/terminos/","children":"Términos de uso"}],["$","$L3",null,{"href":"/legal/privacidad/","children":"Privacidad"}],["$","$L3",null,{"href":"/legal/cookies/","children":"Cookies"}]]}],["$","p",null,{"className":"forja","children":["Hecho en la Forja de los Mil Pecados para todos los metalheads 🤘 · v","0.46.0"]}]]}]}],["$","$L8",null,{}],["$","$L9",null,{}]]}]]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L6",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L6",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L7",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","div",null,{"className":"wrap pagina-texto","children":[["$","h1",null,{"children":"Bajo el capó"}],["$","nav",null,{"className":"menu-acerca","aria-label":"Qué es FestRoute","children":[["$","$L3","/acerca/",{"href":"/acerca/","className":"$undefined","aria-current":"$undefined","children":"Qué es"}],"$La","$Lb","$Lc","$Ld","$Le"]}],"$Lf"]}],null,"$L10"]}],{},null,false,null]},null,false,"$11"]},null,false,"$11"]},null,false,null],"$L12",false]],"m":"$undefined","G":["$13",["$L14"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"30c7f147e45e"}
+16:I[97367,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[97367,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"ViewportBoundary"]
+1b:I[97367,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"MetadataBoundary"]
+a:["$","$L3","/acerca/quienes-somos/",{"href":"/acerca/quienes-somos/","className":"$undefined","aria-current":"$undefined","children":"Quiénes somos"}]
+b:["$","$L3","/acerca/guia/",{"href":"/acerca/guia/","className":"$undefined","aria-current":"$undefined","children":"Cómo se usa"}]
+c:["$","$L3","/acerca/bajo-el-capo/",{"href":"/acerca/bajo-el-capo/","className":"menu-acerca-actual","aria-current":"page","children":"Bajo el capó"}]
+d:["$","$L3","/acerca/hoja-de-ruta/",{"href":"/acerca/hoja-de-ruta/","className":"$undefined","aria-current":"$undefined","children":"Hoja de ruta"}]
+e:["$","$L3","/acerca/contacto/",{"href":"/acerca/contacto/","className":"$undefined","aria-current":"$undefined","children":"Contacto"}]
+15:T24b1,<p>Cómo está hecha esta web, contado sin adornos. El código es público y esto es su
+resumen honesto: lo que hace, lo que no hace y lo que todavía no aguanta.</p>
+<h2>En una frase</h2>
+<p><strong>FestRoute no tiene servidor.</strong> Es un montón de páginas HTML generadas de
+antemano y servidas como ficheros. Cuando abres un festival no hay nada
+calculando nada: ese archivo ya existía antes de que llegaras.</p>
+<p>Eso decide casi todo lo demás. No hay servidor que caerse, ni que atacar, ni que
+pagar. A cambio, todo lo que cambia según quién eres tiene que pasar en tu propio
+navegador, y ahí es donde está la parte interesante.</p>
+<h2>Del cambio a tu pantalla</h2>
+<p>Cada vez que se toca el código pasa esto, y no se puede saltar ningún paso:</p>
+<ol>
+<li><strong>Se comprueba todo a la vez</strong>: formato, tipos, 302 pruebas unitarias, 150
+pruebas que abren un navegador de verdad, accesibilidad automática en las
+páginas principales, y las reglas de seguridad de la base de datos contra un
+PostgreSQL real. Unos tres minutos.</li>
+<li><strong>Se construye una vez.</strong> El resultado se guarda y es el que se publica: no se
+vuelve a construir para desplegar. Suena obvio y no lo era — hasta la v0.45.0
+se construía dos veces y se publicaba la que no había pasado las pruebas.</li>
+<li><strong>Se publica y se comprueba que se ve.</strong> No basta con subir los ficheros:
+el proceso no termina hasta confirmar que un visitante recibe esa versión.</li>
+</ol>
+<p>Del último cambio a la web publicada: unos cinco minutos. Si algo sale mal, hay
+un botón que devuelve la versión anterior en un minuto.</p>
+<p><strong>La construcción es reproducible</strong>: el mismo código produce exactamente los
+mismos bytes, y hay una comprobación automática que lo verifica en cada entrega.
+Sin eso, «se publica lo que se probó» sería una frase bonita sin forma de
+demostrarla.</p>
+<h2>Qué corre en tu navegador</h2>
+<p>Poco, a propósito.</p>
+<ul>
+<li><strong>Nada de analítica.</strong> Ni Google Analytics, ni píxeles, ni «heatmaps». No
+sabemos cuánta gente entra ni qué mira.</li>
+<li><strong>Nada de cookies de terceros.</strong> Ni de primeros, salvo lo que tú guardes.</li>
+<li><strong>Ninguna llamada a otro dominio.</strong> Las tipografías, los iconos y los códigos
+QR están dentro. Un QR pedido a un servicio externo le regala a ese servicio tu
+IP y la hora exacta en que lo miraste; el nuestro se dibuja en la página.</li>
+<li><strong>Una política de seguridad estricta</strong>: el navegador tiene prohibido ejecutar
+cualquier script que no venga firmado en la propia página.</li>
+</ul>
+<p>Lo único que sale fuera es hablar con la base de datos, y solo si has entrado en
+tu cuenta.</p>
+<h2>Dónde viven tus datos</h2>
+<p><strong>Primero en tu dispositivo, siempre.</strong> Tu ruta, lo que marcas como visto, lo que
+guardas: se escribe en tu navegador antes que en ningún otro sitio. Por eso la
+guía de recinto funciona sin cobertura, que es justo donde hace falta.</p>
+<p>Sin cuenta no nos das nada y puedes hacer casi todo. Con cuenta, lo que guardas
+sube y te sigue a otro dispositivo.</p>
+<p><strong>Lo que protege tus datos no es nuestro código.</strong> Es la base de datos: cada
+tabla tiene una regla que impide leer una fila que no sea tuya, y esas reglas se
+prueban en cada cambio contra un PostgreSQL de verdad. Aunque nuestra web tuviera
+un fallo, la base seguiría diciendo que no.</p>
+<p>Puedes <strong>exportar todo</strong> lo que tenemos de ti y <strong>borrar la cuenta entera</strong> desde
+tu propia cuenta, sin pedírnoslo. Al borrar no queda copia.</p>
+<h2>Las puertas que no se pueden saltar</h2>
+<p>Cosas que hacen fallar una entrega, no que generen un aviso que alguien ignore:</p>
+<ul>
+<li>Contraste y accesibilidad automáticos en las páginas principales, en los dos
+modos de color.</li>
+<li>Que ninguna página empuje el móvil de lado.</li>
+<li>Que ninguna página pegue el contenido al borde de la pantalla.</li>
+<li>Que ningún enlace apunte fuera del sitio por error.</li>
+<li>Que las reglas de la base de datos sigan negando lo que tienen que negar.</li>
+<li>Que la documentación no tenga enlaces rotos.</li>
+</ul>
+<h2>Con qué está hecho</h2>
+<p><strong>Lo que se ejecuta en tu navegador.</strong> Estas son las únicas dependencias que
+viajan dentro de la web. Todas con licencia permisiva y todas de código abierto.</p>
+<table>
+<thead>
+<tr>
+<th>Paquete</th>
+<th>Versión</th>
+<th>Licencia</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@supabase/supabase-js</code></td>
+<td>2.112.2</td>
+<td>MIT</td>
+<td>Habla con la base de datos y con el sistema de cuentas.</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>16.3.0</td>
+<td>MIT</td>
+<td>Construye las páginas. Aquí se usa en modo exportación: genera HTML y se apaga.</td>
+</tr>
+<tr>
+<td><code>react</code></td>
+<td>19.2.8</td>
+<td>MIT</td>
+<td>La librería con la que están escritas las pantallas.</td>
+</tr>
+<tr>
+<td><code>react-dom</code></td>
+<td>19.2.8</td>
+<td>MIT</td>
+<td>La parte de React que habla con el navegador.</td>
+</tr>
+<tr>
+<td><code>zod</code></td>
+<td>3.25.76</td>
+<td>MIT</td>
+<td>Comprueba que los datos de un festival tienen la forma que decimos.</td>
+</tr>
+</tbody></table>
+<p><strong>Lo que solo se usa para construir y probar.</strong> Nada de esto llega a tu máquina:
+se queda en la nuestra y en la de quien compile el proyecto.</p>
+<table>
+<thead>
+<tr>
+<th>Paquete</th>
+<th>Versión</th>
+<th>Licencia</th>
+<th>Para qué</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@axe-core/playwright</code></td>
+<td>4.12.1</td>
+<td>MPL-2.0</td>
+<td>Audita la accesibilidad en cada prueba.</td>
+</tr>
+<tr>
+<td><code>@phosphor-icons/core</code></td>
+<td>2.1.1</td>
+<td>MIT</td>
+<td>La colección de iconos. Se copian los trazos al repositorio; no se pide nada a nadie en tiempo de visita.</td>
+</tr>
+<tr>
+<td><code>@playwright/test</code></td>
+<td>1.62.1</td>
+<td>Apache-2.0</td>
+<td>Abre navegadores de verdad y usa la web como la usarías tú.</td>
+</tr>
+<tr>
+<td><code>eslint</code></td>
+<td>9.39.5</td>
+<td>MIT</td>
+<td>Revisa el código y rechaza lo que no cumple.</td>
+</tr>
+<tr>
+<td><code>knip</code></td>
+<td>6.31.0</td>
+<td>ISC</td>
+<td>Encuentra código que ya no usa nadie.</td>
+</tr>
+<tr>
+<td><code>marked</code></td>
+<td>18.0.9</td>
+<td>MIT</td>
+<td>Convierte a HTML los documentos que ves en esta sección.</td>
+</tr>
+<tr>
+<td><code>prettier</code></td>
+<td>3.9.6</td>
+<td>MIT</td>
+<td>Le da el mismo formato a todo, para que nadie discuta de comas.</td>
+</tr>
+<tr>
+<td><code>qrcode-generator</code></td>
+<td>1.5.0</td>
+<td>MIT</td>
+<td>Dibuja el QR de cada festival. Se dibuja aquí para que nadie de fuera se entere de que lo has mirado.</td>
+</tr>
+<tr>
+<td><code>typescript</code></td>
+<td>5.9.3</td>
+<td>Apache-2.0</td>
+<td>El lenguaje. Configurado en su modo más estricto.</td>
+</tr>
+<tr>
+<td><code>vitest</code></td>
+<td>4.1.10</td>
+<td>MIT</td>
+<td>Ejecuta las pruebas unitarias.</td>
+</tr>
+</tbody></table>
+<p>Las dependencias de estas dependencias no se listan una a una —serían cientos de
+filas que no ayudan a nadie— pero están todas, con su versión exacta, en el
+<code>package-lock.json</code> del repositorio, que es público.</p>
+<h2>De quién dependemos</h2>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Para qué</th>
+<th>Qué pasa si se cae</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GitHub Pages</strong></td>
+<td>Sirve la web</td>
+<td>La web no se ve. No se pierde nada: los ficheros están en dos repositorios</td>
+</tr>
+<tr>
+<td><strong>GitHub Actions</strong></td>
+<td>Construye y publica</td>
+<td>No se puede publicar. Lo ya publicado sigue en pie</td>
+</tr>
+<tr>
+<td><strong>Supabase</strong></td>
+<td>Cuentas y base de datos</td>
+<td>No se puede entrar ni sincronizar. <strong>El catálogo se sigue viendo entero</strong>, y lo que tengas guardado en tu dispositivo sigue ahí</td>
+</tr>
+</tbody></table>
+<p>El código es <strong>software libre bajo AGPL-3.0</strong>. Cualquiera puede levantar su
+propia copia; nada de lo de arriba es imprescindible.</p>
+<h2>Lo que hoy no aguanta</h2>
+<p>Dicho por nosotros, antes de que lo descubras tú:</p>
+<ul>
+<li><strong>El correo se envía con el remitente compartido de Supabase</strong>, en plan
+gratuito. Hay un tope de envíos y a veces cae en la carpeta de no deseado. Es
+la limitación que más molesta ahora mismo y está siendo atendida.</li>
+<li><strong>Un enlace de acceso solo vale en el navegador desde el que lo pediste.</strong> Es
+una garantía de seguridad, no un fallo, pero en un móvil molesta: la aplicación
+de correo abre los enlaces en su propio navegador. Por eso hay contraseña.</li>
+<li><strong>No hay copia de seguridad propia</strong> de la base de datos más allá de la que da
+el proveedor. Lo que hay en tu dispositivo no depende de eso.</li>
+<li><strong>No hay segundo factor</strong> todavía. Está escrito y pendiente.</li>
+<li><strong>La sesión se guarda en el almacenamiento del navegador</strong>, no en una cookie
+protegida, porque eso último necesita un servidor y aquí no hay. La defensa es
+la capa de antes: sin ejecución de scripts ajenos no hay nada que robar.</li>
+</ul>
+<h2>Si quieres mirarlo tú</h2>
+<p>Todo el código está publicado, incluidas las reglas de seguridad de la base de
+datos y las pruebas que las comprueban. Lo que se lee aquí se puede verificar
+allí.</p>
+f:["$","div",null,{"className":"documento","dangerouslySetInnerHTML":{"__html":"$15"}}]
+10:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+12:["$","$1","h",{"children":[null,["$","$L19",null,{"children":"$L1a"}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$17",null,{"name":"Next.Metadata","children":"$L1c"}]}]}],null]}]
+14:["$","link","0",{"rel":"stylesheet","href":"/festroute-site/_next/static/chunks/4148ih881geax.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+11:C
+1a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+18:null
+1c:[["$","title","0",{"children":"Bajo el capó · FestRoute"}],["$","meta","1",{"name":"description","content":"Cómo está hecha FestRoute: sin servidor, sin analítica, con qué librerías y con qué límites."}]]

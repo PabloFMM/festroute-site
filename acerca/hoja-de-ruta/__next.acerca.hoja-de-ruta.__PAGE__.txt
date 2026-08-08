@@ -1,0 +1,200 @@
+1:"$Sreact.fragment"
+2:I[22016,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],""]
+3:T541f,<p>Todo lo que se ha hecho, lo que falta y lo que está parado. Sale del mismo
+fichero con el que se trabaja, así que no puede ir por detrás de la realidad:
+si aquí pone que algo está entregado, está en la web que estás leyendo.</p>
+<p><strong>145 misiones</strong> — <strong>76</strong> en cola · <strong>54</strong> entregado · <strong>15</strong> congelado. Versión publicada: <strong>0.46.0</strong>.</p>
+<p>Cada misión tiene un identificador estable. No se reutilizan, ni siquiera
+cuando una misión muere: así una entrega de hace meses sigue apuntando a lo que
+apuntaba.</p>
+<p>Lo que no verás aquí: quién tiene pendiente qué, y los pasos de configuración
+que hacen falta para desbloquear algunas. Eso es operación, no producto.</p>
+<hr>
+<h2>En cola · 76</h2>
+<p>Trabajo decidido y todavía no hecho. Estar aquí no es una promesa de fecha: es una promesa de que está pensado y escrito.</p>
+<ul>
+<li><strong>FR-99</strong> · <strong>Las rutas del Anexo E que siguen faltando</strong>: <code>/mapa</code> (FR-18), <code>/festival/:slug/:año</code>, <code>/mi-ruta/:id</code>, <code>/mi-horario</code>, <code>/avisos</code> y <code>/alta</code>.</li>
+<li><strong>FR-100</strong> · <strong>La chupa de parches</strong> (§14.9 · C.13): un parche por festival al que fuiste, con arte del cartel, año y ciudad.</li>
+<li><strong>FR-101</strong> · <strong>Los ajustes que el sistema enumera y no existen</strong>: idioma, moneda, unidades y avisos (C.12 · §14.8).</li>
+<li><strong>FR-122</strong> · <code>/buscar</code> es C.2 y hoy no lo es.</li>
+<li><strong>FR-123</strong> · La leyenda de estados, dónde va de verdad.</li>
+<li><strong>FR-130</strong> · Consultar a diseño la prohibición de puntuaciones del §3.3.</li>
+<li><strong>FR-128</strong> · <strong>Ampliar el inventario del §9.1 con tres nombres de Phosphor</strong>: aforo <code>users-four</code> · código QR <code>qr-code</code> · Instagram <code>instagram-logo</code>.</li>
+<li><strong>FR-132</strong> · La historia de Wacken, edición a edición (1990–2026).</li>
+<li><strong>FR-138</strong> · <strong>Pedir la contraseña actual al cambiarla</strong>, con salida para quien no tiene ninguna («no me la sé → te mando un enlace»).</li>
+<li><strong>FR-139</strong> · <strong>Cambiar de correo</strong>, con confirmación en la dirección vieja y en la nueva (Supabase lo llama <em>secure email change</em>).</li>
+<li><strong>FR-140</strong> · Avisar por correo de los cambios de credencial.</li>
+<li><strong>FR-141</strong> · <strong>Ver y desvincular las identidades enlazadas</strong> (Google, correo).</li>
+<li><strong>FR-142</strong> · Espera creciente entre intentos fallidos en el formulario.</li>
+<li><strong>FR-143</strong> · SMTP propio con SPF, DKIM y DMARC.</li>
+<li><strong>FR-144</strong> · <strong>Decidir si entra un CAPTCHA</strong> (Turnstile o hCaptcha) en el alta y en la entrada.</li>
+<li><strong>FR-145</strong> · <strong>Verificar en el panel lo que la documentación da por hecho</strong>: protección contra contraseñas filtradas (NIST 800-63B lo pide explícitamente y en el plan gratuito puede no estar activa), caducidad del OTP ≤ 15 min y caducidad de sesión. <code>docs/10-security.md</code>…</li>
+<li><strong>FR-136</strong> · El código de seis cifras, que es la cura de verdad.</li>
+<li><strong>FR-135</strong> · Segundo factor por TOTP.</li>
+<li><strong>FR-112</strong> · <strong>Redes sociales en el pie, con iconos</strong> (§9.3, caso de solo icono).</li>
+<li><strong>FR-02</strong> · <strong>El resto del área de usuario</strong>: el borrado que se propaga entre dispositivos —hoy quitar algo lo quita aquí y sigue en la cuenta— y las preferencias.</li>
+<li><strong>FR-03</strong> · Ruta de temporada: recorrido por varios festivales según tus gustos</li>
+<li><strong>FR-04</strong> · Offline de verdad: service worker + IndexedDB.</li>
+<li><strong>FR-05</strong> · Apps móviles con Capacitor desde el mismo código</li>
+<li><strong>FR-06</strong> · Noticias de la escena (<code>docs/agents/news-agent.md</code>)</li>
+<li><strong>FR-07</strong> · Setlists alimentados por agente (<code>docs/agents/setlist-agent.md</code>)</li>
+<li><strong>FR-08</strong> · Pandillas de amigos (<code>docs/features/crews.md</code>)</li>
+<li><strong>FR-09</strong> · Portal de aliados (<code>docs/features/partner-portal.md</code>)</li>
+<li><strong>FR-10</strong> · Gamificación: PX, Cuernos y Púas (<code>docs/14-gamification.md</code>)</li>
+<li><strong>FR-11</strong> · Pagos y tienda (<code>docs/15-payments-and-commerce.md</code>)</li>
+<li><strong>FR-12</strong> · <strong>Horarios de más festivales</strong> (<code>data/timetables/</code>) — sin esto la guía solo existe en uno</li>
+<li><strong>FR-13</strong> · Familia de género de los 11 festivales semilla que no la tienen</li>
+<li><strong>FR-14</strong> · Carteles de los festivales que siguen sin imagen</li>
+<li><strong>FR-15</strong> · Copia autorizada del plano de recinto (hoy solo enlazamos al oficial)</li>
+<li><strong>FR-27</strong> · Playlists de las bandas: el campo existe en esquema e interfaz, el dato no</li>
+<li><strong>FR-28</strong> · <strong>Estado de entradas</strong>: la semilla no tiene ni un dato, así que «a la venta» hoy no puede encenderse honestamente.</li>
+<li><strong>FR-65</strong> · <strong>Métricas de nivel 0</strong> (<code>scripts/metrics.mjs</code>): cobertura, frescura, fichas obsoletas, densidad de dato.</li>
+<li><strong>FR-17</strong> · Medición sin cookies, nivel 1 (Plausible o Umami autoalojado).</li>
+<li><strong>FR-66</strong> · Actualizar las páginas legales <strong>antes</strong> del primer evento: hoy dicen «Analítica: no hay», y el día que la haya esa frase es falsa</li>
+<li><strong>FR-67</strong> · Nivel 2: eventos anónimos y embudos E1 (descubrir), E2 (buscar) y E5 (confiar), los tres que funcionan sin cuentas</li>
+<li><strong>FR-18</strong> · <strong>Modo mapa del índice</strong> (C.14).</li>
+<li><strong>FR-19</strong> · Meteo hora a hora por bolo (hoy solo por jornada)</li>
+<li><strong>FR-20</strong> · Dominio propio: DNS, <code>CNAME</code> en el artefacto, <code>basePath</code> vacío (runbook §2)</li>
+<li><strong>FR-69</strong> · Máquina en OVH <strong>aprovisionada como código</strong> (<code>infra/</code>): ningún <code>apt install</code> antes que su script versionado (runbook §3)</li>
+<li><strong>FR-96</strong> · <strong>Conectar Cloudflare al repositorio</strong> (ADR 0010).</li>
+<li><strong>FR-97</strong> · <strong>DPA con Cloudflare</strong> como encargado de tratamiento, que el RGPD Art. 28 exige de todo proveedor que trate datos por nuestra cuenta.</li>
+<li><strong>FR-70</strong> · <strong>Prueba de reconstrucción</strong>: alguien que no conoce el proyecto lo levanta solo con <code>docs/</code>, los dos HTML del design system y los README de datos.</li>
+<li><strong>FR-98</strong> · <strong>Las cuatro mayores aplazadas de Dependabot</strong> (2026-08-06), cerradas con <code>ignore this major version</code> para que no vuelvan gota a gota: <code>eslint</code> 10 <strong>junto con</strong> <code>@eslint/js</code> 10 (van emparejadas y piden revisar la configuración en una sola sentada)…</li>
+<li><strong>FR-85</strong> · Rutas de día de festival del Anexo E (<code>/festival/:slug/cartel</code>, <code>/ahora</code>, <code>/recinto</code>) — la guía ya hace gran parte incrustada; independizarla y alinear medidas con C.5–C.8</li>
+<li><strong>FR-86</strong> · Comparador (C.0, «especificada, sin maquetar»)</li>
+<li><strong>FR-87</strong> · Alta y preferencias · cuenta y ajustes · centro de avisos · aportar corrección (C.9–C.12)</li>
+<li><strong>FR-88</strong> · El perfil y la chupa (C.13 · §14.9 · Anexo H)</li>
+<li><strong>FR-89</strong> · Tramos entre paradas de Mi ruta (C.4): transporte, tiempo y distancia</li>
+<li><strong>FR-29</strong> · Alojar <em>Should&#39;ve Known</em>: el sistema la nombra como tipografía de titular y no la entrega; cae a <em>Grenze Gotisch</em></li>
+<li><strong>FR-80</strong> · <strong>Traer las tipografías de su origen</strong>, como ya se hace con los iconos: <code>geist</code>, <code>@fontsource/grenze-gotisch</code> y <code>@fontsource/pirata-one</code>, todas OFL.</li>
+<li><strong>FR-83</strong> · <strong>Los dos estados que faltan del léxico de §6.2</strong>: «últimas entradas» y «novedad» como estados de edición.</li>
+<li><strong>FR-81</strong> · El token <code>destacado</code> no existe.</li>
+<li><strong>FR-48</strong> · <del><code>warning-circle</code> y <code>skull</code> sin trazo</del> — <strong>cerrada</strong> con la v5.0.0: los trazos se leen de Phosphor y no de un render, así que el problema no puede repetirse</li>
+<li><strong>FR-49</strong> · §11.2 tabla ordenable y paginada · §11.3 calendario y mapa · §14 las siete pantallas completas</li>
+<li><strong>FR-52</strong> · Iconos de meteorología: el inventario §8.1 no tiene ninguno, así que el estado del cielo se dice solo con palabras (los emoji se han quitado)</li>
+<li><strong>FR-56</strong> · §12 estado 3 y 4 en el resto de vistas: hoy están en la ficha sin guía y en la meteo; faltan las demás pantallas</li>
+<li><strong>FR-58</strong> · <code>data.ts</code> y <code>timetable.ts</code> resuelven rutas contra <code>process.cwd()</code>, así que solo funcionan desde <code>apps/web</code>.</li>
+<li><strong>FR-59</strong> · Cubrir los envoltorios de red de los agentes con <strong>MSW</strong>, que la estrategia contempla y no está instalado (<code>run.mjs</code>, <code>run-lineups.mjs</code>, <code>head()</code> de carteles)</li>
+<li><strong>FR-60</strong> · <strong>Lighthouse CI</strong> con los presupuestos del DS: LCP &lt; 2,5 s, &lt; 1 MB inicial, CLS &lt; 0,1.</li>
+<li><strong>FR-61</strong> · Golden datasets de los agentes: entradas reales con salida esperada, por agente</li>
+<li><strong>FR-50</strong> · §12: los cinco estados de vista (cargando con esqueleto, vacío de origen, error) más allá de «sin resultados»</li>
+<li><strong>FR-72</strong> · <code>04-tech-stack.md</code> no declara ninguna versión concreta.</li>
+<li><strong>FR-74</strong> · Revisar las 44 casillas restantes de <code>08-launch-readiness.md</code> contra la realidad.</li>
+<li><strong>FR-75</strong> · <code>01-scope-and-features.md</code> describe F1–F14 sin decir cuál está implementada.</li>
+<li><strong>FR-76</strong> · <code>05-roadmap.md</code> describe cinco fases sin decir en cuál estamos.</li>
+<li><strong>FR-21</strong> · Completar el aviso legal con la identificación del prestador</li>
+<li><strong>FR-91</strong> · <strong>¿Acuerdo de contribución (CLA/DCO) o nada?</strong> Decisión aplazada a propósito hasta que llegue la primera contribución (ADR 0009).</li>
+<li><strong>FR-79</strong> · <strong>Inventario formal de activos</strong> con propietario y clasificación, como pide la ISO/IEC 27001 A.5.9.</li>
+<li><strong>FR-77</strong> · <strong>i18n ES/EN</strong>: la interfaz y las cinco páginas legales están solo en español, y <code>08-launch-readiness</code> lo exige en los dos idiomas</li>
+<li><strong>FR-22</strong> · Página pública de retirada de contenido con plazos comprometidos</li>
+<li><strong>FR-23</strong> · ROPA y análisis de umbral de evaluación de impacto (internos)</li>
+<li><strong>FR-25</strong> · <del>Licencia de la tipografía Blacklet</del> — muerta: el DS v2.1.0 ya no la usa.</li>
+</ul>
+<h2>Entregado · 54</h2>
+<p>Está en la web que estás usando ahora mismo.</p>
+<ul>
+<li><strong>FR-94</strong> · La ficha como un fichero HTML que funciona solo.</li>
+<li><strong>FR-90</strong> · La §13 de la AGPL, cumplida.</li>
+<li><strong>FR-129</strong> · Lo que guardas te sigue entre dispositivos.</li>
+<li><strong>FR-149</strong> · Dos páginas públicas en «Qué es FestRoute», y ninguna puede mentir.</li>
+<li><strong>FR-147</strong> · La subida a producción, auditada de punta a punta.</li>
+<li><strong>FR-119</strong> · <strong>Los filtros del buscador viven en la dirección</strong> (§12.3 · CANON).</li>
+<li><strong>FR-146</strong> · Borrar la cuenta de verdad, y exportarla entera.</li>
+<li><strong>FR-137</strong> · Los tres agujeros que dejó la 0.41.0.</li>
+<li><strong>FR-134</strong> · Tres maneras de entrar, y el fallo mudo con nombre.</li>
+<li><strong>FR-133</strong> · Haber entrado se ve, y un enlace que no vale dice por qué.</li>
+<li><strong>FR-131</strong> · <strong>Valoración privada de banda, v0.1.0</strong>: gusto y sonido del 1 al 5 y «seguirles la pista», solo con cuenta y local-first, con <code>band_rating</code> por <code>band_slug</code>, su RLS y siete pruebas pgTAP más. <strong>No agrega, no compara y no sale de la cuenta</strong> — y no porque el…</li>
+<li><strong>FR-108</strong> · <strong>El orden de la ficha, como lo fija C.3</strong>: los atributos —aforo, cabezas de cartel, web oficial— van antes de las acciones, del sello y del panel de viaje.</li>
+<li><strong>FR-109</strong> · Los dos párrafos de honestidad, dentro de un «¿por qué?» desplegable.</li>
+<li><strong>FR-110</strong> · <strong>El QR en <code>/festival/:slug/qr/</code></strong>, en grande, y fuera de la ficha; el botón «Volver a todos los festivales», eliminado</li>
+<li><strong>FR-111</strong> · Banda de cartel en la cabecera: probada y retirada.</li>
+<li><strong>FR-113</strong> · <strong>Glifo <code>qr-code</code></strong>, como <strong>desviación declarada</strong> del inventario del §9.1: enumerado en <code>scripts/extract-icons.mjs</code> y no escrito a mano en el fichero generado, para que la próxima regeneración no se lo lleve por delante.</li>
+<li><strong>FR-114</strong> · <strong>El modo de color, un interruptor</strong>: el icono del modo puesto, sin caja y sin el hermano apagado al lado.</li>
+<li><strong>FR-115</strong> · «En marcha ahora» solo para los festivales de tu ruta.</li>
+<li><strong>FR-116</strong> · Fuera la marca grande y el lema de la portada.</li>
+<li><strong>FR-117</strong> · <strong>«Ediciones ya celebradas» pasa a ser un filtro</strong>, con su pastilla y su estado en la URL (§12.3)</li>
+<li><strong>FR-118</strong> · <strong>El pie se queda en lo legal</strong>, con la versión en la línea de cierre.</li>
+<li><strong>FR-120</strong> · <strong>La barra de control, una sola fila</strong>: lupa dentro del campo, embudo pegado y leyenda al lado, sin etiqueta encima.</li>
+<li><strong>FR-121</strong> · <strong>El contador, en la forma de C.2 y con cifras tabulares</strong> (§10, 07): «63 festivales», «7 de 63» al filtrar</li>
+<li><strong>FR-148</strong> · <strong>«Ahora» pasa a botón flotante</strong> con reloj y palabra (§9.3: es un destino de navegación y no pierde la palabra), por encima de la barra inferior.</li>
+<li><strong>FR-127</strong> · <strong>Cada cosa dicha una vez en la ficha</strong>: «Estilo» sale —duplicado en los parches y ausente de los atributos de C.3—, el aforo y la web oficial suben a la fila de acciones, «Entradas en la web oficial» pasa a «Entradas» y el aviso de precio comparte línea con…</li>
+<li><strong>FR-126</strong> · <strong>La guía abre en la jornada de hoy</strong> (§15.3, «solo lo de hoy»): abría siempre por el primer día del cartel, así que el sábado dentro del recinto enseñaba el miércoles.</li>
+<li><strong>FR-125</strong> · <strong>El orden de cierre de la ficha</strong>: la guía y las pantallas de recinto suben por encima de los dos paneles, y el sello cierra por debajo de «cómo llegar».</li>
+<li><strong>FR-124</strong> · Compartir y QR, dos controles.</li>
+<li><strong>FR-105</strong> · <strong>La cabecera, ejecutada como la mide el Anexo B</strong>: <code>sticky</code>, sin lema —que baja a la portada— y con el modo de color en sol y luna, que es lo que §9.3 manda literalmente y llevábamos publicado al revés.</li>
+<li><strong>FR-106</strong> · <strong>Sección «Qué es FestRoute»</strong> con su menú (qué es · quiénes somos · cómo se usa · contacto) y su documento de gobierno <code>docs/features/que-es-festroute.md</code>, donde quedan fijadas las cinco W del proyecto</li>
+<li><strong>FR-107</strong> · <strong>Filtros plegados tras el icono de embudo</strong> (§9.3), conservando visible lo aplicado y «Quitar todos» (§12.3 · CANON) y la leyenda de estados fuera del plegable (§6.3)</li>
+<li><strong>FR-104</strong> · <strong>Cinco rutas propias del Anexo E</strong>: <code>/calendario</code>, <code>/calendario/:año/:mes</code> y las tres pantallas de recinto <code>/festival/:slug/{cartel,ahora,recinto}</code>.</li>
+<li><strong>FR-93</strong> · <strong>QR del festival</strong>, generado en construcción y servido como SVG dentro del HTML: sin JavaScript en el navegador y sin pedirle el código a nadie.</li>
+<li><strong>FR-102</strong> · <strong><code>/cuenta</code> y <code>/ajustes</code></strong> (Anexo E · C.12 · §14.1).</li>
+<li><strong>FR-103</strong> · <strong>Cinta de «sin cobertura»</strong> (§15.2 · CANON): superior, discreta, en <code>terciario</code> y no en rojo, con el texto del Anexo F literal.</li>
+<li><strong>FR-68</strong> · Sacar la URL absoluta del sitio a una variable: <code>SITE_URL</code> en <code>apps/web/lib/site-url.ts</code>, con una comprobación que <strong>para la construcción</strong> si se cambia la dirección y se olvida la ruta base — el error caro del día de la mudanza ya no puede publicarse</li>
+<li><strong>FR-71</strong> · <strong>Las cabeceras HTTP que solo pueden ser cabecera</strong>: <code>frame-ancestors</code>, HSTS con <code>preload</code>, <code>Permissions-Policy</code>, <code>X-Content-Type-Options</code>.</li>
+<li><strong>FR-95</strong> · <strong>Barra de navegación inferior</strong> (Anexo E · C.1): cuatro destinos con icono y palabra por debajo de 700, sustituyendo a la barra de arriba.</li>
+<li><strong>FR-43</strong> · <strong>CodeQL corre</strong>: <code>codeql.yml</code> salió de <code>.disabled</code> al hacerse público el repositorio — en cada push y semanal.</li>
+<li><strong>FR-78</strong> · El repositorio es público, y se queda.</li>
+<li><strong>FR-92</strong> · <del>Reescribir el historial para extirpar el plan estratégico</del> — muerta el mismo día de nacer: el propietario desclasificó el contenido, y reescribir cien commits para esconder un borrador que su dueño no considera secreto sería teatro de seguridad</li>
+<li><strong>FR-01</strong> · Se puede entrar.</li>
+<li><strong>FR-82</strong> · Barrida de citas al design system tras la renumeración de la v5.0.0: docs, fichas, comentarios de código y pruebas apuntan a las secciones nuevas (§6.2, §12–§13, Anexos A–I)</li>
+<li><strong>FR-24</strong> · <strong>Licencia del código: AGPL-3.0-only</strong> (ADR 0009). <code>LICENSE</code> con el texto verbatim de la FSF y <code>&quot;license&quot;</code> declarada en <code>package.json</code>.</li>
+<li><strong>FR-84</strong> · <strong>Licencia del design system: CC0-1.0</strong> (dominio público), aparte del código.</li>
+<li><strong>FR-53</strong> · 2026-08-06</li>
+<li><strong>FR-54</strong> · 2026-08-06</li>
+<li><strong>FR-40</strong> · 2026-08-06</li>
+<li><strong>FR-41</strong> · 2026-08-06</li>
+<li><strong>FR-55</strong> · 2026-08-06</li>
+<li><strong>FR-62</strong> · 2026-08-06</li>
+<li><strong>FR-63</strong> · 2026-08-06</li>
+<li><strong>FR-64</strong> · 2026-08-06</li>
+<li><strong>FR-16</strong> · 2026-08-06</li>
+</ul>
+<h2>Congelado · 15</h2>
+<p>Aparcado a propósito, no olvidado. Se saca cuando toque, y mientras tanto se dice que está parado en vez de fingir que sigue vivo.</p>
+<ul>
+<li><strong>FR-30</strong> · Traducir a inglés los comentarios de ~20 archivos anteriores a la decisión de idioma</li>
+<li><strong>FR-51</strong> · Unificar en los agentes las tres copias de «fetch con tiempo límite» y sus tres user-agent</li>
+<li><strong>FR-32</strong> · <code>norm()</code> de los agentes reimplementa <code>normalizeText()</code> del dominio: unificar</li>
+<li><strong>FR-33</strong> · Renombrar identificadores mezclados (<code>EstadoPill</code>, <code>avisos</code>) a inglés</li>
+<li><strong>FR-34</strong> · Extraer la tipografía de etiqueta repetida 12 veces en CSS a una utilidad y tokens</li>
+<li><strong>FR-35</strong> · <code>packages/agents</code> y <code>packages/tokens</code> no son workspaces reales de npm</li>
+<li><strong>FR-36</strong> · Validación de argumentos en los scripts de agentes (<code>--limit</code> inválido pasa en silencio)</li>
+<li><strong>FR-37</strong> · La fecha de actualización está repetida en las cinco páginas legales</li>
+<li><strong>FR-38</strong> · Ruta y versión del design system codificadas en tres sitios</li>
+<li><strong>FR-39</strong> · Componente <code>&lt;ExternalLink&gt;</code> para las 11 repeticiones de <code>rel=&quot;noopener noreferrer&quot;</code></li>
+<li><strong>FR-42</strong> · squawk (lint de SQL en migraciones)</li>
+<li><strong>FR-44</strong> · Protección de rama en <code>main</code> + secret scanning con push protection</li>
+<li><strong>FR-45</strong> · Reorganizar <code>docs/</code> en carpetas por audiencia (producto / spec / ingeniería / gobernanza)</li>
+<li><strong>FR-46</strong> · Deduplicar la regla open source, repetida completa en cuatro documentos</li>
+<li><strong>FR-47</strong> · Traducir al inglés la documentación de cara a contribuidores externos</li>
+</ul>
+6:X
+b:X
+b:C
+0:{"buildId":"30c7f147e45e","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"wrap pagina-texto","children":[["$","h1",null,{"children":"Hoja de ruta"}],["$","nav",null,{"className":"menu-acerca","aria-label":"Qué es FestRoute","children":[["$","$L2","/acerca/",{"href":"/acerca/","children":"Qué es"}],["$","$L2","/acerca/quienes-somos/",{"href":"/acerca/quienes-somos/","children":"Quiénes somos"}],["$","$L2","/acerca/guia/",{"href":"/acerca/guia/","children":"Cómo se usa"}],["$","$L2","/acerca/bajo-el-capo/",{"href":"/acerca/bajo-el-capo/","children":"Bajo el capó"}],["$","$L2","/acerca/hoja-de-ruta/",{"href":"/acerca/hoja-de-ruta/","className":"menu-acerca-actual","aria-current":"page","children":"Hoja de ruta"}],["$","$L2","/acerca/contacto/",{"href":"/acerca/contacto/","children":"Contacto"}]]}],["$","div",null,{"className":"documento","dangerouslySetInnerHTML":{"__html":"$3"}}]]}],null,"$L4"]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":"$L7","isPartial":"$@8","staleTime":"$6","varyParams":null},{"rsc":"$L9","isPartial":"$@a","staleTime":"$6","varyParams":"$b"},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$6","varyParams":"$b"},{"rsc":"$Le","isPartial":"$@f","staleTime":"$6","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@10","rootVaryParams":null,"needsRuntimeRequest":"$@11"}
+12:I[97367,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"OutletBoundary"]
+13:"$Sreact.suspense"
+15:I[97367,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"ViewportBoundary"]
+16:I[97367,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"MetadataBoundary"]
+17:I[39756,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"default"]
+18:I[37457,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"default"]
+19:I[37634,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"CintaSinConexion"]
+1a:I[56008,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"EnlaceSesion"]
+1b:I[52748,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"ThemeToggle"]
+1c:I[58720,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"BarraInferior"]
+1d:I[83543,["/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js"],"Sincronizacion"]
+:HL["/festroute-site/_next/static/chunks/4148ih881geax.css","style"]
+4:["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]
+7:["$","$1","h",{"children":[null,["$","$L15",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L16",null,{"children":["$","$13",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Hoja de ruta · FestRoute"}],["$","meta","1",{"name":"description","content":"Todo lo que se ha hecho, lo que falta y lo que está parado, con su estado real."}]]}]}]}],null]}]
+9:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+c:["$","$1","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}]
+e:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/festroute-site/_next/static/chunks/4148ih881geax.css","precedence":"next"}],["$","script","script-0",{"src":"/festroute-site/_next/static/chunks/0lkuu9su4eymc.js","async":true}],["$","script","script-1",{"src":"/festroute-site/_next/static/chunks/3vt_u_rk8874n.js","async":true}],["$","script","script-2",{"src":"/festroute-site/_next/static/chunks/17e5nv_2wbsfc.js","async":true}]],["$","html",null,{"lang":"es","data-tema":"oscuro","children":[["$","head",null,{"children":[["$","meta",null,{"name":"referrer","content":"strict-origin-when-cross-origin"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){try{var t=localStorage.getItem('festroute:tema');if(t!=='claro'&&t!=='oscuro'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'claro':'oscuro'}document.documentElement.dataset.tema=t}catch(e){document.documentElement.dataset.tema='oscuro'}})()"}}]]}],["$","body",null,{"children":[["$","div",null,{"className":"cabecera-fija","children":[["$","$L19",null,{}],["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"wrap","children":[["$","$L2",null,{"href":"/","className":"marca","children":"FestRoute"}],["$","nav",null,{"className":"site-nav","aria-label":"Navegación principal","children":[["$","$L2",null,{"href":"/","children":"Festivales"}],["$","$L2",null,{"href":"/buscar/","children":"Buscar"}],["$","$L2",null,{"href":"/mi-ruta/","children":"Mi ruta"}],["$","$L1a",null,{}]]}],["$","div",null,{"className":"site-controles","children":[["$","$L2",null,{"className":"icono-btn","href":"/acerca/","aria-label":"Qué es FestRoute","data-tooltip":"Qué es FestRoute","children":["$","svg",null,{"className":"icono","viewBox":"0 0 256 256","width":20,"height":20,"fill":"currentColor","aria-hidden":true,"dangerouslySetInnerHTML":{"__html":"<path d=\"M108,84a16,16,0,1,1,16,16A16,16,0,0,1,108,84Zm128,44A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Zm-72,36.68V132a20,20,0,0,0-20-20,12,12,0,0,0-4,23.32V168a20,20,0,0,0,20,20,12,12,0,0,0,4-23.32Z\"/>"}}]}],["$","$L1b",null,{}]]}]]}]}]]}],["$","hr",null,{"className":"sep-cadena"}],["$","main",null,{"children":["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}],"notFound":[["$","div",null,{"className":"wrap pagina-texto","children":[["$","h1",null,{"children":"Esta página no existe"}],["$","p",null,{"children":"Puede que el festival haya cambiado de nombre o que el enlace esté mal escrito. Empieza por el catálogo: ahí están todos."}],["$","p",null,{"children":["$","$L2",null,{"href":"/","className":"volver","children":"Volver a todos los festivales"}]}]]}],[]]}]}],["$","div",null,{"className":"sep-corte","aria-hidden":"true"}],["$","footer",null,{"className":"site-footer","children":["$","div",null,{"className":"wrap","children":[["$","nav",null,{"className":"footer-legal","aria-label":"Información legal","children":[["$","$L2",null,{"href":"/legal/codigo-fuente/","children":"Código fuente"}],["$","$L2",null,{"href":"/legal/aviso-legal/","children":"Aviso legal"}],["$","$L2",null,{"href":"/legal/terminos/","children":"Términos de uso"}],["$","$L2",null,{"href":"/legal/privacidad/","children":"Privacidad"}],["$","$L2",null,{"href":"/legal/cookies/","children":"Cookies"}]]}],["$","p",null,{"className":"forja","children":["Hecho en la Forja de los Mil Pecados para todos los metalheads 🤘 · v","0.46.0"]}]]}]}],["$","$L1c",null,{}],["$","$L1d",null,{}]]}]]}]]}]
+14:null
+11:true
+6:300
+6:C
+10:0
+8:"$undefined"
+a:"$undefined"
+d:"$undefined"
+f:"$undefined"
+5:"$undefined"
